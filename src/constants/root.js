@@ -1,0 +1,32 @@
+roof :{
+    --primary: #2d87f3;
+    --gray-800: #262626;
+    --gray-700: #404040;
+    --gray-600: #595959;
+    --gray-500: #737373;
+    --gray-300: #bfbfbf;
+    --gray-200: #d9d9d9;
+    --gray-100: #f2f2f2;
+    --gray-50: #fafafa;
+    --neutral-200: #d2d6dc;
+    --green-50: #e0f8ee;
+    --green-600: #00b16a;
+    --blue-50: #e3f2ff;
+    --red-50: #fae9e8;
+    --red-600: #f44d2c;
+    --red-700: #e64728;
+    --background-overlay: rgba(38, 38, 38, 0.3);
+    --main-font: "open sans", sans-serif;
+    --khmer-font: "Battambang", cursive;
+    --content-spacing: 0 1rem;
+    --content-width: 100vw;
+    --main-shadow: none;
+    --font-bold: 700;
+    --illustrative-graphic-display: none;
+    --small-spacing: 0.5rem;
+    --large-spacing: 4rem;
+    --border-radius: 0.375rem;
+    --slider-content-height: calc(100vh - 13.5rem);
+    --above-header: 2rem;
+    --below-header: 3.25rem;
+}
