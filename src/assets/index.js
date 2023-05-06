@@ -13,6 +13,9 @@ const images = {
     clinicEx: require('./img//phongkhamEx.png'),
     doctor : require('./img/doctor.svg'),
     user : require('./img/user.svg'),
+    dropdown: require('./icons/dropdown.png'),
+    fb: require('./icons/fb.png'),
+    gg: require('./icons/gg.png'),
 }
 
 export default images

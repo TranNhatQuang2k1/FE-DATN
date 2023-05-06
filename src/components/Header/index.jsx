@@ -42,23 +42,82 @@ const Header = () => {
             </div>
             <div className="header_center">
                 <div className="header_center_topic">
+                    <div className="content-center">
+                        <b className="text-content">Chuyên mục</b>
+                    </div>
+                    <div className="icon-drop">
+                        <img
+                            src={images.dropdown}
+                            alt="dropdown"
+                            className="dropdown"
+                        />
+                    </div>
                     
                 </div>
-                <div className="header_center_health">
-                       
+                <div className="header_center_topic">
+                    <div className="content-center">
+                        <b className="text-content">Kiểm tra sức khỏe</b>
+                    </div>
+                    <div className="icon-drop">
+                        <img
+                            src={images.dropdown}
+                            alt="dropdown"
+                            className="dropdown"
+                        />
+                    </div>
                 </div>
-                <div className="header_center_booking">
-                       
+                <div className="header_center_topic">
+                    <div className="content-center">
+                        <b className="text-content">Đặt lịch với bác sĩ</b>
+                    </div>
+                    <div className="icon-drop">
+                        <img
+                            src={images.dropdown}
+                            alt="dropdown"
+                            className="dropdown"
+                        />
+                    </div>
                 </div>
-                <div className="header_center_group">
-                       
+                <div className="header_center_topic">
+                    <div className="content-center">
+                        <b className="text-content">Cộng đồng</b>
+                    </div>
+                    <div className="icon-drop">
+                        <img
+                            src={images.dropdown}
+                            alt="dropdown"
+                            className="dropdown"
+                        />
+                    </div>
                 </div>
             </div>
             <div className="header_right">
-                <div className="header_right_">
-                    
+                <div className="header_right_booking">
+                    <button className="bt_booking">
+                        Đặt lịch với bác sĩ
+                    </button>
                 
                 </div>
+                <button 
+                    class="bt_login" 
+                    data-size="md" 
+                    data-color="tertiary" 
+                    data-has-icon="true" 
+                    data-theme="helloSites" 
+                    data-is-loading="false">
+                        <div class="login_content">
+                                <img 
+                                    src="https://hhg-common.hellobacsi.com/common/login.svg"
+                                    width="19" 
+                                    height="19"
+                                    className="img_login"
+                                />
+                            <span 
+                                class="text_login">Đăng nhập
+                            </span>
+                        </div>
+                </button>
+                
             </div>
         </header>
     )
