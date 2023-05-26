@@ -1,0 +1,111 @@
+.banner-container{
+    overflow: visible;
+    // min-height: 100vh;
+    box-sizing: border-box;
+    // border: 1px solid red;
+    box-sizing: border-box;
+    position: relative;
+    .content-banner{
+        background-image: url(https://hellobacsi.com/images/homepage-banner/banner-bg.svg);
+        background-color: rgb(188, 222, 255);
+        background-size: cover;
+        background-repeat: no-repeat;
+        padding: 8px 0px 0px;
+        box-sizing: border-box;
+        .content-banner-layout {
+            box-sizing: border-box;
+            display: flex;
+            gap: 144px;
+            -webkit-box-pack: justify;
+            justify-content: space-between;
+            min-height: 400px;
+            aspect-ratio: 1920 / 280;
+            height: 100%;
+            margin: 0px 125px;
+            width: 90%;
+            padding: 0px 16px;
+            .layout-left {
+                max-width: 600px;
+                padding: 58px 0px 0px;
+                .layout-left-title {
+                    font-weight: 700;
+                    letter-spacing: -1.2px;
+                    font-size: 40px;
+                    line-height: 52px;
+                }
+                .layout-left-content {
+                    margin: 16px 0px 24px;
+                    .layout-left-span {
+                        display: block;
+                        margin-top: 8px;
+                        font-size: 18px;
+                        font-weight: 400;
+                        letter-spacing: -0.2px;
+                        line-height: 32px;
+                        .span-text {
+                            font-size: 16px;
+                            letter-spacing: 0;
+                            line-height: 24px;
+                            color: var(--custom-color,#262626);
+                            font-weight: 400;
+                            letter-spacing: 0;
+                        }
+                        }
+                    }
+                }
+                .banner-button {
+                    display: block;
+                    width: fit-content;
+                    min-width: 140px;
+                    min-height: 40px;
+                    margin-top: 12px;
+                    margin-bottom: 24px;
+                    text-decoration: none;
+                    .btn-click {
+                        background-color: #2d87f3;
+                        border: 1px solid #2d87f3;
+                        color: #fff;
+                        font-size: 14px;
+                        line-height: 22px;
+                        padding: 9px 24px;
+                        border-radius: 6px;
+                        cursor: pointer;
+                        font-weight: 700;
+                        transition: background-color .3s,border-color .3s;
+                        width: auto;
+                        .btn-text {
+                            align-items: center;
+                            display: flex;
+                            justify-content: center;
+                        }
+                    }
+                }
+            }
+            .banner-img {
+                display: flex;
+                // align-items: center;
+                // justify-content: center;
+                align-self: flex-end;
+                flex: 1 1 0%;
+                padding-top: min(500px, 50vw);
+                position: relative;
+                // max-width: 400px;
+                // max-height: 400px;
+                // -webkit-box-flex: 0;
+                flex-grow: 0.9;
+                flex-shrink: 0.1;
+                pointer-events: none;
+                user-select: none;
+                align-items: center;
+                .home-banner-image {
+                    object-position: center bottom;
+                    object-fit: contain;
+                    position: relative;
+                    top: 50px;
+                    // left: 0px;
+                    // width: 100%;
+                    // height: 100%;
+                }
+            }
+        }
+}

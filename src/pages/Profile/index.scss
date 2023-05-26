@@ -1,0 +1,27 @@
+.profile-container {
+    max-width: 1170px;
+    min-height: calc(100vh - 69px);
+    margin: 0px auto;
+    padding: 24px 16px;
+    display: block;
+    .profile-layout {
+        display: flex;
+        flex-direction: row;
+        gap: 48px;
+        -webkit-box-pack: start;
+        justify-content: flex-start;
+        align-items: flex-start;
+        .layout-left {
+            width: 240px;
+            
+            // border: 1px solid red;
+        }
+
+        .layout-right {
+            width: 668px;
+            padding-bottom: 100px;
+            // border: 1px solid red;
+            display: block;
+        }
+    }
+}

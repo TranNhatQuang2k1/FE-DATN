@@ -7,7 +7,7 @@
     z-index: 99;
     padding: 4px;
     height: 69px;
-    width: 100%;
+    // width: 100%;
     display: flex;
     // align-items: center;
     font-size: 16;
@@ -30,13 +30,26 @@
         align-items: center;
         justify-content: space-around;
         box-sizing: border-box;
+        // height: 73px;
+        &_topic:focus-within {
+            border-bottom: 1.5px solid #2d87f3;
+            color: #2d87f3;
+            .dropdown:focus-within {
+                filter: hue-rotate(90deg);
+            }
+        }
         &_topic {
-            // border: 1px solid red;
+            // border-bottom: 1px solid #2d87f3;
+            // color: #2d87f3;
+            padding-top: 20px;
+            padding-bottom: 9px;
             display: flex;
+            height: 100%;
             flex-direction: row;
             width: 20%;
             justify-content: center;
             align-items: center;
+            cursor: pointer;
             .content-center {
                 // border: 1px solid green;
                 // line-height: 23px;
@@ -55,10 +68,9 @@
                 margin-left: 4px;
                 margin-top: 4px;
                 .dropdown {
-                    
+                    // background-color: #066EDF;
                     width: 14px;
-                    height: 14px;
-                    
+                    height: 14px;   
                 }
             }
         }

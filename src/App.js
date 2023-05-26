@@ -1,11 +1,13 @@
 import logo from './logo.svg';
-import './App.css';
-import Header from './components/Header';
-import Login from './components/Login';
+import './App.scss';
+import { useState } from 'react';
+import HomePage from './pages/HomePages';
 
 function App() {
   return (
-    <Login />
+    <div className="App">
+        <HomePage />
+    </div>
   );
 }
 

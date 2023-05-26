@@ -1,0 +1,41 @@
+.myprofile-container {
+    // height: 450px;
+    padding: 0px;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 16px 24px 0px, 
+                rgba(0, 0, 0, 0.04) 0px 2px 8px 0px, 
+                rgba(0, 0, 0, 0.04) 0px 0px 1px;
+    background-color: rgb(247, 249, 252);
+    // padding: 8px 0px;
+    user-select: none;
+    overflow: hidden;
+    font-size: 16px;
+    color: rgb(38, 38, 38);
+}
+.Card-container {
+    border-left-width: 0px;
+    border-right-width: 0px;
+    box-sizing: border-box;
+    display: block;
+    background-color: white;
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+    .Card-content {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    min-height: 31px;
+    padding: 8px 18px;
+    border: 1px solid transparent;
+        .icon-wrapper {
+            margin-right: 14px;
+            display: flex;
+            .img-profile {
+                width: 24px;
+                height: 24px;
+                object-fit: cover;
+            }
+        }
+    }
+}

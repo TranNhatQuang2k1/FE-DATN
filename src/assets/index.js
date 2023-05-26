@@ -16,6 +16,7 @@ const images = {
     dropdown: require('./icons/dropdown.png'),
     fb: require('./icons/fb.png'),
     gg: require('./icons/gg.png'),
+    heart: require('./img/Heart.png'),
 }
 
 export default images

@@ -1,0 +1,46 @@
+.card-container {
+    max-width: 180px;
+    min-height: 180px;
+    flex: 1 1 0%;
+    display: flex;
+    height: 125px;
+    box-sizing: border-box;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 8px;
+    border: 1px solid rgb(228, 232, 236);
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: rgba(40, 74, 117, 0.08) 0px 5px 12px;
+    cursor: pointer;
+    text-decoration: none;
+    .banner-card {
+        min-height: 102px;
+        background-color: rgb(255, 255, 255);
+        width: 100%;
+        height: 63px;
+        text-align: center;
+        pointer-events: none;
+        .banner-img {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+    }
+    .content-card {
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        text-align: center;
+        word-break: break-word;
+        .content-card-name {
+            margin-top: 10px;
+            font-size: 16px;
+            line-height: 22px;
+            font-weight: 700;
+            color: black;
+        }
+    }
+}

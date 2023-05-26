@@ -2,7 +2,11 @@ import React, {useEffect, useState} from "react";
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import images from "../../assets";
 import './index.scss';
-
+const divElement = document.querySelector('.header_center_topic');
+divElement?.addEventListener('click', function() {
+    console.log(this);
+    this.focus();
+});
 const Header = () => {
     return (
         <header className="header">
@@ -41,7 +45,7 @@ const Header = () => {
                 </div>
             </div>
             <div className="header_center">
-                <div className="header_center_topic">
+                <div className="header_center_topic " tabIndex={0}>
                     <div className="content-center">
                         <b className="text-content">Chuyên mục</b>
                     </div>
@@ -54,7 +58,7 @@ const Header = () => {
                     </div>
                     
                 </div>
-                <div className="header_center_topic">
+                <div className="header_center_topic" tabIndex={0}>
                     <div className="content-center">
                         <b className="text-content">Kiểm tra sức khỏe</b>
                     </div>
@@ -66,7 +70,7 @@ const Header = () => {
                         />
                     </div>
                 </div>
-                <div className="header_center_topic">
+                <div className="header_center_topic" tabIndex={0}>
                     <div className="content-center">
                         <b className="text-content">Đặt lịch với bác sĩ</b>
                     </div>
@@ -78,7 +82,7 @@ const Header = () => {
                         />
                     </div>
                 </div>
-                <div className="header_center_topic">
+                <div className="header_center_topic" tabIndex={0} data-event-action='click'>
                     <div className="content-center">
                         <b className="text-content">Cộng đồng</b>
                     </div>
