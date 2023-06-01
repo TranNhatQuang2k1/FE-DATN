@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react'
 import './index.scss'
 import Header from '../../components/Header';
 import Menu from '../../components/Category';
-import Categories from './components/categories';
+import Categories from './components/Categories';
 import Banner from './components/Banner';
 import Content from './components/Contents';
 import Relation from './components/Relation';
 import Hearttool from '../HealthTools/Heartool';
 import Profile from '../Profile';
+import BMI from '../HealthTools/BMI';
+import Login from '../../components/Login';
+import Community from './components/Community';
 const dataCategories = [
     {
         title : 'Sức khỏe răng miệng',
@@ -50,7 +53,9 @@ function HomePage() {
             <Relation data = {dataCategories}/>
             <Hearttool />
             <Profile />
-            <button onClick={() => setCheck(!check)}/>
+            <BMI />
+            <Login />
+            <Community />
         </div>
     )
 }

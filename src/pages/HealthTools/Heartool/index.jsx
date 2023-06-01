@@ -1,10 +1,11 @@
 import {React, useState} from "react";
 import images from "../../../assets";
 import './index.scss'
+import Infor from "../../../components/Infor";
 let a = [
     {
         title: 'Vì sao tôi nên kiểm tra hoặc đo lường sàng lọc tim mạch của mình?',
-        content: 'Sàng lọc cung cấp thông tin tốt hơn cho bác sĩ biết bạn đang có nguy cơ mắc bệnh tim mạch ở mức độ nào. Và đề xuất những gì bạn có thể làm để cải thiện sức khỏe tổng thể bằng cách kiểm tra một vài vấn đề sức khỏe có thể đang ảnh hưởng xấu đến sức khỏe tim mạch của bạn.'
+        content: "Đối với người lớn từ 20 tuổi trở lên, BMI được tính bằng cách sử dụng các phân loại trạng thái cân nặng tiêu chuẩn. Các chuẩn này giống nhau với nam giới và phụ nữ ở mọi thể trạng và lứa tuổi.Đối với trẻ em và thanh thiếu niên, BMI phân biệt theo tuổi và giới tính và thường được gọi là BMI theo tuổi. Ở trẻ em, lượng chất béo trong cơ thể cao có thể dẫn đến các bệnh liên quan đến cân nặng và các vấn đề sức khỏe khác. Thiếu cân cũng có thể tăng nguy cơ mắc một số tình trạng sức khỏe, bệnh lý.Chỉ số BMI cao thường cho thấy cơ thể thừa cân. Chỉ số này không trực tiếp đo lượng mỡ trong cơ thể nhưng có tương quan với các phép đo trực tiếp xác định lượng mỡ trong cơ thể."
     },
     {
         title: 'Nguyên nhân gây ra bệnh tim mạch là gì?',
@@ -57,63 +58,9 @@ const Hearttool = () => {
                 </div>
             </div>
         </div>
-        <Infor />
+        <Infor list={a}/>
         </div>
     )
 }
-const ListInfor = ({title, content}) => {
-    const [check,setCheck] = useState(true);
-    return (
-        <div class="info-list-content">
-                            <div 
-                                onClick={() => {setCheck(!check)}} 
-                                class="content-title">
-                                <div className="title-img">
-                                    { check ? <svg width="20" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-                                        <path d="M8 4v8M4 8h8" stroke="#595959" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                        </svg> 
-                                        : <svg width="20" height="3" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 3"><path d="M1 1.004h8" stroke="#595959" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            </path>
-                                            </svg>
-                                    }
-                                </div>
-                                <div className="title-text">
-                                    <p className={check ? "text-detail1" : "text-detail2"}>{title}</p>
-                                </div>
-                            </div>
-                            <div  className={check ? 'list-content-text': `${'set-height'} list-content-text ` }>
-                                <div 
-                                    class="text-imfor"> {content}
-                                </div>
-                            </div>
-                        </div>
-    )
-}
-const Infor = () => {
-    return (
-        <div 
-            class="heart-page-info">
-                <div class="heart-page-container">
-                    <h2 class="heart-page-title">
-                        <svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M8 14A6 6 0 108 2a6 6 0 000 12z" fill="#2D87F3"></path>
-                            <path d="M8 11V8M8 5h.01" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                        </svg>
-                        <span>Thông tin</span>
-                    </h2>
-                    <div 
-                        class="info-list">
-                        {
-                            a.map((e) => {
-                                return (
-                                    <ListInfor title={e.title} content={e.content}/>
-                                )
-                            })
-                        }
-                    </div>
-            </div>
-        </div>
-              
-    )
-}
+
 export default Hearttool;

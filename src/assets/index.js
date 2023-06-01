@@ -17,6 +17,9 @@ const images = {
     fb: require('./icons/fb.png'),
     gg: require('./icons/gg.png'),
     heart: require('./img/Heart.png'),
+    BMI: require('./img/BMI.png'),
+    BMR: require('./img/BMR.png'),
+    heartrate: require('./img/heartrate.png'),
 }
 
 export default images

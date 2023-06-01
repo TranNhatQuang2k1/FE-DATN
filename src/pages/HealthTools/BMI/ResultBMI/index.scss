@@ -1,0 +1,168 @@
+.ResultBMI-container {
+    max-width: 1170px;
+    width: 100%;
+    margin: 0px auto;
+    // border: 1px solid red;
+    .ResultBMI-wrap {
+        display: flex;
+        width: 100%;
+        align-items: flex-start;
+        -webkit-box-pack: center;
+        justify-content: center;
+        margin-top: 8px;
+        background-color: rgb(255, 255, 255);
+        .ResultBMI-left {
+            padding-right: 16px;
+            width: 63%;
+            .left-title {
+                padding-left: 16px;
+                padding-right: 16px;
+                padding-top: 32px;
+                color: rgb(38, 38, 38);
+                text-align: center;
+                .title-text {
+                    font-size: 32px;
+                    letter-spacing: -1px;
+                    line-height: 42px;
+                    color: #262626;
+                    font-weight: 700;
+                    .text-number {
+                        margin-top: 8px;
+                        color: #2d87f3;
+                    }
+                }
+            }
+            .left-content{
+                padding-left: 16px;
+                padding-right: 16px;
+                margin-bottom: 32px;
+                .content-container {
+                    display: flex;
+                    overflow: auto;
+                    padding-bottom: 10px;
+                    margin-top: 48px;
+                    margin-bottom: 38px;
+                    .content-item {
+                        display: flex;
+                        min-width: 20%;
+                        height: 100%;
+                        flex-direction: column;
+                        text-align: center;
+                        .item-img {
+                            height: 100%;
+                            flex: 1 1 0%;
+                            .img-icon {
+                                width: auto;
+                                height: 100%;
+                                object-fit: contain;
+                            }
+                        }
+                        .item-number {
+                            margin-top: 16px;
+                            p:first-child, :last-child{
+                                letter-spacing: 0;
+                                font-size: 14px;
+                                letter-spacing: -.2px;
+                                line-height: 22px;
+                                color: rgb(89, 89, 89);
+                                font-weight: 400;
+                            }
+                        }
+                       
+                    }
+                }
+                .process-bar {
+                    .bar-container {
+                        position: relative;
+                        display: flex;
+                        width: 100%;
+                        padding-top: 45px;
+                        padding-bottom: 24px;
+                        .number-result {
+                            left: min(56%, 100% - 41px);
+                            opacity: 1;
+                            position: absolute;
+                            top: 0px;
+                            left: 0px;
+                            width: 56px;
+                            padding: 0px 5px;
+                            background-color: rgb(0, 192, 118);
+                            border-radius: 4px;
+                            opacity: 0;
+                            text-align: center;
+                            transform: translateX(-15px);
+                            transition: all 0.5s ease-out 0s;
+                            h4 {
+                                color: rgb(255, 255, 255);
+                                font-size: 22px;
+                                line-height: 32px;
+                                letter-spacing: -.6px;
+                                font-weight: 700;
+                            }
+                        }
+                        .number-result::before{
+                            position: absolute;
+                            top: 100%;
+                            left: 15px;
+                            width: 5px;
+                            height: 5px;
+                            background-color: rgb(0, 192, 118);
+                            content: "";
+                            transform: translate(-50%, -50%) rotate(45deg);
+                            transform-origin: center center;
+
+                        }
+                        .result-1 {
+                            flex: 0 0 52.86%;
+                            .result-1-detail {
+                                width: 100%;
+                                height: 10px;
+                                background-color: rgb(43, 148, 255);
+                                border-radius: 16px 0px 0px 16px;
+                            }
+                            .number-1-detail {
+                                position: relative;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: flex-start;
+                            }
+                            .number-1-detail::before{
+                                display: block;
+                                width: 1px;
+                                height: 8px;
+                                margin-top: 10px;
+                                margin-bottom: 2px;
+                                background-color: rgb(228, 232, 236);
+                                content: "";
+                            }
+                        }
+                        .result-2{
+                            flex: 0 0 12.86%;
+                        }
+                        .result-3{
+                            flex: 0 0 5.72%;
+                        }
+                        .result-4{
+                            flex: 0 0 14.29%;
+                        }
+                        .result-5{
+                            flex: 0 0 14.27%;
+                        }
+                    }
+                }
+            }
+
+        }
+        .ResultBMI-post {
+            position: relative;
+            display: flex;
+            overflow: visible;
+            width: 40%;
+            flex: 1 1 0%;
+            align-items: flex-start;
+            align-self: stretch;
+            -webkit-box-pack: start;
+            justify-content: flex-start;
+        }
+    }
+}

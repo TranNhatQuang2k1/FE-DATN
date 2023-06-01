@@ -1,0 +1,265 @@
+.BMI-container {
+        .BMI-banner {
+            width: 100%;
+            padding-bottom: 24px;
+            margin-bottom: 8px;
+            .banner-bg {
+                min-height: 200px;
+                position: relative;
+                width: 100%;
+                height: 100%;
+                background-color: inherit;
+                background-image: url('https://hellobacsi.com/images/toolBannerBlue-circle-large.svg');
+                background-position: center bottom;
+                background-repeat: no-repeat;
+                background-size: cover;
+                padding-bottom: 40px;
+                .bg-container {
+                    max-width: 1170px;
+                    width: 100%;
+                    margin: 0px auto;
+                    .bg-wrapper {
+                        position: relative;
+                        
+                        .icon-container {
+                            bottom: -54px;
+                            min-width: 280px;
+                            max-width: initial;
+                            min-height: 280px;
+                            position: absolute;
+                            z-index: 0;
+                            right: 16px;
+                            -webkit-box-align: center;
+                            align-items: center;
+                            .icon-BMI {
+                                width: 100%;
+                                height: 100%;
+                                object-fit: contain;
+                            }
+                        }
+                        .BMI-des {
+                            max-width: calc(100% - 210px);
+                            padding: 50px 16px 40px;
+                            position: relative;
+                            z-index: 1;
+                            .des-wrapper {
+                                display: flex;
+                                width: 60%;
+                                height: auto;
+                                min-width: 600px;
+                                -webkit-box-align: center;
+                                align-items: center;
+                                
+                                margin-top: 8px;
+                                .des-title :first-child {
+                                    margin-right: 18px;
+                                }
+                                .des-title {
+                                    --custom-heading-color: #fff;
+                                    font-size: 40px;
+                                    letter-spacing: -1.2px;
+                                    line-height: 52px;
+                                    color: var(--custom-heading-color,#262626);
+                                    font-weight: 700;
+                                    margin: 0;
+                                }
+                            }
+                            .des-content {
+                                max-width: 540px;
+                                padding-right: 120px;
+                                .content-text {
+                                    --custom-color: #fff;
+                                    font-size: 16px;
+                                    letter-spacing: 0;
+                                    line-height: 24px;
+                                    color: var(--custom-color,#262626);
+                                    font-weight: 400;
+                                }
+                            }
+                    }
+                        
+                    }
+                }
+            }
+        }
+        .form-main {
+            padding-left: 16px;
+            padding-right: 16px;
+            max-width: 1140px;
+            padding-inline: 0;
+            margin: 0 auto;
+            
+            .form-container {
+                
+                flex-wrap: nowrap;
+                display: flex;
+                -webkit-box-pack: start;
+                margin: 0;
+                .container-left {
+                    width: 720px;
+                    flex-shrink: 0;
+                    max-width: unset;
+                    flex-grow: 1;
+                    padding: 12px;
+                    .left-wrapper {
+                        
+                        padding-bottom: 40px;
+                        .bmi-input {
+                            
+                            padding: 0px 16px;
+                            .bmi-input-contanier {
+                                
+                                margin-bottom: 1rem;
+                                display: flex;
+                                flex-direction: column;
+                                gap: 16px;
+                                .bmi-input-gender {
+                                    
+                                    position: relative;
+                                    width: 100%;
+                                    .input-gender-label {
+                                        
+                                        display: inline-block;
+                                        margin-bottom: 5px;
+                                        color: rgb(89, 89, 89);
+                                        font-weight: bold;
+                                        font-size: 13px;
+                                        line-height: 19px;
+                                        
+                                    }
+                                    .radio-gender-img {
+                                        // border: 1px solid red;
+                                        position: relative;
+                                        .input-radio-gender {
+                                            width: 100%;
+                                            gap: 16px;
+                                            flex-wrap: wrap;
+                                            display: flex;
+                                            .img-wrapper {
+                                                max-width: 186px;
+                                                width: calc(50% - 8px);
+                                                border: 1px solid rgb(45, 135, 243);
+                                                background: white;
+                                                display: flex;
+                                                padding: 8px;
+                                                border-radius: 6px;
+                                                cursor: pointer;
+                                                
+                                                // border: 1px solid red;
+                                                 div {
+                                                    display: flex;
+                                                    width: 100%;
+                                                    height: 100%;
+                                                    
+                                                    flex-direction: column;
+                                                    -webkit-box-align: center;
+                                                    align-items: center;
+                                                    -webkit-box-pack: start;
+                                                    justify-content: flex-start;
+                                                    .gender-image {
+                                                        width: 70px;
+                                                        height: 70px;
+
+                                                    }
+                                                    .radio-text {
+                                                        
+                                                        --custom-color: black;
+                                                        margin-top: 8px;
+                                                        text-align: center;
+                                                        font-weight: 700;
+                                                        letter-spacing: 0;
+                                                        font-size: 14;
+                                                        line-height: 22px;
+                                                        color: var(--custom-color,#262626);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            .input-content {
+                                margin-bottom: 1rem;
+                                display: flex;
+                                flex-direction: column;
+                                gap: 16px;
+                                .input-content-detail {
+                                    font-family: sans-serif;
+                                    line-height: 1.55;
+                                    .input-label {
+                                        display: inline-block;
+                                        word-break: break-word;
+                                        cursor: default;
+                                        -webkit-tap-highlight-color: transparent;
+                                        margin-bottom: 0.25rem;
+                                        font-weight: 600;
+                                        font-size: 14px;
+                                        line-height: 22px;
+                                        color: rgb(89, 89, 89);
+                                        p {
+                                            --custom-color: #595959;
+                                            font-size: 12px;
+                                            line-height: 18px;
+                                            letter-spacing: 0;
+                                            color: var(--custom-color,#262626);
+                                        }
+                                    }
+                                    .input-field {
+                                        position: relative;
+                                        .field-content {
+                                            font-family: "Segoe UI";
+                                            height: 42px;
+                                            -webkit-tap-highlight-color: transparent;
+                                            line-height: 40px;
+                                            appearance: none;
+                                            resize: none;
+                                            box-sizing: border-box;
+                                            font-size: 16px;
+                                            width: 60%;
+                                            color: rgb(0, 0, 0);
+                                            display: block;
+                                            text-align: left;
+                                            min-height: 42px;
+                                            padding-left: 14px;
+                                            padding-right: 14px;
+                                            border-radius: 4px;
+                                            background-color: rgb(255, 255, 255);
+                                            border: 1px solid rgb(217, 217, 217);
+                                            transition: all 100ms ease-in-out 0s;
+                                        }
+                                    }
+                                }
+                            }
+                            .bmi-btn {
+                                background-color: #2d87f3;
+                                border: 1px solid #2d87f3;
+                                color: #fff;
+                                margin: 24px auto;
+                                font-size: 14px;
+                                line-height: 22px;
+                                padding: 9px 24px;
+                                border-radius: 6px;
+                                cursor: pointer;
+                                font-weight: 700;
+                                transition: background-color .3s,border-color .3s;
+                                width: auto;
+                                // align-items: center;
+                                .btn-submit {
+                                    align-items: center;
+                                    display: flex;
+                                    justify-content: center;
+                                }
+                            }
+                        }
+                        .left-infor {
+                            // border: 1px solid red;
+                            display: flex;
+                            align-items: flex-start;
+                            // justify-content: space-between;
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
