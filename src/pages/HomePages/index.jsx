@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import './index.scss'
 import Header from '../../components/Header';
-import Menu from '../../components/Category';
 import Categories from './components/Categories';
 import Banner from './components/Banner';
 import Content from './components/Contents';
 import Relation from './components/Relation';
-import Hearttool from '../HealthTools/Heartool';
 import Profile from '../Profile';
 import BMI from '../HealthTools/BMI';
-import Login from '../../components/Login';
 import Community from './components/Community';
+import Allcategories from '../Categories';
+import Postsuggest from './components/Postsuggest';
+import Communitygroup from '../Community';
 const dataCategories = [
     {
         title : 'Sức khỏe răng miệng',
@@ -40,22 +40,31 @@ const dataCategories = [
 ]
 function HomePage() {
     const [check, setCheck] = useState(true);
+    const handleMenu = () => {
+        setCheck(true);
+      };
+    const handleRemove = () => {
+        setCheck(false);
+      };
     useEffect(() => {
         document.title = 'Trang chủ'
     }, [])
     return (
         <div className="homePage">
-            <Header />
-            {check && <Menu data= {dataCategories}/>}
+            <Header onClick={handleMenu}/>
+            {/* <Login /> */}
+            {/* {check && <Menu data= {dataCategories} onClick={handleRemove} check={check}/>} */}
             <Banner />
             <Categories />
             <Content />
             <Relation data = {dataCategories}/>
-            <Hearttool />
-            <Profile />
-            <BMI />
-            <Login />
+            <Postsuggest />
+            {/* <Hearttool /> */}
+            {/* <Profile /> */}
+            {/* <BMI /> */}
             <Community />
+            {/* <Communitygroup /> */}
+            {/* <Allcategories /> */}
         </div>
     )
 }

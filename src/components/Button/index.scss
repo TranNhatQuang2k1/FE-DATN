@@ -1,0 +1,28 @@
+.banner-button {
+    display: block;
+    width: fit-content;
+    min-width: 140px;
+    min-height: 40px;
+    margin-top: 12px;
+    margin-bottom: 24px;
+    text-decoration: none;
+    .btn-click {
+        background-color: #2d87f3;
+        border: 1px solid #2d87f3;
+        color: #fff;
+        font-size: 14px;
+        line-height: 22px;
+        padding: 9px 24px;
+        border-radius: 6px;
+        pointer-events: fill;
+        cursor: pointer;
+        font-weight: 700;
+        transition: background-color .3s,border-color .3s;
+        width: auto;
+        .btn-text {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+        }
+    }
+}

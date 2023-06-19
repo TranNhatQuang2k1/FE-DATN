@@ -2,12 +2,48 @@ import React, {useEffect, useState} from "react";
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import images from "../../assets";
 import './index.scss';
-const divElement = document.querySelector('.header_center_topic');
-divElement?.addEventListener('click', function() {
-    console.log(this);
-    this.focus();
-});
-const Header = () => {
+import Menu from "../Category";
+import { path } from "../../constants/path";
+const dataCategories = [
+    {
+        title : 'Sức khỏe răng miệng',
+        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/03/Oral-Health.png'
+    },
+    {
+        title : 'Dược liệu',
+        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/03/Herbals-_-Alternatives.png'
+    },
+    {
+        title : 'Tâm lý-Tâm thần',
+        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/02/Healthy-Mind.png'
+    },
+    {
+        title : 'Thể dục thể thao',
+        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/02/Healthy-Fitness.png'
+    },
+    {
+        title : 'Lão hóa lành mạnh',
+        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/02/Healthy-Aging-1.png'
+    },
+    {
+        title : 'Thói quen lành mạnh',
+        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/02/Healthy-Habits.png'
+    },
+    
+]
+const Header = ({onClick}) => {
+    const [check, setCheck] = useState(false);
+    const navigate = useNavigate()
+    const handleProfile = () => {
+        navigate(path.profile)
+        // setShowDropdown(false)
+    }
+    const handleMenu = () => {
+        setCheck(false);
+      };
+    const handleRemove = () => {
+        setCheck(!check);
+      };
     return (
         <header className="header">
             <div className="header_left">
@@ -44,7 +80,7 @@ const Header = () => {
                     </div>
                 </div>
             </div>
-            <div className="header_center">
+            <div className="header_center" onClick={handleRemove}>
                 <div className="header_center_topic " tabIndex={0}>
                     <div className="content-center">
                         <b className="text-content">Chuyên mục</b>
@@ -58,7 +94,7 @@ const Header = () => {
                     </div>
                     
                 </div>
-                <div className="header_center_topic" tabIndex={0}>
+                <div className="header_center_topic" tabIndex={0} onClick={handleRemove}>
                     <div className="content-center">
                         <b className="text-content">Kiểm tra sức khỏe</b>
                     </div>
@@ -70,7 +106,7 @@ const Header = () => {
                         />
                     </div>
                 </div>
-                <div className="header_center_topic" tabIndex={0}>
+                <div className="header_center_topic" tabIndex={0} onClick={handleRemove}>
                     <div className="content-center">
                         <b className="text-content">Đặt lịch với bác sĩ</b>
                     </div>
@@ -82,7 +118,7 @@ const Header = () => {
                         />
                     </div>
                 </div>
-                <div className="header_center_topic" tabIndex={0} data-event-action='click'>
+                <div className="header_center_topic" tabIndex={0} onClick={handleRemove}>
                     <div className="content-center">
                         <b className="text-content">Cộng đồng</b>
                     </div>
@@ -121,8 +157,19 @@ const Header = () => {
                             </span>
                         </div>
                 </button>
+                <div className="avartar-profile">
+                    <a className="img-container" onClick={handleProfile}>
+                        <div className="img-wrap">
+                            <img 
+                                src={'https://scontent.fdad5-1.fna.fbcdn.net/v/t39.30808-6/346828628_793171935798377_509904209336432228_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Mwl334gn-WoAX8gr3sH&_nc_ht=scontent.fdad5-1.fna&oh=00_AfCDLkwzAmUfv4UVO0_LwvvWEYzarssRdHBk64G5_6CANQ&oe=6490B2B6'}
+                                className="icon-img"
+                            />
+                        </div>
+                    </a>
+                </div>
                 
             </div>
+            {check && <Menu data= {dataCategories} onClick={handleRemove} check={check}/>}
         </header>
     )
 }

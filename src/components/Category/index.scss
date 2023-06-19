@@ -1,13 +1,24 @@
+.menu-active {
+    position: absolute !important;
+    top: 78px!important;
+    opacity: 1!important;
+    visibility: visible !important;
+    background-color: #fff !important;
+    box-shadow: 0 10px 16px rgba(0,0,0,.04), 0 2px 8px rgba(0,0,0,.04), 0 0 1px rgba(0,0,0,.04) !important;
+  }
 .menu-container {
-    border-top: 1px solid rgba(0,0,0,0.3);
-    box-shadow: 0 10px 16px rgba(0,0,0,.04), 0 2px 8px rgba(0,0,0,.04), 0 0 1px rgba(0,0,0,.04);
-    height: 512px;
-    position: relative;
+    // border-top: 1px solid rgba(0,0,0,0.3);   
+    // position: absolute;
+    position: fixed;
+    left: 0;
     top: 100%;
     padding: 8px;
-    // opacity: 0;
-    z-index: 3;
-    // visibility: hidden;
+    opacity: 0;
+    z-index: 200;
+    background: rgb(255, 255, 255);
+    visibility: hidden;
+    transition: all .4s ease-in-out;
+    will-change: opacity;
     .menu-content{
         // border: 1px solid green;
         margin: 0px 125px;
@@ -18,6 +29,7 @@
             // border: 1px solid blue;
             // padding: 8px;
             .icons-wrap {
+                
                 align-items: center;
                 cursor: pointer;
                 display: flex;

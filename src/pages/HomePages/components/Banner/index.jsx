@@ -37,14 +37,10 @@ const Banner = () => {
                                     target="_blank" 
                                     class="banner-button">
                                         <button 
-                                            class="btn-click" 
-                                            data-size="md" 
-                                            data-color="primary" 
-                                            data-theme="helloSites" 
-                                            data-is-loading="false">
+                                            className="btn-click" >
                                                 <span 
-                                                    class="btn-text">
-                                                        <span class="btn-text">Tính ngay</span>
+                                                    className="btn-text">
+                                                        <span className="btn-text">Tính ngay</span>
                                                 </span>
                                         </button>
                                 </a>

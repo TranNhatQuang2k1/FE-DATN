@@ -2,9 +2,10 @@
     padding: 40px 0px;
     background-color: rgb(255, 255, 255);
     .title-wrap {
+        max-width: 1170px;
         // width: 100%;
         // border: 1px solid red;
-        margin: 0px 135px;
+        margin: 0px 132px;
         .title-content {
             padding: 0px 16px;
             gap: 32px;
@@ -46,6 +47,7 @@
     }
     .relation-content {
         padding: 20px 0px;
+        // border: 1px solid red;
         .content-wrap {
             // width: 100%;
             margin: 0px 135px;

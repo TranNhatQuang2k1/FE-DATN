@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import './index.scss'
 import images from '../../../../assets'
 import Infor from '../../../../components/Infor'
+import Tabline from '../../../../components/Tabline'
+import Share from '../../../../components/Share'
 
 const ResultBMI = () => {
     return (
@@ -61,8 +63,8 @@ const ResultBMI = () => {
                                     <img src="https://hellobacsi.com/images/bmi-obese_level_2-male-inactive.svg" className="sc-8e5851bc-3 BYUIl"/>
                                 </div>
                                 <div className="item-number">
-                                    <p>Béo phì độ 2</p>
-                                    <p>&gt; 30</p>
+                                    <p className='number-bold'>Béo phì độ 2</p>
+                                    <p className='number-bold'>&gt; 30</p>
                                 </div>
                             </div>
                         </div>
@@ -78,32 +80,35 @@ const ResultBMI = () => {
                                     </div>
                                 </div>
                                 <div className="result-2">
-                                    <div className="sc-8e5851bc-9 kRKBFn"></div>
-                                    <div className="sc-8e5851bc-8 joNPCq">
-                                        <h6 data-tag="h6" className="xzO2I0N sc-8e5851bc-1 eTyDPA milestone">18.5</h6>
+                                    <div className="result-2-detail"></div>
+                                    <div className="number-2-detail">
+                                        <h6>18.5</h6>
                                     </div>
                                 </div>
                                 <div className="result-3">
-                                    <div className="sc-8e5851bc-9 hTfyVA"></div>
-                                    <div className="sc-8e5851bc-8 joNPCq">
+                                    <div className="result-3-detail"></div>
+                                    <div className="number-3-detail">
                                         <h6 data-tag="h6" className="xzO2I0N sc-8e5851bc-1 eTyDPA milestone">23</h6>
                                     </div>
                                 </div>
                                 <div className="result-4">
-                                    <div className="sc-8e5851bc-9 hEozlP"></div>
-                                    <div className="sc-8e5851bc-8 joNPCq">
-                                        <h6 data-tag="h6" className="xzO2I0N sc-8e5851bc-1 eTyDPA milestone">25</h6>
+                                    <div className="result-4-detail"></div>
+                                    <div className="number-4-detail">
+                                        <h6>25</h6>
                                     </div>
                                 </div>
                                 <div className="result-5">
-                                    <div className=""></div>
-                                    <div className="">
-                                        <h6 data-tag="h6" className="">30+</h6>
+                                    <div className="result-5-detail"></div>
+                                    <div className="number-5-detail">
+                                        <h6>30+</h6>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
+                    <Share />
+                    <Tabline title1={'Tình trạng'} title2={'Nguy cơ'} title3={'Gợi ý'} handletabline={''}/>
                 </div>
                 <div className='ResultBMI-post'>
 

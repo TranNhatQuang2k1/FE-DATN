@@ -3,6 +3,8 @@ import './index.scss'
 import images from '../../../assets'
 import Infor from '../../../components/Infor'
 import ResultBMI from './ResultBMI'
+import BannerHeathTool from '../Banner'
+import Header from '../../../components/Header'
 let a = [
     {
         title: 'Vì sao tôi nên kiểm tra hoặc đo lường sàng lọc tim mạch của mình?',
@@ -32,37 +34,15 @@ let a = [
 const  BMI = () => {
     return (
         <div className='BMI-container'>
-            <div className='BMI-banner'>
-                <div className='banner-bg'>
-                    <div className='bg-container'>
-                        <div className='bg-wrapper'>
-                            <div className="icon-container">
-                                <img src ='https://hellobacsi.com/images/toolsIconBmi.svg' className='icon-BMI'/>
-                            </div>
-                            <div className="BMI-des">
-                                <div class="des-wrapper">
-                                    <h2 class="des-title">Tính chỉ số BMI - Chỉ số khối cơ thể</h2>
-                                </div>
-                                <div class="des-content">
-                                    <p class="content-text">Sử dụng công cụ này để kiểm tra chỉ số khối cơ thể (BMI) để biết bạn có đang ở mức cân nặng hợp lý hay không. Bạn cũng có thể kiểm tra chỉ số BMI của trẻ tại đây.</p>
-                                </div>
-                                <div class="des-screeing">
-                                    <img src="https://hellobacsi.com/images/check-circle.svg" alt=""/>
-                                    <p className="des-doctor">
-                                        <span>Tham vấn y khoa: 
-                                            <a  className=''>
-                                                Bác sĩ Trần Nhật Quang
-                                            </a> ngày 02/01/2001
-                                        </span>
-                                        <span>
-                                        </span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <Header />
+            <BannerHeathTool title={'Tính chỉ số BMI - Chỉ số khối cơ thể'}
+                desc={'Sử dụng công cụ này để kiểm tra chỉ số khối cơ thể (BMI) để biết bạn có đang ở mức cân nặng hợp lý hay không. Bạn cũng có thể kiểm tra chỉ số BMI của trẻ tại đây.'}
+                urlbg={'https://hellobacsi.com/images/toolBannerBlue-circle-large.svg'}
+                urlimage={'https://hellobacsi.com/images/toolsIconBmi.svg'}
+                doctor={'Tham vấn y khoa: Bác sĩ Trần Nhật Quang'}
+                date={'ngày 15/6/2023'}
+                style={{'color': '#000', 'font-weight': 700}}
+            />
             <div className='form-main'>
                 <div className='form-container'>
                     <div className='container-left'>

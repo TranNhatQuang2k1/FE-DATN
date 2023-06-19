@@ -8,7 +8,6 @@ const CardCategory = ({title,urlImage, style}) => {
         <a 
             data-event-category="Recommended Topics" 
             data-event-action="Click" 
-            data-event-label="https://hellobacsi.com/suc-khoe-rang-mieng/" 
             class="card-container" 
             href="/suc-khoe-rang-mieng/">
                 <div class="banner-card">

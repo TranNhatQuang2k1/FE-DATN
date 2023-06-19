@@ -1,0 +1,101 @@
+
+.allcate-container {
+    --custom-heading-color: #284a75;
+    position: relative;
+    display: flex;
+    width: 100%;
+    min-height: 400px;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    padding-bottom: 80px;
+    .img-bg {
+        height: 350px;
+        position: absolute;
+        z-index: 0;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        background-image: url('https://hellobacsi.com/images/categoriesBackground.svg');
+        background-position: 50% bottom;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .sreach-container {
+        .search-wrap {
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            -webkit-box-align: center;
+            align-items: center;
+            padding-top: 32px;
+            .search-title {
+                font-size: 32px;
+                letter-spacing: -1px;
+                line-height: 42px;
+                color: var(--custom-heading-color,#262626);
+                font-weight: 700;
+            }
+            .seach-input{
+                min-height: auto;
+                padding: 16px 0;
+                min-width: auto;
+                position: relative;
+                width: 100%;
+                .input-wrap {
+                    position: relative;
+                    .input-content {
+                        width: 100%;
+                        background-color: rgb(255, 255, 255);
+                        min-width: 100%;
+                        box-shadow: rgba(38, 38, 38, 0.08) 0px 0px 25px;
+                        font-size: 16px;
+                        line-height: 1.2;
+                        font-weight: 400;
+                        padding: 12px 16px 12px 48px;
+                        border: 1px solid rgb(217, 217, 217);
+                        border-radius: 6px;
+                        margin: 0 auto;
+                    }
+                    .input-content:focus{
+                        outline: none;
+                        border-color: rgb(45, 135, 243);
+                    }
+                    .icon-search {
+                        position: absolute;
+                        top: 50%;
+                        left: 16px;
+                        display: inline-flex;
+                        cursor: default;
+                        transform: translateY(-50%);
+                    }
+                }
+            }
+        }
+    }
+    .content-container {
+        .content-layout {
+            display: flex;
+            width: 100%;
+            flex-wrap: wrap;
+            -webkit-box-pack: start;
+            justify-content: flex-start;
+            padding-bottom: 16px;
+            .layout-content {
+                margin-top: 32px;
+                width: 16.66%;
+                // padding: 0px 6px;
+                display: flex;
+                -webkit-box-pack: center;
+                justify-content: center;
+            }
+
+        } 
+    }
+}
+.allcate-container > :not(:first-child){
+    z-index: 9;
+    max-width: 1170px;
+    width: 100%;
+    margin: 0px auto;
+}

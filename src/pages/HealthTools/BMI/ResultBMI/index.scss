@@ -57,16 +57,25 @@
                                 object-fit: contain;
                             }
                         }
+                        
                         .item-number {
                             margin-top: 16px;
-                            p:first-child, :last-child{
+                            
+                            p:first-child,:last-child {
                                 letter-spacing: 0;
                                 font-size: 14px;
                                 letter-spacing: -.2px;
                                 line-height: 22px;
                                 color: rgb(89, 89, 89);
                                 font-weight: 400;
+                                
                             }
+                            .number-bold {
+                                color:  rgb(26, 26, 26);
+                                font-weight: 700;
+                            }
+                            
+                            
                         }
                        
                     }
@@ -83,12 +92,13 @@
                             opacity: 1;
                             position: absolute;
                             top: 0px;
-                            left: 0px;
+                            // left: 0px;
                             width: 56px;
-                            padding: 0px 5px;
+                            // padding: 0px 5px;
                             background-color: rgb(0, 192, 118);
                             border-radius: 4px;
-                            opacity: 0;
+                            opacity: 1;
+                            
                             text-align: center;
                             transform: translateX(-15px);
                             transition: all 0.5s ease-out 0s;
@@ -98,6 +108,8 @@
                                 line-height: 32px;
                                 letter-spacing: -.6px;
                                 font-weight: 700;
+                                margin: 0;
+                                
                             }
                         }
                         .number-result::before{
@@ -111,6 +123,14 @@
                             transform: translate(-50%, -50%) rotate(45deg);
                             transform-origin: center center;
 
+                        }
+                        h6 {
+                            transform: translateX(-50%);
+                            color: rgb(140, 140, 140);
+                            font-size: 16px;
+                            letter-spacing: 0;
+                            line-height: 24px;
+                            font-weight: 700;
                         }
                         .result-1 {
                             flex: 0 0 52.86%;
@@ -138,15 +158,97 @@
                         }
                         .result-2{
                             flex: 0 0 12.86%;
+                            .result-2-detail {
+                                width: 100%;
+                                height: 10px;
+                                background-color: rgb(0, 192, 118);
+                            }
+                            .number-2-detail {
+                                position: relative;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: flex-start;
+                            }
+                            .number-2-detail::before{
+                                display: block;
+                                width: 1px;
+                                height: 8px;
+                                margin-top: 10px;
+                                margin-bottom: 2px;
+                                background-color: rgb(228, 232, 236);
+                                content: "";
+                            }
+
                         }
                         .result-3{
                             flex: 0 0 5.72%;
+                            .result-3-detail {
+                                width: 100%;
+                                height: 10px;
+                                background-color: rgb(254, 146, 29);
+                            }
+                            .number-3-detail {
+                                position: relative;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: flex-start;
+                            }
+                            .number-3-detail::before{
+                                display: block;
+                                width: 1px;
+                                height: 8px;
+                                margin-top: 10px;
+                                margin-bottom: 2px;
+                                background-color: rgb(228, 232, 236);
+                                content: "";
+                            }
                         }
                         .result-4{
                             flex: 0 0 14.29%;
+                            .result-4-detail {
+                                width: 100%;
+                                height: 10px;
+                                background-color: rgb(252, 116, 25);              
+                            }
+                            .number-4-detail {
+                                position: relative;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: flex-start;
+                            }
+                            .number-4-detail::before{
+                                display: block;
+                                width: 1px;
+                                height: 8px;
+                                margin-top: 10px;
+                                margin-bottom: 2px;
+                                background-color: rgb(228, 232, 236);
+                                content: "";
+                            }
                         }
                         .result-5{
                             flex: 0 0 14.27%;
+                            .result-5-detail {
+                                width: 100%;
+                                height: 10px;
+                                background-color: rgb(216, 64, 35);
+                                border-radius: 0px 16px 16px 0px;
+                            }
+                            .number-5-detail {
+                                position: relative;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: flex-start;
+                            }
+                            .number-5-detail::before{
+                                display: block;
+                                width: 1px;
+                                height: 8px;
+                                margin-top: 10px;
+                                margin-bottom: 2px;
+                                background-color: rgb(228, 232, 236);
+                                content: "";
+                            }
                         }
                     }
                 }

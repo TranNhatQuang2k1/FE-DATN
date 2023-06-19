@@ -20,6 +20,16 @@ const images = {
     BMI: require('./img/BMI.png'),
     BMR: require('./img/BMR.png'),
     heartrate: require('./img/heartrate.png'),
+    email: require('./img/email.png'),
+    password: require('./img/password.png'),
+    address: require('./img/address.png'),
+    birthday: require('./img/birthday.png'),
+    gender: require('./img/gender.png'),
+    call: require('./img/call.png'),
+    logout: require('./img/logout.png'),
+    user: require('./img/user.png'),
+    camera: require('./img/camera.png'),
+
 }
 
 export default images

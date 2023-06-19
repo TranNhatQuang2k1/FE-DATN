@@ -1,7 +1,8 @@
 import {React, useState} from "react";
-import images from "../../../assets";
+import images from "../../../../assets";
 import './index.scss'
-import Infor from "../../../components/Infor";
+import Infor from "../../../../components/Infor";
+import Header from "../../../../components/Header";
 let a = [
     {
         title: 'Vì sao tôi nên kiểm tra hoặc đo lường sàng lọc tim mạch của mình?',
@@ -31,6 +32,7 @@ let a = [
 const Hearttool = () => {
     return(
         <div style = {{'box-sizing': 'border-box'}}>
+            <Header />
         <div class="heart-page">
             <div class="heart-page-container">
                 <div class="container-left">

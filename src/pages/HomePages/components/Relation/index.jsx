@@ -42,7 +42,9 @@ const Relation  = ({data}) => {
                             data.map((e) => {
                                 if(e){
                                     return (
+                                        
                                         <CardCategory  title={e.title} urlImage= {e.urlImage}/>
+                                        
                                     )
                                 }
                             })

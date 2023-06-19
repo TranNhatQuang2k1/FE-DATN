@@ -67,12 +67,15 @@ const Section = ({title, urlImage}) => {
         </div>
     )
 }
-const Menu = ({data}) => {
+const Menu = ({data, onClick, check}) => {
     return (
-        <div className="menu-container">
+        <div className={`menu-container ${check ? 'menu-active': ''}`}>
             <div className="menu-content">
                 <div className="menu-icons">
-                    <div className="icons-wrap">
+                    <div 
+                        className="icons-wrap"
+                        onClick={onClick}
+                    >
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 6L6 18M18 18L6 6" stroke="#3E3F58" stroke-width="1.3" stroke-linecap="round"></path></svg>
                     </div>
                 </div>
@@ -93,15 +96,6 @@ const Menu = ({data}) => {
                                         )
                                     })
                                 }
-                                {/* <Section 
-                                    title = {'Sức khỏe răng miệng'}
-                                    urlImage={'	https://cdn.hellobacsi.com/wp-content/uploads/2021/03/Oral-Health.png'}
-                                />
-                                <Section title = {'Dược liệu'} urlImage={'https://cdn.hellobacsi.com/wp-content/uploads/2021/03/Herbals-_-Alternatives.png'} />
-                                <Section title = {'Tâm lý - Tâm thần'} urlImage={'https://cdn.hellobacsi.com/wp-content/uploads/2021/02/Healthy-Aging.png'}/>
-                                <Section title = {'Thể dục thể thao'} urlImage={'https://cdn.hellobacsi.com/wp-content/uploads/2021/02/Healthy-Habits.png'}/>
-                                <Section title = {'Sức khỏe tim'} urlImage={'https://cdn.hellobacsi.com/wp-content/uploads/2021/03/Herbals-_-Alternatives.png'}/>
-                                <Section title = {'Tình trường'} urlImage={'https://cdn.hellobacsi.com/wp-content/uploads/2021/02/Healthy-Habits.png'}/> */}
                                 <a 
                                     href="https://hellobacsi.com/categories/"  
                                     data-event-label="https://hellobacsi.com/categories/" 
