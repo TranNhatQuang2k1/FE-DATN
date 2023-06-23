@@ -7,7 +7,69 @@ function Post({}) {
         <div className='postdetail-container'>
             <div className='postdetail-wrap'>
                 <div className='post-card'>
-                    
+                    <div className='post-content'>
+                        <div class="content-container">
+                            <div class="content-wrap">
+                                <div class="content-detail">
+                                    <div class="avartar-icon">
+                                        <div class="icon-img">
+                                            <img loading="lazy" src="https://hhg-common.hellobacsi.com/common/anomyous-avatar.svg" class="avatar" alt="avatar"/>
+                                        </div>
+                                    </div>
+                                    <div class="content-name">
+                                        <div class="name-wrap">
+                                            <div class="name-infor">
+                                                <div class="name-detail">
+                                                    <div class="name-text">Người dùng ẩn danh</div>
+                                                </div>
+                                                <div class="date-post">
+                                                    <div class="date-wrap">
+                                                        <a 
+                                                            href="/community/mang-thai" 
+                                                            class="community-name">Mang thai
+                                                        </a>
+                                                    </div>
+                                                    <span class=""></span>
+                                                    <div class="date-text">13 phút trước</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="icons-edit">
+                                    <div class="edit-container">
+                                        <div class="edit-wrap">
+                                            <div>
+                                                <button className='btn-edit'>
+                                                    <div class="btn-wrap">
+                                                        <span class="img-icon">
+                                                            <img src="	https://hellobacsi.com/community/svg/icon-kebab.svg" alt="more"/>
+                                                        </span>
+                                                    </div>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="detail-post-text">
+                            <div class="text-wrap">
+                                <h1>Mang thai</h1>
+                                <div className='text-content'>
+                                    <span class="post-content ">
+                                        <p>Em và người yêu em quan hệ trần và xuất ngoài trước chu kì kinh nguyệt của bạn gái 2 ngày, không có sử dụng thuốc ttkc, tới hiện nay bạn gái bị trễ kinh 3 ngày. Tới ngày thứ 4 bạn ấy có ra máu trong vòng 2 ngày nhưng ngày hôm qua bạn đó có uống nước chanh và hôm nay bạn đó không còn ra máu nữa vậy không biết máu có phải là kinh nguyệt không ạ? nếu phải thì tại sao lại không ra máu nữa vậy? Bình thường chu kì của bạn là khoảng 5 ngày. Mong bác sĩ giải đáp cho em! </p>
+                                    </span>
+                                </div>
+                            </div>
+                            <a href="https://hellobacsi.com/community/mang-thai/mang-thai-1687444919" class="href-post">
+                            </a>
+                        </div>
+                    </div>
+                    <div className='post-share'>
+
+                    </div>
                 </div>
                 <div className='post-comment'>
 
@@ -17,9 +79,9 @@ function Post({}) {
     )
 }
 const Groupdetail = () => {
+    
     return (
         <div className='group-detail'>
-            <Header />
             <div className='group-banner'>
                 <div className='banner-container'>
                     <div className='banner-wrap'>

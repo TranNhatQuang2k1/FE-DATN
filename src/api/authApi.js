@@ -4,7 +4,7 @@ const authApi = {
     login(data) {
         return http.post('/auth/login', data)
     },
-    singup(data, config) {
+    signup(data, config) {
         return http.post('/auth/singup', data, config)
     },
     verifyAccount(token) {

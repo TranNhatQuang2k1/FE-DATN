@@ -1,0 +1,97 @@
+@import '../../../_setting.scss';
+.addClinic {
+    &__container {
+        background-color: #FFFFFF;
+        height: 94vh;
+        padding: 20px 26px;
+        display: flex;
+        flex-direction: column;
+        header {
+            font-weight: 500;
+            font-size: 24px;
+            position: relative;
+            margin-bottom: 10px;
+            padding-left: 120px;
+            &::before {
+                position: absolute;
+                content: "";
+                display: block;
+                height: 2px;
+                width: 100px;
+                background-color: #F8F8F8;
+                top: 50%;
+                left: 0;
+            }
+            &::after {
+                position: absolute;
+                content: "";
+                display: block;
+                height: 2px;
+                width: calc(100% - 400px);
+                background-color: #F8F8F8;
+                top: 50%;
+                left: 400px;
+            }
+        }
+
+    }
+    &__form {
+        margin:20px 0;
+        width: 50%;
+        .avartar-profile {
+            // width: 100%;
+            box-sizing: border-box;
+            display: block;
+            padding: 10px;
+            .new-avartar {
+                display: none;
+            }
+            .avartar-container {
+                display: flex;
+                flex-direction: row;
+                // border: 1px solid red;
+                gap: 24px;
+                -webkit-box-pack: start;
+                justify-content: flex-start;
+                -webkit-box-align: center;
+                align-items: center;
+                // min-height: 130px;
+                .avatar-update {
+                    display: inline-block;
+                    position: relative;
+                    text-decoration: none;
+                    .avartar-img {
+                        display: flex;
+                        -webkit-box-align: center;
+                        align-items: center;
+                        -webkit-box-pack: center;
+                        justify-content: center;
+                        overflow: hidden;
+                        background-size: cover;
+                        background-position: center center;
+                        background-repeat: no-repeat;
+        
+                        width: 96px;
+                        height: 96px;
+                        border-radius: 48px;
+                        background-color: rgb(40, 74, 117);
+                        // background-image: url(https://cdn-sso.hellobacsi.com/2023/06/c76f05938d24d73ce5ced3a20f1daed1-ipMo63a7h0rxqlR2T1hocXHJIHJLc6.jpg);
+                    }
+                    .icon-camera {
+                        position: absolute;
+                        // border: 1px solid red;
+                        right: 5px;
+                        top: 77%;
+                        width: 20px;
+                        height: 20px;
+                    }
+                }
+            }
+        }
+    }
+    &__action {
+        margin-top: 40px;
+        display: flex;
+        gap: 20px;
+    }
+}

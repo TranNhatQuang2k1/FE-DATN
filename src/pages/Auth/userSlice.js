@@ -1,11 +1,12 @@
-import authApi from 'api/authApi'
-import userApi from 'api/userApi'
+import authApi from '../../api/authApi'
+import userApi from '../../api/userApi'
+import { path } from '../../constants/path'
 
 const { createSlice, createAsyncThunk } = require('@reduxjs/toolkit')
 
 export const login = createAsyncThunk(
-    'users/login',
-    async (payload, { rejectWithValue }) => {
+   'users/login', async (payload, { rejectWithValue }) => {
+        console.log(payload)
         try {
             const data = await authApi.login(payload)
             localStorage.setItem('access_token', data.token)

@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from "react";
 import images from "../../assets";
 import './index.scss';
-const Button = ({title}) => {
+const Button = ({title,onClick}) => {
     return (
         <a 
-            href="https://hellobacsi.com/health-tools/cong-cu-do-nhip-tim/" 
             target="_blank" 
             class="banner-button">
-            <button 
+            <button type="submit"
+                onClick={onClick}
                 className="btn-click" >
                 <span 
                     className="btn-text">

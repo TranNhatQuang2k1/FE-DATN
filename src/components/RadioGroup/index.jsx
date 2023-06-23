@@ -1,7 +1,7 @@
 import React from 'react'
 import './index.scss'
 
-function RadioGroup({ title, form, name, optionData, disabled, mode }) {
+function RadioGroup({ title, form, name,check, optionData, disabled, mode }) {
     return (
         <div className="radio-group">
             <label className="radio-group__title">{title}</label>
@@ -11,6 +11,7 @@ function RadioGroup({ title, form, name, optionData, disabled, mode }) {
                         {item.label}
                         <input
                             type="radio"
+                            // checked={check}
                             value={item.value}
                             disabled = {disabled}
                             {...form.register(name)}

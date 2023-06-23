@@ -56,7 +56,7 @@ const ProfileCard = ({title,urlImage, onClick, isSelected}) => {
 
 }
 
-const Myprofile = ({ onSelectedItem }) => {
+const Myprofile = ({ onSelectedItem,data }) => {
     const [selected, setSelected] = useState(null);
     const handleClickItem = (index) => {
       onSelectedItem(index);
@@ -67,6 +67,7 @@ const Myprofile = ({ onSelectedItem }) => {
         {profile.map((e, index) => (
           <ProfileCard
             key={index}
+
             title={e.title}
             urlImage={e.urlImage}
             onClick={() => 

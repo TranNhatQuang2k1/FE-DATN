@@ -29,6 +29,7 @@ const images = {
     logout: require('./img/logout.png'),
     user: require('./img/user.png'),
     camera: require('./img/camera.png'),
+    lichsu: require('./img/lichsu.png'),
 
 }
 

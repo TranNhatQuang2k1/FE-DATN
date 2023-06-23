@@ -312,7 +312,8 @@
                     }
                 }
                 .post-detail {
-
+                    // border: 1px solid red;
+                    padding-bottom: 50px;
                 }
             }
             .post-right {
@@ -334,9 +335,77 @@
     border: 1px solid rgb(228, 232, 236);
     .postdetail-wrap {
         background: white;
-        border-radius: inherit;
+        border-radius: 8px;
         .post-card {
+            .post-content {
+                .content-container {
+                    .content-wrap {
+                        .content-detail {
+                            .avartar-icon {
+                                .icon-img {
+                                    .avatar{
 
+                                    }
+                                }
+                            }
+
+                            .content-name {
+                                .name-wrap {
+                                    .name-infor {
+                                        .name-detail {
+                                            .name-text {
+
+                                            }
+                                        }
+                                        .date-post {
+                                            .date-wrap {
+                                                .community-name {
+
+                                                }
+                                            }
+                                            .date-text {
+
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .icons-edit {
+                            .edit-container {
+                                .edit-wrap {
+                                    .btn-edit {
+                                        .btn-wrap {
+                                            .img-icon {
+                                                img {
+
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .detail-post-text {
+                    h1 {
+
+                    }
+                    .text-wrap {
+                        .text-content {
+                            .post-content {
+                                p {
+
+                                }
+                            }
+                        }
+                    }
+                    a {
+                        
+                    }
+                }
+            }
         }
         .post-comment {
             padding: 0px 16px 16px;

@@ -4,6 +4,7 @@ import images from "../../assets";
 import './index.scss';
 import Menu from "../Category";
 import { path } from "../../constants/path";
+import { useSelector } from "react-redux";
 const dataCategories = [
     {
         title : 'Sức khỏe răng miệng',
@@ -32,8 +33,10 @@ const dataCategories = [
     
 ]
 const Header = ({onClick}) => {
-    const [check, setCheck] = useState(false);
+    const token = localStorage.getItem('access_token')
+    const { user } = useSelector(state => state)
     const navigate = useNavigate()
+    const [check, setCheck] = useState(false);
     const handleProfile = () => {
         navigate(path.profile)
         // setShowDropdown(false)
@@ -47,7 +50,11 @@ const Header = ({onClick}) => {
     return (
         <header className="header">
             <div className="header_left">
-                <div className="header_logo">
+                <div className="header_logo"
+                    onClick={() => {
+                        navigate(path.home)
+                    }}
+                >
                         <img
                             src={images.logobacsi}
                             alt="logo"
@@ -138,14 +145,18 @@ const Header = ({onClick}) => {
                     </button>
                 
                 </div>
-                <button 
+                {!token && <button 
                     class="bt_login" 
                     data-size="md" 
                     data-color="tertiary" 
                     data-has-icon="true" 
                     data-theme="helloSites" 
                     data-is-loading="false">
-                        <div class="login_content">
+                        <div class="login_content"
+                            onClick={() => {
+                                navigate('/login')
+                            }}
+                        >
                                 <img 
                                     src="https://hhg-common.hellobacsi.com/common/login.svg"
                                     width="19" 
@@ -156,12 +167,12 @@ const Header = ({onClick}) => {
                                 class="text_login">Đăng nhập
                             </span>
                         </div>
-                </button>
+                </button>}
                 <div className="avartar-profile">
                     <a className="img-container" onClick={handleProfile}>
                         <div className="img-wrap">
                             <img 
-                                src={'https://scontent.fdad5-1.fna.fbcdn.net/v/t39.30808-6/346828628_793171935798377_509904209336432228_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Mwl334gn-WoAX8gr3sH&_nc_ht=scontent.fdad5-1.fna&oh=00_AfCDLkwzAmUfv4UVO0_LwvvWEYzarssRdHBk64G5_6CANQ&oe=6490B2B6'}
+                                src={user?.profile?.image}
                                 className="icon-img"
                             />
                         </div>

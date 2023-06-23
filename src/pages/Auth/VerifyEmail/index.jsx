@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import queryString from 'query-string'
 import './index.scss'
-import Loading from 'components/Loading'
+import Loading from '../../../components/Loading'
 function VerifyEmail() {
     const [isLoading, setIsLoading] = useState(true)
     const [resultApi, setResultApi] = useState(false)

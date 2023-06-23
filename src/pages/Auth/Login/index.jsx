@@ -7,14 +7,15 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import Register from '../Register'
-// import { path } from 'constants/path'
-// import { useDispatch } from 'react-redux'
-// import { login } from '../userSlice'
-// import { toast } from 'react-toastify'
-// import { unwrapResult } from '@reduxjs/toolkit'
+import { path } from '../../../constants/path'
+import { useDispatch } from 'react-redux'
+import { login } from '../userSlice'
+import { toast } from 'react-toastify'
+import { unwrapResult } from '@reduxjs/toolkit'
 
-function Login() {
-    // const dispatch = useDispatch()
+function DangNhap() {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
     const schema = yup.object().shape({
         email: yup
             .string()
@@ -34,18 +35,22 @@ function Login() {
         resolver: yupResolver(schema)
     })
     const handleSubmitForm = async value => {
-        // try {
-        //     const reponse = await dispatch(login(value))
-        //     unwrapResult(reponse)
-        //     toast.success('Đăng nhập thành công', {
-        //         position: toast.POSITION.BOTTOM_RIGHT,
-        //         autoClose: 1000
-        //     })
-        // } catch (err) {
-        //     toast.error(err.message, {
-        //         position: toast.POSITION.BOTTOM_RIGHT
-        //     })
-        // }
+        try {
+            const reponse = await dispatch(login(value))
+            unwrapResult(reponse)
+            console.log(reponse)
+            if(reponse.status == 200) {
+                alert('Đăng nhập thành công')
+            }
+            toast.success('Đăng nhập thành công', {
+                position: toast.POSITION.BOTTOM_RIGHT,
+                autoClose: 1000
+            })
+            navigate(path.home)
+        } catch (error) {
+            alert(error.message)
+            console.log(error.message);
+        }
     }
     useEffect(() => {
         document.title = 'Đăng nhập'
@@ -78,8 +83,8 @@ function Login() {
                         />
                     </div>
                     <div className="forgot-password">
-                        <Link to={''} className='forgot-text'>
-                            Quên mật khẩu ?
+                        <Link to={'/register'} className='forgot-text'>
+                           Đăng kí
                         </Link>
                     </div>
                     <div className="button-submit">
@@ -99,7 +104,7 @@ function Login() {
 
 
 
-const LoginorRegister = () => {
+const Login = () => {
     return (
         <div className="login-container">
                 <div className="header_login">
@@ -177,7 +182,7 @@ const LoginorRegister = () => {
                                 class="error-message">  
                             </p>
                         </form> */}
-                        <Register />
+                        <DangNhap />
                         {/* <div className="limit-text">
                             <div className="text-wrap">
                                 <div className="text-inner">
@@ -232,4 +237,4 @@ const LoginorRegister = () => {
         </div>
     )
 }
-export default LoginorRegister;
+export default Login;

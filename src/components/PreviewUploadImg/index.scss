@@ -1,0 +1,33 @@
+@import '../../_setting.scss';
+.previewUploadImg {
+    display: inline-block;
+    object-fit: cover;
+    // border-radius: 50%;
+    overflow: hidden;
+        .previewUploadImg__img {
+            height: 96px;
+            width: 96px;
+            object-fit: contain;
+        }
+
+}
+.inputFile {
+
+    display: none;
+}
+.chooseImg__label {
+    cursor: pointer;
+    border: 1px solid $primary-color;
+    border-radius: 4px;
+    display: inline-block;
+    padding: 4px 20px;
+    font-weight: 500;
+    color: $primary-color;
+    &:hover {
+        color: $hover-color;
+    }
+}
+.input-img {
+    display: flex;
+    margin-top: 10px;
+}

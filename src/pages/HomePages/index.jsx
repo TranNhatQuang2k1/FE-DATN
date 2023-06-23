@@ -11,6 +11,8 @@ import Community from './components/Community';
 import Allcategories from '../Categories';
 import Postsuggest from './components/Postsuggest';
 import Communitygroup from '../Community';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 const dataCategories = [
     {
         title : 'Sức khỏe răng miệng',
@@ -39,6 +41,9 @@ const dataCategories = [
     
 ]
 function HomePage() {
+    const token = localStorage.getItem('access_token')
+    const { user } = useSelector(state => state)
+    const navigate = useNavigate()
     const [check, setCheck] = useState(true);
     const handleMenu = () => {
         setCheck(true);
@@ -51,7 +56,6 @@ function HomePage() {
     }, [])
     return (
         <div className="homePage">
-            <Header onClick={handleMenu}/>
             {/* <Login /> */}
             {/* {check && <Menu data= {dataCategories} onClick={handleRemove} check={check}/>} */}
             <Banner />

@@ -155,7 +155,7 @@ const Listgroup = () => {
 const Communitygroup = () => {
     return (
         <div>
-            <Header />
+            {/* <Header /> */}
             <Bannergroup />
             <Listgroup />
         </div>
