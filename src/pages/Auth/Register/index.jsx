@@ -63,21 +63,21 @@ function DangKy({navigate}) {
         (async () => {
             try {
                 setDisabledButton(true)
-                const data = await authApi.singup(formData, {
+                const data = await authApi.signup(formData, {
                     headers: { 'Content-Type': 'multipart/form-data' }
                 })
                 console.log(data);
                 toast.success(
                     'Đăng ký thành công, mời bạn vào mail để xác nhận',
                     {
-                        position: toast.POSITION.BOTTOM_RIGHT
+                        position: toast.POSITION.TOP_RIGHT,
                     }
                 )
                 navigate('/login')
             } catch (err) {
                 navigate('/login')
                 toast.error(err.message, {
-                    position: toast.POSITION.BOTTOM_RIGHT
+                    position: toast.POSITION.TOP_RIGHT,
                 })
             }
             setDisabledButton(false)

@@ -1,8 +1,8 @@
-import InputShow from 'components/InputShow'
+import InputShow from '../../../components/InputShow'
 import React from 'react'
 import { AiFillStar } from 'react-icons/ai'
 import { useSelector } from 'react-redux'
-import convertTZ7Str from 'utils/convertTZ7Str'
+import convertTZ7Str from '../../../utils/convertTZ7Str'
 import './index.scss'
 
 function AppointmentDetail({
@@ -64,7 +64,7 @@ function AppointmentDetail({
                         <div>
                             <InputShow
                                 title="Bệnh nhân"
-                                content={`${appointmentData.patient.user.firsname} ${appointmentData.patient.user.lastname}`}
+                                content={`${appointmentData.patient.user.name}`}
                             />
                         </div>
                         <div>
@@ -166,7 +166,7 @@ function AppointmentDetail({
                                 <div>
                                     <InputShow
                                         title="Tên bác sĩ"
-                                        content={`${appointmentData.schedule.doctor.user.firsname} ${appointmentData.schedule.doctor.user.lastname}`}
+                                        content={`${appointmentData.schedule.doctor.user.name}`}
                                     />
                                 </div>
                                 <div>

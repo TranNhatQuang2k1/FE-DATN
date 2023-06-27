@@ -3,7 +3,7 @@
     background-color: $second-color-background;
 
     &__container {
-        margin: 100px $margin-desktop;
+        margin: 0 120px;
         padding: 20px 0;
         header {
             font-size: 22px;
@@ -16,6 +16,7 @@
     &__content {
         display: flex;
         padding-bottom: 40px;
+        flex-direction: column;
         gap: 20px;
         &-specialist {
             flex: 1;
@@ -46,20 +47,11 @@
 
 }
 
-@media screen and (max-width: 768px){
-    .detailSpecialist {    
-        &__container {
-            margin: 100px 10px
-        }
-        &__content {
-            flex-direction: column;
-        }
-    }
-}
+
 @media screen and (min-width: 768px) and (max-width: 1024px){
     .detailSpecialist {    
         &__container {
-            margin: 100px10px
+            margin: 100px 10px
         }
     &__content {
         &-specialist {

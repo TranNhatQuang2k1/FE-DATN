@@ -9,6 +9,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import './index.scss'
 import queryString from 'query-string'
 import SearchInput from '../../../components/SearchInput'
+import Button from '../../../components/Button'
 
 function ClinicManagement() {
     const [isLoading, setIsLoading] = useState(true)
@@ -76,12 +77,10 @@ function ClinicManagement() {
                             value={searchValue}
                         />
                     </div>
-                    <button
-                        className="btnSuccess"
+                    <Button 
+                        title={'Thêm phòng khám'} 
                         onClick={() => navigate(path.addClinic)}
-                    >
-                        Thêm phòng khám mới
-                    </button>
+                    />
                 </div>
                 <table>
                     <thead>

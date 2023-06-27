@@ -28,10 +28,16 @@
         &-img {
             width: 100px;
             img {
+                object-fit: cover;
                 border-radius: 50%;
+                width: 96px;
+                height: 96px;
             }
         }
         &-main {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
             span {
                 display: block;
             }
@@ -77,3 +83,190 @@
         height: 180px;
     }
 }
+.doctorItem {
+    position: relative;
+    overflow: hidden;
+    width: 60%;
+    padding: 16px 16px 0;
+    border: 1px solid #dbdfe5;
+    border-radius: 6px;
+    margin-bottom: 24px;
+    .Item-container {
+        .item-wrap {
+            display: flex;
+            justify-content: space-between;
+            .doctor-wrap {
+                display: flex;
+                 gap: 16px;
+                 .avartar-img{
+                    cursor: pointer;
+                    text-decoration: none;
+                    .img {
+                        width: 80px;
+                        height: 80px;
+                        border-radius: 50%;
+                        cursor: pointer;
+                        object-fit: cover;
+                        object-position: center center;
+                    }
+                 }
+                 .doctor-name {
+                    a {
+                        cursor: pointer;
+                        text-decoration: none;
+                        p {
+                            font-size: 18px;
+                            letter-spacing: -.2px;
+                            line-height: 32px;
+                            font-weight: 600;
+                            color: #262626;
+                        }
+                        .specialtly-text {
+                            font-size: 14px;
+                            letter-spacing: -.2px;
+                            line-height: 22px;
+                        }
+                    }
+                    .booking-doctor {
+                        margin-top: 8px;
+                        display: flex;
+                        gap: 4px;
+                        flex-wrap: wrap;
+                        .book-wrap {
+                            cursor: pointer;
+                            text-decoration: none;
+                            .book-text {
+                                background: rgb(227, 242, 255);
+                                border: 1px solid rgb(45, 135, 243);
+                                display: inline-block;
+                                height: fit-content;
+                                border-radius: 24px;
+                                padding: 2px 8px;
+                                p {
+                                    font-size: 14px;
+                                    letter-spacing: -.2px;
+                                    line-height: 22px;
+                                    color: rgb(45, 135, 243);
+                                }
+                            }
+                        }
+                    }
+                    .cost-doctor {
+                        display: flex;
+                        align-items: center;
+                        .cost-wrap {
+                            cursor: pointer;
+                            text-decoration: none;
+                            .icon {
+                                display: flex;
+                                -webkit-box-align: center;
+                                align-items: center;
+                                margin-top: 8px;
+                                gap: 8px;
+                                .text {
+                                    font-size: 14px;
+                                    letter-spacing: -.2px;
+                                    line-height: 22px;
+                                }
+                                .cost-num {
+                                    font-size: 14px;
+                                    letter-spacing: -.2px;
+                                    line-height: 22px;
+                                    color:#009E5C;
+                                }
+                            }
+                        }
+                    }
+
+                 }
+            }
+        }
+        .clinic-container {
+            display: flex;
+            width: 100%;
+            padding: 12px 16px;
+            margin-top: 16px;
+            margin-left: -16px;
+            background-color: rgb(248, 249, 252);
+            gap: 8px;
+            justify-content: flex-start;
+            align-items: center;
+            .clinic-wrap {
+                box-sizing: border-box;
+                display: inline-block;
+                overflow: hidden;
+                width: 40px;
+                height: 40px;
+                background: none;
+                opacity: 1;
+                border: 0px;
+                margin: 0px;
+                padding: 0px;
+                position: relative;
+                img {
+                    width: 40px;
+                    height: 40px;
+                    flex-shrink: 0;
+                    border-radius: 50%;
+                    border: 1px solid rgb(228, 232, 236);
+                    cursor: pointer;
+                }
+            }
+            .clinic-name {
+                width: 60%;
+                // align-items: center;
+                .name-wrap {
+                    font-size: 14px;
+                    letter-spacing: -.2px;
+                    line-height: 22px;
+                    font-weight: 600;
+                    .name-href {
+                        text-decoration: none;
+                        cursor: pointer;
+                    }
+                }
+                .address-clinic {
+                    display: flex;
+                    align-items: center;
+                    .address-wrap {
+                        display: flex;
+                        align-items: center;
+                        gap: 6px;
+                        .wrap-text {
+                            display: -webkit-box;
+                            overflow: hidden;
+                            width: 100%;
+                            word-break: break-all;
+                            font-weight: 400;
+                            font-size: 12px;
+                            line-height: 18px;
+                            color: rgb(89, 89, 89);
+                            .address-text {
+                                text-decoration: none;
+                            }
+                        }
+                    }
+                }
+            }
+            .btn-booking {
+                width: fit-content;
+                font-size: 14px;
+                font-weight: 700;
+                line-height: 22px;
+                text-transform: capitalize;
+                background-color: #2d87f3;
+                border: 1px solid #2d87f3;
+                color: #fff;
+                padding: 9px 24px;
+                span {
+                    align-items: center;
+                    display: flex;
+                    justify-content: center;
+                }
+            }
+        }
+    }   
+}
+// p {
+//     margin: 0;
+// }

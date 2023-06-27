@@ -1,13 +1,14 @@
 @import '../../../../../_setting.scss';
 .timeTableItem {
     cursor: pointer;
-    height: 50px;
+    height: 40px;
     background-color: #EEEEEE;
     font-weight: 500;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 2px 20px;
+    border-radius: 18px;
     &:hover {
         color: white;
         background-color: $hover-color;

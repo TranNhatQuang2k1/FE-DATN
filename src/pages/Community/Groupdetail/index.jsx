@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import './index.scss'
+import { useParams } from 'react-router-dom'
 import images from '../../../assets'
 import Header from '../../../components/Header'
-function Post({}) {
+import Loading from '../../../components/Loading'
+import groupApi from '../../../api/groupApi'
+function Post({post,name}){
     return (
         <div className='postdetail-container'>
             <div className='postdetail-wrap'>
@@ -13,23 +16,23 @@ function Post({}) {
                                 <div class="content-detail">
                                     <div class="avartar-icon">
                                         <div class="icon-img">
-                                            <img loading="lazy" src="https://hhg-common.hellobacsi.com/common/anomyous-avatar.svg" class="avatar" alt="avatar"/>
+                                            <img loading="lazy" src={post?.members?.memberUser?.image} class="avatar" alt="avatar"/>
                                         </div>
                                     </div>
                                     <div class="content-name">
                                         <div class="name-wrap">
                                             <div class="name-infor">
                                                 <div class="name-detail">
-                                                    <div class="name-text">Người dùng ẩn danh</div>
+                                                    <div class="name-text">{post?.members?.memberUser?.name}</div>
                                                 </div>
                                                 <div class="date-post">
                                                     <div class="date-wrap">
                                                         <a 
                                                             href="/community/mang-thai" 
-                                                            class="community-name">Mang thai
+                                                            class="community-name">{name}
                                                         </a>
                                                     </div>
-                                                    <span class=""></span>
+                                                    <span class="dot"></span>
                                                     <div class="date-text">13 phút trước</div>
                                                 </div>
                                             </div>
@@ -56,10 +59,10 @@ function Post({}) {
 
                         <div class="detail-post-text">
                             <div class="text-wrap">
-                                <h1>Mang thai</h1>
+                                <h1>{post?.title}</h1>
                                 <div className='text-content'>
                                     <span class="post-content ">
-                                        <p>Em và người yêu em quan hệ trần và xuất ngoài trước chu kì kinh nguyệt của bạn gái 2 ngày, không có sử dụng thuốc ttkc, tới hiện nay bạn gái bị trễ kinh 3 ngày. Tới ngày thứ 4 bạn ấy có ra máu trong vòng 2 ngày nhưng ngày hôm qua bạn đó có uống nước chanh và hôm nay bạn đó không còn ra máu nữa vậy không biết máu có phải là kinh nguyệt không ạ? nếu phải thì tại sao lại không ra máu nữa vậy? Bình thường chu kì của bạn là khoảng 5 ngày. Mong bác sĩ giải đáp cho em! </p>
+                                        <p>{post?.content}</p>
                                     </span>
                                 </div>
                             </div>
@@ -72,14 +75,41 @@ function Post({}) {
                     </div>
                 </div>
                 <div className='post-comment'>
-
+                    <div className='icon-heart'>
+                        <div className='heart-wrap'>
+                            <img className='img-heart'src={images.like}/>
+                        </div>
+                        <div>0</div>
+                    </div>
+                    <div className='comment-wrap'>
+                        <img  className='icon-comment' src={images.comment}/>
+                        <div className='text'>1 bình luân</div>
+                    </div>
                 </div>
             </div>
         </div>
     )
 }
 const Groupdetail = () => {
-    
+    const { id } = useParams('id')
+    const [detailgroup, setDetailgroup] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
+    useEffect(() => {
+        (async () => {
+            try {
+                const respone = await groupApi.getDetailGroup(id)
+                setDetailgroup(respone.message)
+                console.log(respone.message)
+                setIsLoading(false)
+            } catch (err) {
+                alert(err)
+            }
+        })()
+    }, [id])
+    useEffect(() => {
+        document.title = detailgroup ? detailgroup.name : ''
+    }, [detailgroup])
+    if (isLoading) return <Loading />
     return (
         <div className='group-detail'>
             <div className='group-banner'>
@@ -115,18 +145,18 @@ const Groupdetail = () => {
                         </div>
                     </div>
                     <div class="infor-title">
-                        <h2>Mang thai</h2>
+                        <h2>{detailgroup?.name}</h2>
                         <div class="infor-content">
                             <div class="content-text">
-                                <span class="text-number">12&nbsp;</span>
+                                <span class="text-number">{detailgroup?.posts.length}&nbsp;</span>
                                 <span class="text-title">chủ đề</span>
                             </div>
                             <div class="content-text ">
-                                <span class="text-number margin-text">2k&nbsp;</span>
+                                <span class="text-number margin-text">{detailgroup?.posts.length}&nbsp;</span>
                                 <span class="text-title">bài đăng</span>
                             </div>
                             <div class="content-text">
-                                <span class="text-number margin-text">27k&nbsp;</span>
+                                <span class="text-number margin-text">{detailgroup?.members.length}&nbsp;</span>
                                 <span class="text-title">thành viên</span>
                             </div>
                         </div>
@@ -182,7 +212,16 @@ const Groupdetail = () => {
                             </div>
                         </div>
                         <div className='post-detail'>
-                            <Post />
+                            {
+                                detailgroup?.posts.map((e,index) => {
+                                    return (
+                                        <Post
+                                            name={detailgroup?.name}
+                                            post={e}
+                                        />
+                                    )
+                                })
+                            }
                         </div>
                     </div>
                     <div className='post-right'>

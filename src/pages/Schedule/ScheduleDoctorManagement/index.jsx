@@ -14,9 +14,11 @@ import AddMultiSchedule from '../AddMultiSchedule'
 import { BsFillTrashFill } from 'react-icons/bs'
 import doctorApi from '../../../api/doctorApi'
 import Select from 'react-select'
+import Button from '../../../components/Button'
 function ScheduleDoctorManagement() {
     const navigate = useNavigate()
     const user = useSelector(state => state.user.profile)
+    console.log(user);
     const [doctorId, setDoctorId] = useState(
         () => user.doctor && user.doctor.id
     )
@@ -32,7 +34,7 @@ function ScheduleDoctorManagement() {
                 const dataDoctorShow = dataDoctor.map(doctor => {
                     return {
                         value: doctor.id,
-                        label: `${doctor.user.firsname} ${doctor.user.lastname}`
+                        label: `${doctor.user.name}`
                     }
                 })
                 setListDoctor(dataDoctorShow)
@@ -88,7 +90,7 @@ function ScheduleDoctorManagement() {
             setPagination(respone.page)
         } catch (err) {
             toast.error(err.message, {
-                position: toast.POSITION.BOTTOM_RIGHT
+                position: toast.POSITION.TOP_RIGHT,
             })
         }
     }
@@ -124,12 +126,12 @@ function ScheduleDoctorManagement() {
                     }
                 })
                 toast.success('Xóa lịch khám thành công', {
-                    position: toast.POSITION.BOTTOM_RIGHT
+                    position: toast.POSITION.TOP_RIGHT,
                 })
                 getAllSchedule()
             } catch (err) {
                 toast.error(err.message, {
-                    position: toast.POSITION.BOTTOM_RIGHT
+                    position: toast.POSITION.TOP_RIGHT,
                 })
             }
         })()
@@ -159,12 +161,10 @@ function ScheduleDoctorManagement() {
 
                     {user.doctor && (
                         <div>
-                            <button
-                                className="btnSuccess"
+                            <Button
+                                title={'Thêm lịch khám mới'}
                                 onClick={toggleShowAddMultiSchedule}
-                            >
-                                Thêm lịch khám mới
-                            </button>
+                            />
                         </div>
                     )}
                 </div>

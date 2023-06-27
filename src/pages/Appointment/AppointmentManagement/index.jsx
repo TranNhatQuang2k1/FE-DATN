@@ -3,6 +3,7 @@ import Pagination from '../../../components/Pagination'
 import React, { useContext, useEffect, useMemo, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 import convertTZ7Str from '../../../utils/convertTZ7Str'
 import AppointmentDetail from '../AppointmentDetail'
 import './index.scss'
@@ -13,7 +14,7 @@ import SearchInput from '../../../components/SearchInput'
 import { useDebounce } from '../../../hooks/useDebounce'
 import ReactDatePicker from 'react-datepicker'
 import strftime from 'strftime'
-import { SocketContext } from 'App'
+// import { SocketContext } from 'App'
 import Loading from '../../../components/Loading'
 const options = [
     { value: '', label: 'Tất cả' },
@@ -26,7 +27,7 @@ const options = [
 
 ]
 function AppointmentManagement() {
-    const socket = useContext(SocketContext)
+    // const socket = useContext(SocketContext)
     const [isLoading, setIsLoading] = useState(true)
     const [listAppointment, setListAppointment] = useState([])
     const [pagination, setPagination] = useState({})
@@ -65,8 +66,9 @@ function AppointmentManagement() {
         }
         catch (err) {
             toast.error(err.message, {
-                position: toast.POSITION.BOTTOM_RIGHT,
-                autoClose: 2000
+                position: toast.POSITION.TOP_RIGHT,
+                // autoClose: 2000,
+                toastClassName: 'custom-toast'
             })
         }
     }
@@ -90,8 +92,9 @@ function AppointmentManagement() {
         }
         catch (err) {
             toast.error(err.message, {
-                position: toast.POSITION.BOTTOM_RIGHT,
-                autoClose: 2000
+                position: toast.POSITION.TOP_RIGHT,
+                autoClose: 2000,
+                toastClassName: 'custom-toast'
             })
         }
     }
@@ -117,19 +120,21 @@ function AppointmentManagement() {
                 )
                 fetchListAppointment(queryParams)
                 toast.success('Chấp nhận cuộc hẹn thành công', {
-                    position: toast.POSITION.BOTTOM_RIGHT,
-                    autoClose: 2000
+                    position: toast.POSITION.TOP_RIGHT,
+                    autoClose: 2000,
+                    toastClassName: 'custom-toast'
                 })
                 respone.message.forEach(element => {
-                    if (element !== {})
-                        socket.emit('createNotify', element)
+                    // if (element !== {})
+                        // socket.emit('createNotify', element)
                 })
             })()
         }
         catch (err) {
             toast.error(err.message, {
-                position: toast.POSITION.BOTTOM_RIGHT,
-                autoClose: 2000
+                position: toast.POSITION.TOP_RIGHT,
+                autoClose: 2000,
+                toastClassName: 'custom-toast'
             })
         }
     }
@@ -145,8 +150,13 @@ function AppointmentManagement() {
         toggleShowItem()
         setAppointmentItemDetail(item)
     }
-    {isShowAppointmentItemDetail && <AppointmentDetail appointmentData = {AppointmentItemDetail} onClose = {toggleShowItem} confirmAppointment = {confirmAppointment}/>}
-    //status
+    {isShowAppointmentItemDetail && 
+        <AppointmentDetail 
+            appointmentData = {AppointmentItemDetail} 
+            onClose = {toggleShowItem} 
+            confirmAppointment = {confirmAppointment}
+        />
+    }
     const handleStatusChange = (value) => {
         const filters = { ...queryParams, status: value.value, page: 0 }
         navigate(`?${queryString.stringify(filters)}`)
@@ -175,19 +185,21 @@ function AppointmentManagement() {
                 const filters = { ...queryParams, status: options[0].value, page: 0 }
                 navigate(`?${queryString.stringify(filters)}`)
                 toast.success('Báo cáo thành công', {
-                    position: toast.POSITION.BOTTOM_RIGHT,
-                    autoClose: 2000
+                    position: toast.POSITION.TOP_RIGHT,
+                    autoClose: 2000,
+                    toastClassName: 'custom-toast'
                 })
                 respone.message.forEach(element => {
-                    if (element !== {})
-                        socket.emit('createNotify', element)
+                    // if (element !== {})
+                        // socket.emit('createNotify', element)
                 })
             })()
         }
         catch (err) {
             toast.error(err.message, {
-                position: toast.POSITION.BOTTOM_RIGHT,
-                autoClose: 2000
+                position: toast.POSITION.TOP_RIGHT,
+                autoClose: 2000,
+                toastClassName: 'custom-toast'
             })
         }
     }
@@ -207,19 +219,21 @@ function AppointmentManagement() {
                 )
                 fetchListAppointment(queryParams)
                 toast.success('Xử lí thành công', {
-                    position: toast.POSITION.BOTTOM_RIGHT,
-                    autoClose: 2000
+                    position: toast.POSITION.TOP_RIGHT,
+                    autoClose: 2000,
+                    toastClassName: 'custom-toast'
                 })
                 respone.message.forEach(element => {
-                    if (element !== {})
-                        socket.emit('createNotify', element)
+                    // if (element !== {})
+                        // socket.emit('createNotify', element)
                 })
             })()
         }
         catch (err) {
             toast.error(err.message, {
-                position: toast.POSITION.BOTTOM_RIGHT,
-                autoClose: 2000
+                position: toast.POSITION.TOP_RIGHT,
+                autoClose: 2000,
+                toastClassName: 'custom-toast'
             })
         }
     }
@@ -270,8 +284,8 @@ function AppointmentManagement() {
                             listAppointment.map(item => (
                                 <tr key={item.id}>
                                     <td>{item.id}</td>
-                                    {userData.role.name === 'ROLE_ADMIN' && <td>{`${item.schedule.doctor.user.firsname} ${item.schedule.doctor.user.lastname}`}</td>}
-                                    <td>{`${item.patient.user.firsname} ${item.patient.user.lastname}`}</td>
+                                    {userData.role.name === 'ROLE_ADMIN' && <td>{`${item.schedule.doctor.user.name}`}</td>}
+                                    <td>{`${item.patient.user.name}`}</td>
                                     <td>{convertTZ7Str(item.schedule.begin).split('T')[0]}</td>
                                     <td>{`${convertTZ7Str(item.schedule.begin).split('T')[1]} - ${convertTZ7Str(item.schedule.end).split('T')[1]}`}</td>
                                     {item.status.id === 1 && <td><span className="label__pending">Chờ xử lí</span></td>}
@@ -294,12 +308,21 @@ function AppointmentManagement() {
                     </tbody>
                 </table>
                 <div className="appointmentManagement__pagination">
-                    <Pagination totalPage={pagination.totalPages} currentPage={pagination.page} onClick = {handlePageChange}/>
+                    <Pagination 
+                        totalPage={pagination.totalPages} 
+                        currentPage={pagination.page} 
+                        onClick = {handlePageChange}
+                    />
                 </div>
             </div>
-            {isShowAppointmentItemDetail && <AppointmentDetail appointmentData = {AppointmentItemDetail} onClose = {toggleShowItem} confirmAppointment = {confirmAppointment}/>}
+            {isShowAppointmentItemDetail && 
+                <AppointmentDetail 
+                    appointmentData = {AppointmentItemDetail} 
+                    onClose = {toggleShowItem} 
+                    confirmAppointment = {confirmAppointment}
+                />}
         </div>
     )
 }
 
-export default AppointmentManagement
+export default AppointmentManagement;

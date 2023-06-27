@@ -5,6 +5,13 @@ import Infor from '../../../components/Infor'
 import ResultBMI from './ResultBMI'
 import BannerHeathTool from '../Banner'
 import Header from '../../../components/Header'
+import InputField from '../../../components/InputFiled'
+import { path } from '../../../constants/path'
+import { toast } from 'react-toastify'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { useForm } from 'react-hook-form'
+import * as yup from 'yup'
+import { useNavigate } from 'react-router-dom'
 let a = [
     {
         title: 'Vì sao tôi nên kiểm tra hoặc đo lường sàng lọc tim mạch của mình?',
@@ -32,9 +39,73 @@ let a = [
     }
 ]
 const  BMI = () => {
+    const navigate = useNavigate()
+    const schema = yup.object().shape({
+        height: yup.mixed()
+        .test(
+          'is-number-or-decimal',
+          'Nhập số hoặc số chấm động',
+          value => !isNaN(value) || /^\d+(\.\d+)?$/.test(value)
+        )
+        .required('Nhập giá trị'),
+        weight: yup.mixed()
+        .test(
+          'is-number-or-decimal',
+          'Nhập số hoặc số chấm động',
+          value => !isNaN(value) || /^\d+(\.\d+)?$/.test(value)
+        )
+        .required('Nhập giá trị'),
+        age: yup.number().typeError('Nhập số').required('Nhập số tuổi')
+    })
+    const form = useForm({
+        defaultValues: {
+            height: '',
+            weight: '',
+            age : ''
+        },
+        resolver: yupResolver(schema)
+    })
+    const handleSubmitForm = value => {
+        console.log(value)
+        const formData = new FormData()
+        for (let key in value) {
+          formData.append(key, value[key])
+          console.log(key)
+        }
+        (async () => {
+            const { height, weight, age } = value;
+            const valueHeight = height / 100;
+            const BMI = +(
+            Math.round(
+                weight / (valueHeight * valueHeight) + "e+2"
+            ) + "e-2"
+            );
+            form.resetField()
+
+            try {
+                // let res =await bmiApi.creactBMI(formData, {
+                //     headers: {
+                //         'Content-Type': 'multipart/form-data',
+                //         Authorization: `${localStorage.getItem(
+                //             'access_token'
+                //         )}`
+                //     }
+                // })
+                toast.success('Tính thành công', {
+                    position: toast.POSITION.TOP_RIGHT,
+                    autoClose: 1000,
+                })
+                navigate(`/health-tools/bmi/result?bmi=${BMI}`)
+            } catch (err) {
+                toast.error(err.message, {
+                    position: toast.POSITION.TOP_RIGHT,
+                    autoClose: 1000,
+                })
+            }
+        })()
+    }
     return (
         <div className='BMI-container'>
-            <Header />
             <BannerHeathTool title={'Tính chỉ số BMI - Chỉ số khối cơ thể'}
                 desc={'Sử dụng công cụ này để kiểm tra chỉ số khối cơ thể (BMI) để biết bạn có đang ở mức cân nặng hợp lý hay không. Bạn cũng có thể kiểm tra chỉ số BMI của trẻ tại đây.'}
                 urlbg={'https://hellobacsi.com/images/toolBannerBlue-circle-large.svg'}
@@ -48,7 +119,7 @@ const  BMI = () => {
                     <div className='container-left'>
                         <div className='left-wrapper'>
                             <div className='bmi-input'>
-                                <form>
+                                <form onSubmit={form.handleSubmit(handleSubmitForm)}>
                                     <div class="bmi-input-contanier">
                                         <div class="bmi-input-gender">
                                             <label className="input-gender-label" for="gender">Giới tính của bạn</label>
@@ -75,33 +146,56 @@ const  BMI = () => {
                                             <label class="input-label" for="" id="">
                                                 <p >Bạn bao nhiêu tuổi? (năm)</p>
                                             </label>
-                                            <div class="input-field">
+                                            {/* <div class="input-field">
                                                 <input class="field-content" id="" type="text" name="age" min="0" step="1" inputmode="numeric" aria-invalid="true" value=""/>
-                                            </div>
+                                            </div> */}
+                                            {/* <div className="label-wrap form-input-view"> */}
+                                                <InputField
+                                                    // label={'Tên chuyên khoa'}
+                                                    form={form}
+                                                    name="age"
+                                                    placeholder="Nhập số tuổi (năm)"
+                                                    icon={images.dalieu}
+                                                />
+                                            {/* </div> */}
                                         </div>
                                     </div>
                                     <div class="input-content">
                                         <div class="input-content-detail">
                                             <label class="input-label" for="" id="">
-                                                <p >Bạn bao nhiêu tuổi? (năm)</p>
+                                                <p >Bạn cao bao nhiêu? (cm)</p>
                                             </label>
-                                            <div class="input-field">
+                                            {/* <div class="input-field">
                                                 <input class="field-content" id="" type="text" name="age" min="0" step="1" inputmode="numeric" aria-invalid="true" value=""/>
-                                            </div>
+                                            </div> */}
+                                                <InputField
+                                                    // label={'Tên chuyên khoa'}
+                                                    form={form}
+                                                    name="height"
+                                                    placeholder="Nhập chiều cao (cm)"
+                                                    icon={images.dalieu}
+                                                />
                                         </div>
                                     </div>
                                     <div class="input-content">
                                         <div class="input-content-detail">
                                             <label class="input-label" for="" id="">
-                                                <p >Bạn bao nhiêu tuổi? (năm)</p>
+                                                <p >Bạn cân nặng bao nhiêu? (Kg)</p>
                                             </label>
-                                            <div class="input-field">
+                                            {/* <div class="input-field">
                                                 <input class="field-content" id="" type="text" name="age" min="0" step="1" inputmode="numeric" aria-invalid="true" value=""/>
-                                            </div>
+                                            </div> */}
+                                                <InputField
+                                                    // label={'Tên chuyên khoa'}
+                                                    form={form}
+                                                    name="weight"
+                                                    placeholder="Nhập cân nặng (Kg)"
+                                                    icon={images.dalieu}
+                                                />
                                         </div>
                                     </div>
                                     
-                                    <button  class="bmi-btn" >
+                                    <button  class="bmi-btn" type='submit' >
                                         <span class="btn-submit">
                                             <span class="submit-data">Tính ngay</span>
                                         </span>
@@ -116,7 +210,7 @@ const  BMI = () => {
                 </div>
                 
             </div>
-            <ResultBMI />
+            {/* <ResultBMI /> */}
         </div>
     )
 }

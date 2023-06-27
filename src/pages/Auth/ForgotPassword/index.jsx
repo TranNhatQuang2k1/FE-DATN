@@ -25,13 +25,13 @@ function ForgotPassWordForm() {
             try {
                 await userApi.resetPassword(value)
                 toast.success('Reset mật khẩu thành công, mời vào mail xem mật khẩu', {
-                    position: toast.POSITION.BOTTOM_RIGHT,
+                    position: toast.POSITION.TOP_RIGHT,
                     autoClose: 1000
                 })
             }
             catch (err) {
                 toast.error(err.message, {
-                    position: toast.POSITION.BOTTOM_RIGHT,
+                    position: toast.POSITION.TOP_RIGHT,
                     autoClose: 1000
                 })
             }

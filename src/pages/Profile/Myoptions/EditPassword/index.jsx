@@ -51,13 +51,13 @@ function EditPassword({ onClose }) {
                     }
                 })
                 toast.success('Thay đổi mật khẩu thành công', {
-                    position: toast.POSITION.BOTTOM_RIGHT
+                    position: toast.POSITION.TOP_RIGHT,
                 })
                 dispatch(logout())
             } catch (error) {
                 alert(error)
                 toast.error(error.message, {
-                    position: toast.POSITION.BOTTOM_RIGHT
+                    position: toast.POSITION.TOP_RIGHT,
                 })
             }
         })()

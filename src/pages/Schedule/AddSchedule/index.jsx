@@ -1,12 +1,13 @@
-import InputField from 'components/InputFiled'
+import InputField from '../../../components/InputFiled'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import './index.scss'
-import scheduleApi from 'api/scheduleApi'
+import scheduleApi from '../../../api/scheduleApi'
 import { toast } from 'react-toastify'
+import Button from '../../../components/Button'
 const yesterday = new Date(Date.now() - 86400000)
 function AddSchedule({ onClose }) {
     const userDoctor = useSelector(state => state.user.profile)
@@ -54,13 +55,13 @@ function AddSchedule({ onClose }) {
                     }
                 )
                 toast.success('Tạo lịch khám thành công', {
-                    position: toast.POSITION.BOTTOM_RIGHT
+                    position: toast.POSITION.TOP_RIGHT,
                 })
                 onClose()
             }
             catch (err) {
                 toast.error(err.message, {
-                    position: toast.POSITION.BOTTOM_RIGHT
+                    position: toast.POSITION.TOP_RIGHT,
                 })
             }
         })()
@@ -80,7 +81,7 @@ function AddSchedule({ onClose }) {
                                 name="begin"
                                 type="datetime-local"
                                 form={form}
-                                placeholder="Số bệnh nhân tối đa"
+                                placeholder="Thời gian bắt đầu"
                             />
                         </div>
                         <div>
@@ -89,7 +90,7 @@ function AddSchedule({ onClose }) {
                                 name="end"
                                 type="datetime-local"
                                 form={form}
-                                placeholder="Số bệnh nhân tối đa"
+                                placeholder="Thời gian kết thúc"
                             />
                         </div>
                     </div>
@@ -115,15 +116,13 @@ function AddSchedule({ onClose }) {
                         </div>
                     </div>
                     <div className="addSchedule__action">
-                        <button type="submit" className="btnSuccess">
-                            Tạo lịch khám
-                        </button>
-                        <button
+                        <Button 
+                            title={'Tạo lịch khám'}
+                        />
+                        <Button 
+                            title={'Hủy'}
                             onClick={onClose}
-                            className="btnCancel"
-                        >
-                            Hủy
-                        </button>
+                        />
                     </div>
                 </form>
             </div>

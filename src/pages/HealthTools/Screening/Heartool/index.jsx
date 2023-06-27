@@ -2,7 +2,8 @@ import {React, useState} from "react";
 import images from "../../../../assets";
 import './index.scss'
 import Infor from "../../../../components/Infor";
-import Header from "../../../../components/Header";
+import ScreenInfor from "../../../../components/ScreenInfor";
+import Filter from "./Filter";
 let a = [
     {
         title: 'Vì sao tôi nên kiểm tra hoặc đo lường sàng lọc tim mạch của mình?',
@@ -32,7 +33,6 @@ let a = [
 const Hearttool = () => {
     return(
         <div style = {{'box-sizing': 'border-box'}}>
-            <Header />
         <div class="heart-page">
             <div class="heart-page-container">
                 <div class="container-left">
@@ -48,7 +48,7 @@ const Hearttool = () => {
                     </h4>
                 
                 <div class="heart-page-button">
-                    <button class="next-btn" data-size="lg" data-color="primary" data-theme="helloSites" data-is-loading="false">
+                    <button class="next-btn">
                         <span class="fAwTdkg">
                             <span class="S2kaD9B">Check now</span>
                         </span>
@@ -59,8 +59,14 @@ const Hearttool = () => {
                     <img src= {images.heart} alt="Bệnh tim mạch: Phát hiện ngay trước khi quá muộn!"/>
                 </div>
             </div>
+            
         </div>
-        <Infor list={a}/>
+            <div>
+                <ScreenInfor />
+            </div>
+            <Filter />
+            <Infor list={a}/>
+            <Filter />
         </div>
     )
 }

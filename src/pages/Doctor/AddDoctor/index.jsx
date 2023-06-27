@@ -15,6 +15,7 @@ import { useNavigate } from 'react-router-dom'
 import { path } from '../../../constants/path'
 import doctorApi from '../../../api/doctorApi'
 import images from '../../../assets'
+import Button from '../../../components/Button'
 const phoneRegExp = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/
 AddDoctor.propTypes = {}
 
@@ -79,14 +80,14 @@ function AddDoctor() {
                 )
                 console.log(res);
                 toast.success('Thêm bác sĩ thành công', {
-                    position: toast.POSITION.BOTTOM_RIGHT
+                    position: toast.POSITION.TOP_RIGHT,
                 })
                 alert('Thành Công')
                 navigate(path.doctorManagement)
             } catch (err) {
                 console.log(err);
                 toast.error(err.message, {
-                    position: toast.POSITION.BOTTOM_RIGHT
+                    position: toast.POSITION.TOP_RIGHT,
                 })
             }
         })()
@@ -201,12 +202,7 @@ function AddDoctor() {
                             />
                         </div>
                         <div className="button-submit">
-                        <button
-                            type="submit"
-                            className="button btnSuccess"
-                        >
-                            Đăng ký
-                        </button>
+                            <Button title={'Đăng ký'}/>
                     </div>
                     </div>
                     </div>

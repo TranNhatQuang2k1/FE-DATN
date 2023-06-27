@@ -1,0 +1,35 @@
+.lp-page-description {
+    padding: 0px;
+    margin-bottom: 32px;
+    .lp-page-container {
+        padding-bottom: 40px;
+        border-bottom: 8px solid rgb(247, 249, 252);
+        width: 669px;
+        margin: 0px auto;
+        .page-wrap {
+            ul {
+                padding: 0px;
+                margin: 0px;
+                list-style: none;
+                li::before{
+                    position: absolute;
+                    top: 7px;
+                    left: 5px;
+                    display: block;
+                    width: 10px;
+                    height: 10px;
+                    background: url(../../assets/img/liststyle.svg) center center / contain no-repeat;
+                    content: " ";
+                }
+                li {
+                    position: relative;
+                    padding-left: 26px;
+                    margin-bottom: 16px;
+                    font-size: 16px;
+                    line-height: 24px;
+                }
+                
+            }
+        }
+    }
+}

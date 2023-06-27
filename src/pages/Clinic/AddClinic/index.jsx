@@ -51,12 +51,12 @@ function AddClinic() {
                     }
                 )
                 toast.success('Thêm phòng khám thành công', {
-                    position: toast.POSITION.BOTTOM_RIGHT
+                    position: toast.POSITION.TOP_RIGHT,
                 })
                 navigate(path.clinicManagement)
             } catch (err) {
                 toast.error(err.message, {
-                    position: toast.POSITION.BOTTOM_RIGHT
+                    position: toast.POSITION.TOP_RIGHT,
                 })
             }
         })()
@@ -83,7 +83,8 @@ function AddClinic() {
                             form={form}
                             name="name"
                             label={'Tên'}
-                            icon={images.name}
+                            // icon={images.name}
+                            icon={images.dalieu}
                             placeholder="Tên phòng khám"
                         />
                     </div>

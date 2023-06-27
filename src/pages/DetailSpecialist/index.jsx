@@ -16,6 +16,7 @@ function DetailSpecialist() {
                 const respone = await specialistApi.getDetailSpecialist(id)
                 setDataSpecialty(respone.message)
                 setIsLoading(false)
+                console.log(respone.message)
             } catch (err) {
                 alert(err)
             }
@@ -30,14 +31,17 @@ function DetailSpecialist() {
             <div className="detailSpecialist__container">
                 <header>Chuyên khoa {dataSpecialty.name}</header>
                 <div className="detailSpecialist__content">
-                    <ul className="detailSpecialist__content-doctorsList">
+                    {/* <ul className="detailSpecialist__content-doctorsList"> */}
                         {
-                            dataSpecialty.doctors.length > 0 && dataSpecialty.doctors.map(doctor => <DoctorItem mode="listColumn" key = {doctor.id} data = {doctor} />)
+                            dataSpecialty.doctors.length > 0 
+                            && 
+                            dataSpecialty.doctors.map(doctor => 
+                                <DoctorItem mode="listColumn" key = {doctor.id} data = {doctor} />)
                         }
                         {
                             dataSpecialty.doctors.length <= 0 && <span>Không có bác sĩ nào</span>
                         }
-                    </ul>
+                    {/* </ul> */}
                 </div>
             </div>
         </div>

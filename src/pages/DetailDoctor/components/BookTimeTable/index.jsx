@@ -15,7 +15,7 @@ function BookTimeTable({ doctor }) {
         const tomorrow2 = new Date()
         const tomorrow3 = new Date()
 
-        tomorrow.setDate(tomorrow.getDate() + 1)
+        tomorrow.setDate(tomorrow.getDate()+1)
         tomorrow2.setDate(tomorrow2.getDate() + 2)
         tomorrow3.setDate(tomorrow3.getDate() + 3)
 
@@ -53,9 +53,10 @@ function BookTimeTable({ doctor }) {
                     }
                 )
                 setListTimeTable(respone.schedules)
+                console.log(respone.schedules)
             } catch (err) {
                 toast.error(err.message, {
-                    position: toast.POSITION.BOTTOM_RIGHT
+                    position: toast.POSITION.TOP_RIGHT,
                 })
             }
         })()
@@ -85,22 +86,11 @@ function BookTimeTable({ doctor }) {
                         </div>
                     </div>
                     <ul className="bookTimeTable__bookDay-list">
+
                         {
                             listTimeTable.filter(item => item.status === false).map(item => <TimeTableItem key = {item.id} data = {item}/>)
                         }
                     </ul>
-                </div>
-                <div className="bookTimeTable__outside">
-                    <span className="address_doctor">
-                        <header>Địa chỉ khám</header>
-                        <span>
-                            {doctor.clinic.street}{' '}
-                            {doctor.clinic.city}
-                        </span>
-                    </span>
-                    <span className="price">
-                        <span>Giá khám trung bình: </span> 300.000đ
-                    </span>
                 </div>
             </div>
         </div>

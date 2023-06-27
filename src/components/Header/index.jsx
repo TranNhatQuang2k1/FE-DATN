@@ -4,7 +4,13 @@ import images from "../../assets";
 import './index.scss';
 import Menu from "../Category";
 import { path } from "../../constants/path";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import specialistApi from "../../api/specialistApi";
+import doctorApi from "../../api/doctorApi";
+import categoryApi from "../../api/categoryApi";
+import useComponentVisible from '../../hooks/useComponentVisible'
+import { IoIosNotifications } from 'react-icons/io'
+import Notification from './components/Notification'
 const dataCategories = [
     {
         title : 'Sức khỏe răng miệng',
@@ -33,13 +39,39 @@ const dataCategories = [
     
 ]
 const Header = ({onClick}) => {
+    const location = useLocation()
+    const dispatch = useDispatch()
+    const [showNotification, setShowNotification] = useState(false)
+    const toggleNotifications = () => {
+        setShowNotification(!showNotification)
+    }
+
+    const notificationList = useSelector(
+        state => state?.notification?.notificationList
+    )
+    let notificationCount=0;
+    if(notificationList)
+    {
+        notificationCount = notificationList?.filter(
+            item => item.status === false
+        ).length
+    }
+    
+    const { ref, isComponentVisible } = useComponentVisible(false)
+    useEffect(() => {
+        if (isComponentVisible) setShowNotification(true)
+        else setShowNotification(false)
+    }, [isComponentVisible])
+    const [isLoading, setIsLoading] = useState(true)
+    const [data, setData] = useState([])
+    const userData = useSelector(state => state.user.profile)
     const token = localStorage.getItem('access_token')
-    const { user } = useSelector(state => state)
     const navigate = useNavigate()
     const [check, setCheck] = useState(false);
+    const [chuyenMucNoiBat, setChuyenMucNoiBat] = useState([]);
+    const [title, setTitle] = useState(['Chuyên mục sức khỏe']);
     const handleProfile = () => {
         navigate(path.profile)
-        // setShowDropdown(false)
     }
     const handleMenu = () => {
         setCheck(false);
@@ -47,6 +79,23 @@ const Header = ({onClick}) => {
     const handleRemove = () => {
         setCheck(!check);
       };
+      useEffect(() => {
+        (async () => {
+            try {
+                const respone = await specialistApi.getAllSpecialist()
+                // const doctor = await doctorApi.getAllDoctor()
+                // const chuyenmuc = await specialistApi.getAllSpecialist()
+                // const congcu = await doctorApi.getAllDoctor()
+                // const group = await doctorApi.getAllDoctor()
+                // const respone = await categoryApi.getListCategory();
+                setData(respone.message)
+                console.log(respone)
+                setIsLoading(false)
+            } catch (err) {
+                alert(err)
+            }
+        })()
+    }, [])
     return (
         <header className="header">
             <div className="header_left">
@@ -113,7 +162,7 @@ const Header = ({onClick}) => {
                         />
                     </div>
                 </div>
-                <div className="header_center_topic" tabIndex={0} onClick={handleRemove}>
+                <div className="header_center_topic"  onClick={handleRemove}>
                     <div className="content-center">
                         <b className="text-content">Đặt lịch với bác sĩ</b>
                     </div>
@@ -125,7 +174,7 @@ const Header = ({onClick}) => {
                         />
                     </div>
                 </div>
-                <div className="header_center_topic" tabIndex={0} onClick={handleRemove}>
+                <div className="header_center_topic" onClick={handleRemove}>
                     <div className="content-center">
                         <b className="text-content">Cộng đồng</b>
                     </div>
@@ -168,11 +217,28 @@ const Header = ({onClick}) => {
                             </span>
                         </div>
                 </button>}
+                { token &&
+                        <div className="header-action-notify" ref={ref}>
+                            <span className="header-action-notify-count">
+                                {notificationCount}
+                            </span>
+                            <span onClick={toggleNotifications} >
+                                <IoIosNotifications className="icon-notify"/>
+                            </span>
+                
+                            {showNotification && isComponentVisible && (
+                                <div className="header-action-notify-area">
+                                    <Notification />
+                                </div>
+                            )}
+                        </div>
+
+                }
                 <div className="avartar-profile">
                     <a className="img-container" onClick={handleProfile}>
                         <div className="img-wrap">
                             <img 
-                                src={user?.profile?.image}
+                                src={userData?.image}
                                 className="icon-img"
                             />
                         </div>
@@ -180,7 +246,8 @@ const Header = ({onClick}) => {
                 </div>
                 
             </div>
-            {check && <Menu data= {dataCategories} onClick={handleRemove} check={check}/>}
+            {check  && <Menu data= {data} title={title} onClick={handleRemove} check={check}
+            />}
         </header>
     )
 }

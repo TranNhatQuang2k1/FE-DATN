@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './index.scss'
 import images from '../../assets'
 import Button from '../../components/Button'
 import Header from '../../components/Header'
+import groupApi from '../../api/groupApi'
+import Loading from '../../components/Loading'
+import { path } from '../../constants/path'
 
 const Bannergroup = () => {
     return (
@@ -54,24 +57,24 @@ const Bannergroup = () => {
         </div>
     )
 }
-const GroupCard = () => { 
+const GroupCard = ({img_bg,avartar_group,title,post,member,id}) => { 
     return (
         <div 
             class="card-item">
                 <a 
-                    href="item-href" 
+                    href={`community/${id}?post=${post}?member=${member}`}
                     className="item-href">
                         <div className="cover-img">
                             <div className="cover-bg">
                                 <div className="cover-container">
-                                    <img className="cover-image" src="https://cdn-together.hellobacsi.com/2021/07/D-Pregnancy-061124000000.png" alt=""/>
+                                    <img className="cover-image" src={img_bg} alt=""/>
                                 </div>
                             </div>
                             <div className="group-img">
                                 <div className="group-img-container">
                                     <div className="group-img-wrap">
                                         <img 
-                                            src="https://cdn-together.hellobacsi.com/2021/07/pregnancy-05092941.png" 
+                                            src={avartar_group} 
                                             className="group-image"/>
                                     </div>
                                 </div>
@@ -79,7 +82,7 @@ const GroupCard = () => {
                         </div>
                         <div className="community-name">
                             <h2 
-                                className="name-group">Mang thai
+                                className="name-group">{title}
                             </h2>
                         </div>
                         <div className="group-info">
@@ -89,11 +92,11 @@ const GroupCard = () => {
                                     <span className="count-value">chủ đề</span>
                                 </div>
                                 <div className="count-item">
-                                    <span className="count-label">2k&nbsp;</span>
+                                    <span className="count-label">{post}&nbsp;</span>
                                     <span className="count-value">bài đăng</span>
                                 </div>
                                 <div className="count-item">
-                                    <span className="count-label">27k&nbsp;</span>
+                                    <span className="count-label">{member}&nbsp;</span>
                                     <span className="count-value">thành viên</span>
                                 </div>
                             </div>
@@ -130,7 +133,8 @@ const GroupCard = () => {
             </div>
     );
 }
-const Listgroup = () => { 
+const Listgroup = ({list}) => {
+    console.log(list)
     return (
         <div className='listgroup-container'>
             <div className='listgroup-wrap'>
@@ -138,14 +142,21 @@ const Listgroup = () => {
                     <h1 className="heading">Tìm cộng đồng của bạn</h1>
                     <p className="text">Hãy cùng khám phá các Cộng đồng liên quan đến chuyên mục sức khỏe mà bạn quan tâm nhất.</p>
                     <div className='listgroup-layout'>
-                        <GroupCard />
-                        <GroupCard />
-                        <GroupCard />
-                        <GroupCard />
-                        <GroupCard />
-                        <GroupCard />
-                        <GroupCard />
-                        <GroupCard />
+                        {
+                            list.map((e, index) => {
+                                return (
+                                    <GroupCard 
+                                        title={e.name} 
+                                        id={e.id} 
+                                        img_bg = {e.img_bg} 
+                                        avartar_group={e.avartar_group} 
+                                        post={e.postCount} 
+                                        member={e.memberCount}
+                                    />
+                                )
+                            })
+
+                        }
                     </div>
                 </div>  
             </div>
@@ -153,11 +164,31 @@ const Listgroup = () => {
     );
 }
 const Communitygroup = () => {
+    const list = useRef([])
+    const [loading, SetLoading] = useState(true);
+    useEffect(() => {
+        (async () => {
+            try {
+                const data = await groupApi.getListGroup({ params: {id: '1'}})
+                // console.log(data.message);
+                if(data.message)
+                {
+                    list.current = data.message;
+                    // console.log(list)
+                    SetLoading(false)
+                }
+            } catch (err) {
+
+            }
+        })() 
+    }, []);
+    if(loading) return (
+        <Loading />
+    )
     return (
         <div>
-            {/* <Header /> */}
             <Bannergroup />
-            <Listgroup />
+            <Listgroup list={list.current}/>
         </div>
     )
 }

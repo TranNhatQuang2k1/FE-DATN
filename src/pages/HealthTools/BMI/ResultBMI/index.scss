@@ -3,6 +3,7 @@
     width: 100%;
     margin: 0px auto;
     // border: 1px solid red;
+    margin-bottom: 150px;
     .ResultBMI-wrap {
         display: flex;
         width: 100%;
@@ -87,9 +88,13 @@
                         width: 100%;
                         padding-top: 45px;
                         padding-bottom: 24px;
+                        .active {
+                            left: min(56%, 100% - 41px) !important;
+                            opacity: 1 !important;
+                        }
                         .number-result {
-                            left: min(56%, 100% - 41px);
-                            opacity: 1;
+                            left: 0;
+                            opacity: 0;
                             position: absolute;
                             top: 0px;
                             // left: 0px;

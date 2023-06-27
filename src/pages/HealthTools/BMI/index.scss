@@ -184,7 +184,9 @@
                                 display: flex;
                                 flex-direction: column;
                                 gap: 16px;
+                                
                                 .input-content-detail {
+                                    width: 60%;
                                     font-family: sans-serif;
                                     line-height: 1.55;
                                     .input-label {

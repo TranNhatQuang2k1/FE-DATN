@@ -1,14 +1,15 @@
-import scheduleApi from 'api/scheduleApi'
-import BaseTableItem from 'components/BaseTableItem.jsx'
-import listTimes from 'constants/listTimes'
-import weekdays from 'constants/weekdays'
+import scheduleApi from '../../../api/scheduleApi'
+import BaseTableItem from '../../../components/BaseTableItem.jsx'
+import listTimes from '../../../constants/listTimes'
+import weekdays from '../../../constants/weekdays'
 import React, { useEffect, useState } from 'react'
 import ReactDatePicker from 'react-datepicker'
 import { useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 import strftime from 'strftime'
-import getDaysOfWeekBetweenDates from 'utils/getDaysBetweenTwoDates'
+import getDaysOfWeekBetweenDates from '../../../utils/getDaysBetweenTwoDates'
 import './index.scss'
+import Button from '../../../components/Button'
 
 function AddMultiSchedule({ onClose }) {
     const userDoctor = useSelector(state => state.user.profile)
@@ -52,7 +53,7 @@ function AddMultiSchedule({ onClose }) {
     const handleSubmit = () => {
         if (startDate > endDate) {
             toast.error('Ngày chưa hợp lệ', {
-                position: toast.POSITION.BOTTOM_RIGHT,
+                position: toast.POSITION.TOP_RIGHT,
                 autoClose: 2000
             })
             return
@@ -75,17 +76,18 @@ function AddMultiSchedule({ onClose }) {
         })
         if (valueToSubmit.weekdays.length <= 0 || valueToSubmit.schedules.length <=0) {
             toast.error('Nhập thiếu thông tin thứ ngày hoặc khung giờ', {
-                position: toast.POSITION.BOTTOM_RIGHT,
+                position: toast.POSITION.TOP_RIGHT,
                 autoClose: 2000
             })
             return
         }
+        // console.log(valueToSubmit)
         valueToSubmit.beginDate = strftime('%Y-%m-%d', startDate)
-        valueToSubmit.endDate = strftime('%Y-%m-%d', endDate)
-        ;(
+        valueToSubmit.endDate = strftime('%Y-%m-%d', endDate);
+        (
             async () => {
                 try {
-                    await scheduleApi.addMultiSchedule(valueToSubmit,
+                    let res= await scheduleApi.addMultiSchedule(valueToSubmit,
                         {
                             headers: {
                                 Authorization: `${localStorage.getItem(
@@ -94,15 +96,16 @@ function AddMultiSchedule({ onClose }) {
                             }
                         }
                     )
+                    console.log(res)
                     toast.success('Tạo lịch khám thành công', {
-                        position: toast.POSITION.BOTTOM_RIGHT,
+                        position: toast.POSITION.TOP_RIGHT,
                         autoClose: 2000
                     })
                     onClose()
                 }
                 catch (err) {
                     toast.error(err.message, {
-                        position: toast.POSITION.BOTTOM_RIGHT,
+                        position: toast.POSITION.TOP_RIGHT,
                         autoClose: 2000
                     })
                 }
@@ -180,12 +183,10 @@ function AddMultiSchedule({ onClose }) {
                     </div>
                 </div>
                 <div className="addMultiSchedule__action">
-                    <button
-                        className="btnSuccess"
-                        onClick={handleSubmit}
-                    >
-                        Tạo lịch khám
-                    </button>
+                    <Button
+                         onClick={handleSubmit}
+                         title={'Tạo lịch khám'}
+                    />
                 </div>
             </div>
         </div>

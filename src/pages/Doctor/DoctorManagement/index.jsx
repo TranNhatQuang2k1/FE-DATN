@@ -105,7 +105,7 @@ function DoctorManagement() {
                                 dataListDoctors.map(doctor => (
                                     <tr key={doctor.id}>
                                         <td>{doctor.id}</td>
-                                        <td>{`${doctor.user.firsname} ${doctor.user.lastname}`}</td>
+                                        <td>{`${doctor.user.name}`}</td>
                                         <td>
                                             {
                                                 doctor.user.birthday.split(

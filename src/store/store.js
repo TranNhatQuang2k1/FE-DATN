@@ -1,10 +1,10 @@
 import userReducer from '../pages/Auth/userSlice'
 
-// import notificationReducer from 'components/Header/components/Notification/notificationSlice'
+import notificationReducer from '../components/Header/components/Notification/notificationSlice'
 const { configureStore } = require('@reduxjs/toolkit')
 const rootReducer = {
     user: userReducer,
-    // notification: notificationReducer,
+    notification: notificationReducer,
 }
 const store = configureStore({
     reducer: rootReducer,

@@ -3,9 +3,8 @@ import Loading from '../../components/Loading'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import BookTimeTable from './components/BookTimeTable'
-import Comment from './components/Comment'
 import DoctorProfile from './DoctorProfile'
-
+import './index.scss'
 function DetailDoctor() {
     const { id } = useParams()
     const [doctor, setDoctor] = useState({})
@@ -16,6 +15,7 @@ function DetailDoctor() {
             try {
                 const respone = await doctorApi.getDetailDoctor(id)
                 setDoctor(respone.message)
+                console.log(respone.message)
                 setIsLoading(false)
                 if (!window.location.href.includes('localhost'))
                     setCurrentURL(window.location.href)
@@ -27,15 +27,16 @@ function DetailDoctor() {
         })()
     }, [id])
     useEffect(() => {
-        document.title = doctor.user ? doctor.user.firsname + doctor.user.lastname : ''
+        document.title = doctor.user ? doctor.user.name  : ''
     }, [doctor])
     if (isLoading) return <Loading />
     return (
         <div className="detailDoctor">
             <div className="detailDoctor__container">
                 <DoctorProfile doctor = {doctor} dataHref = {currenURL}/>
+            </div>
+            <div className='bookTime-container'>
                 <BookTimeTable doctor = {doctor} />
-                <Comment dataHref = {currenURL}/>
             </div>
         </div>
     )

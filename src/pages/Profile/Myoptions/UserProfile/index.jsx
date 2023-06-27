@@ -111,15 +111,16 @@ const Userprofile = () => {
                 unwrapResult(datares)
                 console.log(datares)
                 toast.success('Cập nhật thành công', {
-                    position: toast.POSITION.BOTTOM_RIGHT,
-                    autoClose: 2000
+                    position: toast.POSITION.TOP_RIGHT,
+                    autoClose: 1000,
+                    // className: 'custom-toast'
                 })
-                alert('Cập nhật thành công')
-                onclose()
+                // onclose()
             } catch (err) {
                 console.log(err.message)
                 toast.error(err.message, {
-                    position: toast.POSITION.BOTTOM_RIGHT
+                    position: toast.POSITION.TOP_RIGHT,
+                    autoClose: 1000,
                 })
             }
         })()

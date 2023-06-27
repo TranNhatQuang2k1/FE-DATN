@@ -9,6 +9,8 @@ import { path } from '../../../constants/path'
 import PreviewUploadImg from '../../../components/PreviewUploadImg'
 import InputField from '../../../components/InputFiled'
 import hospitalApi from '../../../api/hospitalApi'
+import images from '../../../assets'
+import Button from '../../../components/Button'
 
 function UpdateHospital() {
     const location = useLocation()
@@ -45,12 +47,12 @@ function UpdateHospital() {
                     }
                 })
                 toast.success('Cập nhật bệnh viện thành công', {
-                    position: toast.POSITION.BOTTOM_RIGHT
+                    position: toast.POSITION.TOP_RIGHT,
                 })
                 navigate(path.hospitalManagement)
             } catch (err) {
                 toast.error(err.message, {
-                    position: toast.POSITION.BOTTOM_RIGHT
+                    position: toast.POSITION.TOP_RIGHT,
                 })
             }
         })()
@@ -75,6 +77,7 @@ function UpdateHospital() {
                         <InputField
                             form={form}
                             name="name"
+                            icon={images.dalieu}
                             placeholder="Tên bệnh viện"
                         />
                     </div>
@@ -82,6 +85,7 @@ function UpdateHospital() {
                         <InputField
                             form={form}
                             name="street"
+                            icon={images.address}
                             placeholder="Đường"
                         />
                     </div>
@@ -89,21 +93,18 @@ function UpdateHospital() {
                         <InputField
                             form={form}
                             name="city"
+                            icon={images.address}
                             placeholder="Tỉnh, thành phố"
                         />
                     </div>
                     <div className="updateClinic__action">
-                        <button type="submit" className="btnSuccess">
-                            Cập nhật bệnh viện
-                        </button>
-                        <button
-                            onClick={() =>
-                                navigate(path.hospitalManagement)
-                            }
-                            className="btnCancel"
-                        >
-                            Hủy
-                        </button>
+                        <Button 
+                            title={'Thêm bệnh viện'}
+                        />
+                        <Button 
+                            title={'Hủy'}
+                            onClick={() => navigate(path.hospitalManagement)}
+                        />
                     </div>
                 </form>
             </div>

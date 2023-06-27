@@ -10,6 +10,7 @@ import { toast } from 'react-toastify'
 import * as yup from 'yup'
 import './index.scss'
 import Button from '../../../components/Button'
+import images from '../../../assets'
 
 function AddSpecialist() {
     const navigate = useNavigate()
@@ -43,14 +44,14 @@ function AddSpecialist() {
                     }
                 })
                 toast.success('Thêm chuyên khoa thành công', {
-                    position: toast.POSITION.BOTTOM_RIGHT
+                    position: toast.POSITION.TOP_RIGHT,
+                    autoClose: 1000,
                 })
-                alert(res);
                 navigate(path.specialistManagement)
             } catch (err) {
-                alert(err);
                 toast.error(err.message, {
-                    position: toast.POSITION.BOTTOM_RIGHT
+                    position: toast.POSITION.TOP_RIGHT,
+                    autoClose: 1000,
                 })
             }
         })()
@@ -80,10 +81,12 @@ function AddSpecialist() {
                             form={form}
                             name="name"
                             placeholder="Tên chuyên khoa"
+                            icon={images.dalieu}
                         />
                     </div>
                     <div className="label-wrap form-input-view">
                         <InputField
+                            icon={images.lichsu}
                             label={'Mô tả'}
                             form={form}
                             name="description"

@@ -1,22 +1,30 @@
 @import '../../_setting.scss';
 .bookAppointment {
+    max-width: 1170px;
+    margin: 0 auto;
     &__container {
         margin-bottom: 40px;
+        // border: 1px solid red;
+        
     }
     &__Info {
         margin-bottom: 40px;
-        padding: 0 30%;
+        padding: 10px 30%;
         background-color: #F6F6F6;
-        height: 200px;
+        // height: 200px;
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: 20px;
+        // border: 1px solid red;
         &-img {
             top: 0;
-            width: 160px;
-            height: 160px;
+            // width: 160px;
+            // height: 160px;
             img {
                 border-radius: 50%;
+                width: 96px;
+                height: 96px;
             }
         }
         &-content {
@@ -68,20 +76,5 @@
     }
     .btnBook {
         width: 60%;
-    }
-}
-
-
-@media screen and (max-width: 768px){
-    .bookAppointment {
-        &__Info {
-            flex-direction: column;
-            padding: 0 10%;
-            &-img {
-                width: 100px;
-                height: 120px;
-            
-            }
-        }
     }
 }

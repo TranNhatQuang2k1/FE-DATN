@@ -15,6 +15,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { path } from '../../../constants/path'
 import doctorApi from '../../../api/doctorApi'
 import images from '../../../assets'
+import Button from '../../../components/Button'
 
 const phoneRegExp = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/
 
@@ -80,12 +81,12 @@ function UpdateDoctor() {
                     }
                 )
                 toast.success('Chỉnh sửa bác sĩ thành công', {
-                    position: toast.POSITION.BOTTOM_RIGHT
+                    position: toast.POSITION.TOP_RIGHT,
                 })
                 navigate(path.doctorManagement)
             } catch (err) {
                 toast.error('loi', {
-                    position: toast.POSITION.BOTTOM_RIGHT
+                    position: toast.POSITION.TOP_RIGHT,
                 })
             }
         })()
@@ -194,24 +195,19 @@ function UpdateDoctor() {
                             label="Mô tả"
                             name="description"
                             form={form}
+                            icon={images.lichsu}
                             placeholder="Mô tả"
                             type="input"
                         />
                     </div>
 
                     <div className="updateClinic__action">
-                        <button type="submit" className="btnSuccess">
-                            Cập nhật
-                        </button>
-                        <button
-                            type="button"
-                            onClick={() =>
-                                navigate(-1)
-                            }
-                            className="btnCancel"
-                        >
-                            Hủy
-                        </button>
+                            <Button title={'Cập nhật'}/>
+                            <Button title={'Hủy'}
+                                 onClick={() =>
+                                    navigate(-1)
+                                }
+                            />
                     </div>
                 </form>
             </div>

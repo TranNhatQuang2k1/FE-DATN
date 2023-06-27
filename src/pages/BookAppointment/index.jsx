@@ -21,6 +21,8 @@ import appointmentApi from '../../api/appointmentApi'
 import { toast } from 'react-toastify'
 // import { SocketContext } from 'App'
 import { path } from '../../constants/path'
+import Button from '../../components/Button'
+import images from '../../assets'
 
 function BookAppointment() {
     const navigate = useNavigate()
@@ -56,8 +58,7 @@ function BookAppointment() {
         defaultValues: {
             phoneNumber: userData.phoneNumber,
             email: userData.email,
-            firsname: userData.firsname,
-            lastname: userData.lastname,
+            name: userData.name,
             gender: userData.gender === true ? '1' : '0',
             birthday: userData.birthday.split('T')[0],
             address: userData.address,
@@ -84,15 +85,18 @@ function BookAppointment() {
                     }
                 )
                 toast.success('Tạo cuộc hẹn thành công', {
-                    position: toast.POSITION.BOTTOM_RIGHT
+                    position: toast.POSITION.TOP_RIGHT,
+                    autoClose:1000,
+                    // className:'custom-toast'
                 })
                 respone.notification.forEach(element => {
                     // socket.emit('createNotify', element)
                 })
                 navigate(path.myAppointment)
             } catch (err) {
+                console.log(err)
                 toast.error(err.message, {
-                    position: toast.POSITION.BOTTOM_RIGHT
+                    position: toast.POSITION.TOP_RIGHT,
                 })
             }
         })()
@@ -115,7 +119,7 @@ function BookAppointment() {
                         <span>Đặt lịch khám</span>
                         <span>
                             Bác sĩ CK{' '}
-                            {`${doctorDetail.specialty.name} ${doctorDetail.user.firsname} ${doctorDetail.user.lastname}`}
+                            {`${doctorDetail.specialty.name} ${doctorDetail.user.name}`}
                         </span>
                         <span>
                             {scheduleDetail.id &&
@@ -139,22 +143,12 @@ function BookAppointment() {
                     <div className="form__element-two-input">
                         <div>
                             <InputField
-                                name="firsname"
+                                name="name"
                                 type="input"
                                 form={form}
                                 placeholder="Họ"
                                 disabled={true}
-                                icon={<FaUser />}
-                            />
-                        </div>
-                        <div>
-                            <InputField
-                                name="lastname"
-                                type="input"
-                                form={form}
-                                placeholder="Tên"
-                                disabled={true}
-                                icon={<FaUser />}
+                                icon={images.user}
                             />
                         </div>
                     </div>
@@ -177,7 +171,7 @@ function BookAppointment() {
                             form={form}
                             placeholder="Email"
                             disabled={true}
-                            icon={<MdEmail />}
+                            icon={images.email}
                         />
                     </div>
                     <div className="form__element">
@@ -187,7 +181,7 @@ function BookAppointment() {
                             form={form}
                             placeholder="Ngày sinh"
                             disabled={true}
-                            icon=<BsFillCalendarFill />
+                            icon={images.birthday}
                         />
                     </div>
                     <div className="form__element">
@@ -197,7 +191,7 @@ function BookAppointment() {
                             form={form}
                             placeholder="Số điện thoại"
                             disabled={true}
-                            icon={<BsFillTelephoneFill />}
+                            icon={images.call}
                         />
                     </div>
                     <div className="form__element">
@@ -207,7 +201,7 @@ function BookAppointment() {
                             form={form}
                             placeholder="Địa chỉ"
                             disabled={true}
-                            icon={<MdLocationPin />}
+                            icon={images.address}
                         />
                     </div>
                     <div className="form__element">
@@ -216,7 +210,7 @@ function BookAppointment() {
                             type="textarea"
                             form={form}
                             placeholder="Lí do khám"
-                            icon={<AiFillPlusCircle />}
+                            icon={images.lichsu}
                         />
                     </div>
                     <div className="form__price">
@@ -238,9 +232,7 @@ function BookAppointment() {
                         tiết kiệm thời gian làm thủ tục khám
                     </span>
                     <div className="form__btn">
-                        <button className="btnSuccess btnBook">
-                            Xác nhận đặt lịch khám
-                        </button>
+                        <Button title={'Xác nhận đặt lịch'}/>
                     </div>
                 </form>
             </div>

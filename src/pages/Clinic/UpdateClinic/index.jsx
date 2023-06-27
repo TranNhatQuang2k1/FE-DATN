@@ -9,6 +9,8 @@ import { toast } from 'react-toastify'
 import { path } from '../../../constants/path'
 import PreviewUploadImg from '../../../components/PreviewUploadImg'
 import InputField from '../../../components/InputFiled'
+import Button from '../../../components/Button'
+import images from '../../../assets'
 
 function UpdateClinic() {
     const location = useLocation()
@@ -45,12 +47,12 @@ function UpdateClinic() {
                     }
                 })
                 toast.success('Cập nhật phòng khám thành công', {
-                    position: toast.POSITION.BOTTOM_RIGHT
+                    position: toast.POSITION.TOP_RIGHT,
                 })
                 navigate(path.clinicManagement)
             } catch (err) {
                 toast.error(err.message, {
-                    position: toast.POSITION.BOTTOM_RIGHT
+                    position: toast.POSITION.TOP_RIGHT,
                 })
             }
         })()
@@ -66,14 +68,17 @@ function UpdateClinic() {
                     className="form updateClinic__form"
                     onSubmit={form.handleSubmit(handleSubmitForm)}
                 >
-                    <div className="form__element">
-                        <PreviewUploadImg form={form} name="image" />
+                    <div class="avartar-profile">
+                        <div className="avartar-container">
+                            <PreviewUploadImg form={form} name="image" urlimage={data.image} check={true}/>    
+                        </div>
                     </div>
                     <div className="form__element">
                         <InputField
                             form={form}
                             name="name"
                             placeholder="Tên phòng khám"
+                            icon={images.dalieu}
                         />
                     </div>
                     <div className="form__element">
@@ -81,6 +86,7 @@ function UpdateClinic() {
                             form={form}
                             name="street"
                             placeholder="Đường"
+                            icon={images.address}
                         />
                     </div>
                     <div className="form__element">
@@ -88,20 +94,17 @@ function UpdateClinic() {
                             form={form}
                             name="city"
                             placeholder="Tỉnh, thành phố"
+                            icon={images.address}
                         />
                     </div>
                     <div className="updateClinic__action">
-                        <button type="submit" className="btnSuccess">
-                            Cập nhật phòng khám
-                        </button>
-                        <button
-                            onClick={() =>
+                        <Button title={'Cập nhật'}/>
+                        <Button 
+                            title={'Hủy'}
+                            onClick={() => {
                                 navigate(path.clinicManagement)
-                            }
-                            className="btnCancel"
-                        >
-                            Hủy
-                        </button>
+                            }}
+                        />
                     </div>
                 </form>
             </div>

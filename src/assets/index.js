@@ -30,6 +30,12 @@ const images = {
     user: require('./img/user.png'),
     camera: require('./img/camera.png'),
     lichsu: require('./img/lichsu.png'),
+    like: require('./img/like.png'),
+    liked: require('./img/liked.png'),
+    comment: require('./img/comment.png'),
+    bg_toolhome: require('./img/bg-tool-home.svg'),
+    hometool_icon: require('./img/tool-home-icon.svg'),
+    liststyle: require('./img/liststyle.svg'),
 
 }
 

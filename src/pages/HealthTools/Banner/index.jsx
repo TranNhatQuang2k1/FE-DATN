@@ -14,7 +14,7 @@ const BannerHeathTool = ({title,desc,urlbg,urlimage,style,doctor,date}) => {
             <div className='bg-container'>
                 <div className='bg-wrapper'>
                     <div className="icon-container">
-                        <img src ={urlimage} className='icon-BMI'/>
+                        <img src = {'https://hellobacsi.com/images/tool-home-icon.svg'} className='icon-BMI'/>
                     </div>
                     <div className="BMI-des">
                         <div class="des-wrapper">

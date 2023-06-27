@@ -39,17 +39,16 @@ function DangNhap() {
             const reponse = await dispatch(login(value))
             unwrapResult(reponse)
             console.log(reponse)
-            if(reponse.status == 200) {
-                alert('Đăng nhập thành công')
-            }
             toast.success('Đăng nhập thành công', {
-                position: toast.POSITION.BOTTOM_RIGHT,
-                autoClose: 1000
+                position: toast.POSITION.TOP_RIGHT,
+                autoClose: 2000
             })
             navigate(path.home)
         } catch (error) {
-            alert(error.message)
-            console.log(error.message);
+            toast.success(error.message, {
+                position: toast.POSITION.TOP_RIGHT,
+                autoClose: 2000
+            })
         }
     }
     useEffect(() => {

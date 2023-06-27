@@ -12,6 +12,26 @@
     margin: 0 auto;
     box-sizing: border-box;
     padding: 20px;
+    // border: 1px solid red;
+    .heath-wrap {
+        position: relative;
+        -webkit-flex: 0 0 100%;
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        padding-right: 16px;
+        padding-bottom: 16px;
+      .heath-tool {
+        // position: relative;
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px 16px;
+        align-items: center;
+        justify-self: center;
+        // border: 1px solid red
+      }
+  }
+  
 }
 }
 }

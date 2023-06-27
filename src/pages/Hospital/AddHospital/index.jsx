@@ -9,6 +9,8 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import * as yup from 'yup'
 import './index.scss'
+import images from '../../../assets'
+import Button from '../../../components/Button'
 function AddHospital() {
     const navigate = useNavigate()
     const schema = yup.object().shape({
@@ -49,12 +51,12 @@ function AddHospital() {
                     }
                 )
                 toast.success('Thêm bệnh viện thành công', {
-                    position: toast.POSITION.BOTTOM_RIGHT
+                    position: toast.POSITION.TOP_RIGHT,
                 })
                 navigate(path.hospitalManagement)
             } catch (err) {
                 toast.error(err.message, {
-                    position: toast.POSITION.BOTTOM_RIGHT
+                    position: toast.POSITION.TOP_RIGHT,
                 })
             }
         })()
@@ -81,6 +83,7 @@ function AddHospital() {
                             form={form}
                             name="name"
                             placeholder="Tên bệnh viện"
+                            icon={images.dalieu}
                         />
                     </div>
                     <div className="form__element">
@@ -88,6 +91,7 @@ function AddHospital() {
                             form={form}
                             name="street"
                             placeholder="Đường"
+                            icon={images.address}
                         />
                     </div>
                     <div className="form__element">
@@ -95,18 +99,17 @@ function AddHospital() {
                             form={form}
                             name="city"
                             placeholder="Tỉnh, thành phố"
+                            icon={images.address}
                         />
                     </div>
                     <div className="addHospital__action">
-                        <button type="submit" className="btnSuccess">
-                            Thêm bệnh viện
-                        </button>
-                        <button
+                        <Button 
+                            title={'Thêm bệnh viện'}
+                        />
+                        <Button 
+                            title={'Hủy'}
                             onClick={() => navigate(path.hospitalManagement)}
-                            className="btnCancel"
-                        >
-                            Hủy
-                        </button>
+                        />
                     </div>
                 </form>
             </div>

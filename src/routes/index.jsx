@@ -20,7 +20,6 @@ import AddSpecialist from '../pages/Specialist/AddSpecialist'
 import EditSpecialist from '../pages/Specialist/EditSpecialist'
 import SpecialistManagement from '../pages/Specialist/SpecialistManagement'
 import AddDoctor from '../pages/Doctor/AddDoctor'
-
 import BookAppointment from '../pages/BookAppointment'
 import AddClinic from '../pages/Clinic/AddClinic'
 import ClinicManagement from '../pages/Clinic/ClinicManagement'
@@ -32,6 +31,14 @@ import UpdateDoctor from '../pages/Doctor/UpdateDoctor'
 import AddHospital from '../pages/Hospital/AddHospital'
 import HospitalManagement from '../pages/Hospital/HospitalManagement'
 import UpdateHospital from '../pages/Hospital/UpdateHospital'
+import AddSchedule from '../pages/Schedule/AddSchedule'
+// import AppointmentManagement from '../pages/Appointment/AppointmentManagement'
+import ScheduleDoctorManagement from '../pages/Schedule/ScheduleDoctorManagement'
+import AppointmentManagement from '../pages/Appointment/AppointmentManagement'
+import AddGroup from '../pages/Group/AddGroup'
+import GroupManagement from '../pages/Group/ManagerGroup'
+import ResultBMI from '../pages/HealthTools/BMI/ResultBMI'
+import Allcategories from '../pages/Categories'
 
 function RoutesComponent() {
   return (
@@ -55,6 +62,14 @@ function RoutesComponent() {
                     <Route path={path.profile} element={<Profile />} />
                     <Route path = {path.group} element = {<Communitygroup />} />
                     <Route path = {path.groupdetail} element = {<Groupdetail />} />
+                    <Route path = {path.healthtools} element = {<HealthTools />} />
+                    <Route path = {path.detailDoctor} element = {<DetailDoctor />}/>
+                    <Route path={path.detailSpecialist} element = {<DetailSpecialist />} />
+                    <Route path = {path.bookAppointment} element = {<BookAppointment />}/>
+                    <Route path = {path.bmi} element = {<BMI />}/>
+                    <Route path = {path.resultBMI} element = {<ResultBMI     />}/>
+                    <Route path = {path.hearttool} element = {<Hearttool />}/>
+                    <Route path = {path.category} element = {<Allcategories />}/>
                     
                 </Route>
                 <Route element = {<SystemAuthenticated />}>
@@ -76,9 +91,15 @@ function RoutesComponent() {
                         <Route path = {path.addDoctor} element = {<AddDoctor />} />
                         <Route path = {path.updateDoctor} element = {<UpdateDoctor />} />
                         
-                        {/* <Route path = {path.addSchedule} element = {<AddSchedule />} /> */}
+                        <Route path= {path.groupManagement} element = {<GroupManagement />}/>
+                        <Route path = {path.addGroup} element = {<AddGroup />} />
+                        <Route path = {path.updateGroup} element = {<UpdateDoctor />} />
 
-                        {/* <Route path = {path.appointmentManagement} element = {<AppointmentManagement />} /> */}
+
+                        <Route path = {path.addSchedule} element = {<AddSchedule />} />
+                        <Route path = {path.scheduleManagement} element = {<ScheduleDoctorManagement />} />
+
+                        <Route path = {path.appointmentManagement} element = {<AppointmentManagement />} />
 
                     </Route>
                 </Route>

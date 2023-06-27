@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import images from "../../assets";
 import './index.scss';
+import { path } from "../../constants/path";
 const Card = ({href,title,titleChild,urlImage,styleIcon, styleImg}) => {
     return (
                                 <div className="right-content-child">
@@ -40,16 +41,19 @@ const Card = ({href,title,titleChild,urlImage,styleIcon, styleImg}) => {
                                 </div> 
     )
 }
-const Section = ({title, urlImage}) => {
+const Section = ({title, urlImage,id}) => {
+    const navigate = useNavigate()
+    const handleClick = () => {
+        navigate(`/detailSpecialist/${id}`)
+    }
     return (
         <div className="section-content">
             <a 
                 className="iconMenu" 
-                data-event-category="Hamburger Navigation" 
-                data-event-action="Click" 
-                data-event-label="https://hellobacsi.com/suc-khoe-rang-mieng/" 
-                data-is-heading-category="false" 
-                href="https://hellobacsi.com/suc-khoe-rang-mieng/" 
+                onClick={() => {
+                    handleClick();
+                }}
+                // href= {path.specialistManagement} 
                 data-theme="helloSites">
                     <div className="icon-section">
                         <img
@@ -67,7 +71,7 @@ const Section = ({title, urlImage}) => {
         </div>
     )
 }
-const Menu = ({data, onClick, check}) => {
+const Menu = ({data, onClick, check,title,ref}) => {
     return (
         <div className={`menu-container ${check ? 'menu-active': ''}`}>
             <div className="menu-content">
@@ -87,25 +91,23 @@ const Menu = ({data, onClick, check}) => {
                                 <h2 
                                     data-tag="h6" 
                                     data-font-weight="semibold" 
-                                    class="text-title ">Chuyên mục sức khỏe
+                                    class="text-title ">{title}
                                 </h2>
                                 {
                                     data?.map((e) => {
                                         return(
-                                            <Section title= {e.title} urlImage={e.urlImage}/>
+                                            <Section title= {e.name} urlImage={e.image} id={e.id}/>
                                         )
                                     })
                                 }
                                 <a 
-                                    href="https://hellobacsi.com/categories/"  
-                                    data-event-label="https://hellobacsi.com/categories/" 
                                     class="see-all-container">
                                     <div 
                                         data-theme="helloSites" 
                                         data-is-heading-category="false" 
                                         class="see-all-detail"
                                     >
-                                        Xem tất cả chuyên mục
+                                        Xem tất cả
                                             <div class="see-all-icon">
                                                 <img 
                                                     className="icons"

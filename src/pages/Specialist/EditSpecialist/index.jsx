@@ -9,6 +9,8 @@ import './index.scss'
 import specialistApi from '../../../api/specialistApi'
 import { toast } from 'react-toastify'
 import { path } from '../../../constants/path'
+import Button from '../../../components/Button'
+import images from '../../../assets'
 function EditSpecialist() {
     const location = useLocation()
     const data = location.state.specialistItem
@@ -42,12 +44,12 @@ function EditSpecialist() {
                     }
                 })
                 toast.success('Cập nhật chuyên khoa thành công', {
-                    position: toast.POSITION.BOTTOM_RIGHT
+                    position: toast.POSITION.TOP_RIGHT,
                 })
                 navigate(path.specialistManagement)
             } catch (err) {
                 toast.error(err.message, {
-                    position: toast.POSITION.BOTTOM_RIGHT
+                    position: toast.POSITION.TOP_RIGHT,
                 })
             }
         })()
@@ -65,7 +67,7 @@ function EditSpecialist() {
                 >
                     <div class="avartar-profile">
                         <div className="avartar-container">
-                            <PreviewUploadImg form={form} name="image" urlimage={''} check={true}/>    
+                            <PreviewUploadImg form={form} name="image" urlimage={data.image} check={true}/>    
                         </div>
                     </div>
                     <div className="form__element">
@@ -74,6 +76,7 @@ function EditSpecialist() {
                             name="name"
                             label = "Tên chuyên khoa"
                             placeholder="Tên chuyên khoa"
+                            icon={images.dalieu}
                         />
                     </div>
                     <div className="form__element">
@@ -82,18 +85,15 @@ function EditSpecialist() {
                             name="description"
                             label = "Chi tiết"
                             placeholder="Mô tả chuyên khoa"
+                            icon={images.lichsu}
                         />
                     </div>
                     <div className="editSpecialist__action">
-                        <button type="submit" className="btnSuccess">
-                            Cập nhật
-                        </button>
-                        <button
+                        <Button title={'Cập nhật'}/>
+                        <Button title={'Hủy'}
+                        
                             onClick={() => navigate(path.specialistManagement)}
-                            className="btnCancel"
-                        >
-                            Hủy
-                        </button>
+                        />
                     </div>
                 </form>
             </div>

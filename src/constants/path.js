@@ -8,8 +8,9 @@ class Path {
         this.profile = '/profile'
         this.healthtools = '/health-tools'
         this.bmi = '/health-tools/bmi'
+        this.resultBMI = '/health-tools/bmi/result'
         this.group = '/community'
-        this.groupdetail = '/community/groupdetail'
+        this.groupdetail = '/community/:id'
         this.veirifyEmail = '/auth/verify-account'
         this.hearttool =  '/health-tools/hearttool'
         this.system = '/system'
@@ -28,7 +29,17 @@ class Path {
         this.updateDoctor = '/system/updateDoctor/:id'
         this.scheduleManagement = '/system/scheduleManagement'
         this.appointmentManagement = '/system/appointmentManagement'
-        this.revenueManagement = '/system/revenueManagement'
+        this.detailDoctor = '/detailDoctor/:id'
+        this.detailSpecialist = '/detailSpecialist/:id'
+        this.bookAppointment = '/bookAppointment/:id'
+        this.groupManagement = '/system/groupManagement'
+        this.addGroup = '/system/addGroup'
+        this.updateGroup = '/system/updateGroup/:id'
+
+        this.toolManagement = '/system/toolManagement'
+        this.addTool = '/system/addTool'
+        this.updateTool = '/system/updateTool/:id'
+        this.category = '/category'
     }
 }
 

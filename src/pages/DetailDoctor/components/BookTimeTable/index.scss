@@ -1,14 +1,17 @@
 @import '../../../../_setting.scss';
 .bookTimeTable {
+    // border: 1px solid red;
     
     &__container {
         min-height: 160px;
-        margin: 0 $margin-desktop;
+        margin: 0 auto;
         margin-bottom: 40px;
         display: flex;
     }
     &__bookDay {
         flex: 3;
+        display: flex;
+        flex-direction: column;
         header {
             font-size: 20px;
             font-weight: 500;
@@ -20,6 +23,8 @@
         &-time {
             padding: 4px;
             margin: 6px 10px;
+            display: flex;
+            align-items: center;
         }
         &-list{
             margin-top: 14px;
@@ -54,30 +59,4 @@
             }
         }
     }
-}
-
-@media only screen and (max-width: 1024px) {
-    .bookTimeTable {
-    
-        &__container {
-            margin: 0 10px;
-            margin-bottom: 40px;
-        }
-    }
-}
-@media only screen and (max-width: 768px) {
-    .bookTimeTable {
-    
-        &__container {
-            margin: 0 10px;
-            margin-bottom: 40px;
-            flex-direction: column;
-            gap: 20px;
-        }
-        &__bookDay {
-            ul {
-                gap: 13px;
-            }
-        }
-}
 }
