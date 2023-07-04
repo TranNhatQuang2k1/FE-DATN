@@ -39,6 +39,15 @@ import AddGroup from '../pages/Group/AddGroup'
 import GroupManagement from '../pages/Group/ManagerGroup'
 import ResultBMI from '../pages/HealthTools/BMI/ResultBMI'
 import Allcategories from '../pages/Categories'
+import Filter from '../pages/HealthTools/Screening/Heartool/Filter'
+import FilterResult from '../pages/HealthTools/Screening/Heartool/FilterResult'
+import FraminghamRisk from '../pages/HealthTools/Screening/Heartool/FraminghamRisk'
+import StrokeRisk from '../pages/HealthTools/Screening/Heartool/StrokeRisk'
+import Allspecialtly from '../pages/Allspecialtly'
+import StrokeResult from '../pages/HealthTools/Screening/Heartool/StrokeRisk/Strokeresult'
+import FraminghamResult from '../pages/HealthTools/Screening/Heartool/FraminghamRisk/FraminghamResult'
+import Covid from '../pages/HealthTools/Screening/Heartool/Covid'
+import CovidResult from '../pages/HealthTools/Screening/Heartool/Covid/CovidResult'
 
 function RoutesComponent() {
   return (
@@ -65,12 +74,21 @@ function RoutesComponent() {
                     <Route path = {path.healthtools} element = {<HealthTools />} />
                     <Route path = {path.detailDoctor} element = {<DetailDoctor />}/>
                     <Route path={path.detailSpecialist} element = {<DetailSpecialist />} />
+                    {/* <Route path={path.detailCategorieslist} element = {<DetailCategorylist />} /> */}
                     <Route path = {path.bookAppointment} element = {<BookAppointment />}/>
                     <Route path = {path.bmi} element = {<BMI />}/>
                     <Route path = {path.resultBMI} element = {<ResultBMI     />}/>
                     <Route path = {path.hearttool} element = {<Hearttool />}/>
                     <Route path = {path.category} element = {<Allcategories />}/>
-                    
+                    <Route path = {path.allspecialtly} element = {<Allspecialtly     />}/>
+                    <Route path = {path.filter} element = {<Filter />}/>
+                    <Route path = {path.filterresult} element = {<FilterResult />}/>
+                    <Route path = {path.filterframingham} element = {<FraminghamRisk />}/>
+                    <Route path = {path.framinghamresult} element = {<FraminghamResult />}/>
+                    <Route path = {path.filterstroke} element = {<StrokeRisk />}/>
+                    <Route path = {path.strokeresult} element = {<StrokeResult />}/>
+                    <Route path = {path.covid} element = {<Covid />}/>
+                    <Route path = {path.covidresult} element = {<CovidResult />}/>
                 </Route>
                 <Route element = {<SystemAuthenticated />}>
                     <Route path={path.system} element = {<SystemLayout />}>

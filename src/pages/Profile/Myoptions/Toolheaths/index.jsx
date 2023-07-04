@@ -57,11 +57,10 @@ function toolinfor(title,result,unit,updatetime,urlimage) {
     );
 }
 const Toolheath =() => {
-    window.history.pushState(null, '', '/profile/hoso');
     return (
         <div 
             class="myheath-contanier">
-                <div class="myheath-wrapper">
+                {/* <div class="myheath-wrapper">
                     <div class="myheath-imformation">
                         <p 
                             class="myheath-content" color="">Tuổi
@@ -98,7 +97,7 @@ const Toolheath =() => {
                                 </svg>
                             </span>
                     </a>
-            </div>
+            </div> */}
             <div class="tool-infor">
                 {toollist?.map(e => {
                     return (

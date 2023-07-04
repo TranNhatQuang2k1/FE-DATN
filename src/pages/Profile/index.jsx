@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux'
 import Loading from '../../components/Loading'
 import EditPassword from './Myoptions/EditPassword'
 import Logout from './Myoptions/Logout'
+import AppointmentManager from './Myoptions/AppointmentManager'
 
 const Profile = () => {
     const token = localStorage.getItem('access_token')
@@ -58,11 +59,15 @@ const Profile = () => {
                         child1={<Toolheath />}
                         child2={<ScreeningResult />}
                     />}
+                    {selectedItem === 3 && <Myoptions 
+                        title={'Lịch sử đặt chỗ'}
+                        child1={<AppointmentManager />}
+                    />}
                     {selectedItem === 5 && <Myoptions 
                         title={'Cập nhật mật khẩu'}
                         child1={<EditPassword />}
                     />}
-                    {selectedItem === 7 && <Logout onClick= {handleSelectedItem}/>}
+                    {selectedItem === 6 && <Logout onClick= {handleSelectedItem}/>}
                     
                 </section>
             </div>

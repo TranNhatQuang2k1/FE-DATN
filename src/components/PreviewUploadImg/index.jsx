@@ -8,14 +8,8 @@ function PreviewUploadImg({ form, name, urlimage,check }) {
     const [fileInput, setFileInput] = useState('')
     const [previewSource, setPreviewSource] = useState(urlimage)
     const handleChangeImg = e => {
-        console.log(e)
         const file = e.target.files[0]
-        if (file) 
-            {
-                if(form.getValues('img_bg'))    form.setValue('avartar_group', file)
-            }
-
-        console.log(name)
+        if (file) form.setValue(name, file)
         setFileInput(e.target.value)
         previewFile(file)
     }

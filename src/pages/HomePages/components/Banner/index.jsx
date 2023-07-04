@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import images from "../../../../assets";
 import './index.scss';
 import Menu from "../../../../components/Category";
+import { path } from "../../../../constants/path";
 
 const Banner = () => {
     return (
@@ -16,7 +17,7 @@ const Banner = () => {
                                 class="content-banner-layout">
                                 <div class="layout-left">
                                     <h2 class="layout-left-title">
-                                        Công cụ tính nhịp tim lý tưởng - Hiểu về nhịp tim của bạn
+                                    Tính chỉ số BMI - Chỉ số khối cơ thể
                                     </h2>
                                     <div class="layout-left-content">
                                         <span class="layout-left-span">
@@ -24,16 +25,14 @@ const Banner = () => {
                                                 class="" 
                                                 data-is-mobile="false">
                                                 <p 
-                                                    class="span-text" 
-                                                    data-size="p3" 
-                                                    data-type="regular">
-                                                    Tìm hiểu nhịp tim nghỉ ngơi bình thường và nhịp tim tối đa trong độ tuổi của bạn cũng như cường độ tập thể dục và các yếu tố khác ảnh hưởng đến nhịp tim như thế nào.
+                                                    class="span-text" >
+                                                    Sử dụng công cụ này để kiểm tra chỉ số khối cơ thể (BMI) để biết bạn có đang ở mức cân nặng hợp lý hay không. Bạn cũng có thể kiểm tra chỉ số BMI của trẻ tại đây.
                                                 </p>
                                             </div>
                                         </span>
                                     </div>
                                 <a 
-                                    href="https://hellobacsi.com/health-tools/cong-cu-do-nhip-tim/" 
+                                    href={path.bmi}
                                     target="_blank" 
                                     class="banner-button">
                                         <button 
@@ -47,7 +46,7 @@ const Banner = () => {
                             </div>
                             <div class="banner-img">
                                 <img 
-                                    src="https://cdn.hellobacsi.com/wp-content/uploads/2019/07/Target-heart-rate.png" 
+                                    src= 'https://cdn.hellobacsi.com/wp-content/uploads/2023/05/unnamed-24.png'
                                     class="home-banner-image" alt=""/>
                             </div>
                         </div>

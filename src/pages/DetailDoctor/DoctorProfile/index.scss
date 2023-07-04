@@ -9,6 +9,10 @@
         margin-bottom: 40px;
         width: 100%;
         .doctorProfile-info {
+            p {
+                margin: 0;
+                padding: 3px 10px;
+            }
             width: 100%;
         .item-wrap {
             display: flex;

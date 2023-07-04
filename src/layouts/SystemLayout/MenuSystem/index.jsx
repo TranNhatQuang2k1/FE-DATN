@@ -36,28 +36,7 @@ function MenuSystem() {
     const userData = useSelector(state => state.user.profile)
     return (
         <ul className="menuSystem">
-            {userData.role.name === 'ROLE_ADMIN' &&<li className="menuSystem-item">
-                <NavLink
-                    to={path.dashBoard}
-                    className={({ isActive }) =>
-                        isActive
-                            ? 'menuSystem-item-link--active menuSystem-item-link'
-                            : 'menuSystem-item-link'
-                    }
-                >
-                    <span className="menuSystem-item-icon">
-                        <div class="icon-wrapper">
-                            {/* <img 
-                                src={images.heart} 
-                                className='img-profile'
-                            /> */}
-                            <MdDashboard />
-                        </div>
-                        {/* <MdDashboard /> */}
-                    </span>
-                    Tổng quan
-                </NavLink>
-            </li>}
+            {userData.role.name === 'ROLE_ADMIN' &&
             <li className="menuSystem-item">
                 <NavLink
                     to={path.clinicManagement}
@@ -80,7 +59,8 @@ function MenuSystem() {
                     Phòng khám
                 </NavLink>
             </li>
-            <li className="menuSystem-item">
+            }
+            {userData.role.name === 'ROLE_ADMIN' && <li className="menuSystem-item">
                 <NavLink
                     to={path.specialistManagement}
                     className={({ isActive }) =>
@@ -100,8 +80,9 @@ function MenuSystem() {
                     </span>
                     Chuyên khoa
                 </NavLink>
-            </li>
-            <li className="menuSystem-item">
+            </li>}
+
+            {userData.role.name === 'ROLE_ADMIN' && <li className="menuSystem-item">
                 <NavLink
                     to={path.hospitalManagement}
                     className={({ isActive }) =>
@@ -121,8 +102,8 @@ function MenuSystem() {
                     </span>
                     Bệnh viện
                 </NavLink>
-            </li>
-            <li className="menuSystem-item">
+            </li>}
+            {userData.role.name === 'ROLE_ADMIN' && <li className="menuSystem-item">
                 <NavLink
                     to={path.patientManagement}
                     className={({ isActive }) =>
@@ -142,8 +123,8 @@ function MenuSystem() {
                     </span>
                     Bệnh nhân
                 </NavLink>
-            </li>
-            <li className="menuSystem-item">
+            </li>}
+            {userData.role.name === 'ROLE_ADMIN' && <li className="menuSystem-item">
                 <NavLink
                     to={path.doctorManagement}
                     className={({ isActive }) =>
@@ -163,8 +144,8 @@ function MenuSystem() {
                     </span>
                     Bác sĩ
                 </NavLink>
-            </li>
-            <li className="menuSystem-item">
+            </li>}
+            {userData.role.name === 'ROLE_DOCTOR' && <li className="menuSystem-item">
                 <NavLink
                     to={path.scheduleManagement}
                     className={({ isActive }) =>
@@ -184,7 +165,7 @@ function MenuSystem() {
                     </span>
                     Lịch khám
                 </NavLink>
-            </li>
+            </li>}
             {userData.role.name === 'ROLE_DOCTOR' && (
                 <li className="menuSystem-item">
                     <NavLink

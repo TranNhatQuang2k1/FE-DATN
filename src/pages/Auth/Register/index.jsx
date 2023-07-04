@@ -75,8 +75,7 @@ function DangKy({navigate}) {
                 )
                 navigate('/login')
             } catch (err) {
-                navigate('/login')
-                toast.error(err.message, {
+                toast.error(err, {
                     position: toast.POSITION.TOP_RIGHT,
                 })
             }

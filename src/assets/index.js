@@ -36,6 +36,9 @@ const images = {
     bg_toolhome: require('./img/bg-tool-home.svg'),
     hometool_icon: require('./img/tool-home-icon.svg'),
     liststyle: require('./img/liststyle.svg'),
+    nguycothap: require('./img/dotquythap.png'),
+    nguycocao: require('./img/Nguycocao.png'),
+    nguycotrungbinh: require('./img/trungbinh1.png'),
 
 }
 

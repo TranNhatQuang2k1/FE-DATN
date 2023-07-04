@@ -12,7 +12,7 @@ const Logout = ({onClick}) => {
         navigate('/login')
     }
     return (
-        <div className='logout-container'>
+        <div className='logout-container bg-color'>
                 <div className='logout-wrap'>
                     <span class="icon-logout">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-custo="fill" class="icon icon--close">

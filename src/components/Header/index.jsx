@@ -11,33 +11,9 @@ import categoryApi from "../../api/categoryApi";
 import useComponentVisible from '../../hooks/useComponentVisible'
 import { IoIosNotifications } from 'react-icons/io'
 import Notification from './components/Notification'
-const dataCategories = [
-    {
-        title : 'Sức khỏe răng miệng',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/03/Oral-Health.png'
-    },
-    {
-        title : 'Dược liệu',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/03/Herbals-_-Alternatives.png'
-    },
-    {
-        title : 'Tâm lý-Tâm thần',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/02/Healthy-Mind.png'
-    },
-    {
-        title : 'Thể dục thể thao',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/02/Healthy-Fitness.png'
-    },
-    {
-        title : 'Lão hóa lành mạnh',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/02/Healthy-Aging-1.png'
-    },
-    {
-        title : 'Thói quen lành mạnh',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/02/Healthy-Habits.png'
-    },
-    
-]
+import { toast } from "react-toastify";
+import groupApi from "../../api/groupApi";
+
 const Header = ({onClick}) => {
     const location = useLocation()
     const dispatch = useDispatch()
@@ -68,7 +44,6 @@ const Header = ({onClick}) => {
     const token = localStorage.getItem('access_token')
     const navigate = useNavigate()
     const [check, setCheck] = useState(false);
-    const [chuyenMucNoiBat, setChuyenMucNoiBat] = useState([]);
     const [title, setTitle] = useState(['Chuyên mục sức khỏe']);
     const handleProfile = () => {
         navigate(path.profile)
@@ -82,17 +57,20 @@ const Header = ({onClick}) => {
       useEffect(() => {
         (async () => {
             try {
-                const respone = await specialistApi.getAllSpecialist()
+                // const respone = await specialistApi.getAllSpecialist()
                 // const doctor = await doctorApi.getAllDoctor()
                 // const chuyenmuc = await specialistApi.getAllSpecialist()
                 // const congcu = await doctorApi.getAllDoctor()
-                // const group = await doctorApi.getAllDoctor()
-                // const respone = await categoryApi.getListCategory();
+                const group = await groupApi.getListGroup();
+                const respone = await categoryApi.getListCategory();
                 setData(respone.message)
                 console.log(respone)
                 setIsLoading(false)
             } catch (err) {
-                alert(err)
+                toast.error(err.message, {
+                    position: toast.POSITION.TOP_RIGHT,
+                    autoClose: 1000,
+                })
             }
         })()
     }, [])
@@ -136,8 +114,13 @@ const Header = ({onClick}) => {
                     </div>
                 </div>
             </div>
-            <div className="header_center" onClick={handleRemove}>
-                <div className="header_center_topic " tabIndex={0}>
+            <div className="header_center">
+                <div className="header_center_topic "  onClick={
+                    () => {
+                        navigate(path.category)
+                        handleRemove();
+                    }
+                } >
                     <div className="content-center">
                         <b className="text-content">Chuyên mục</b>
                     </div>
@@ -150,7 +133,9 @@ const Header = ({onClick}) => {
                     </div>
                     
                 </div>
-                <div className="header_center_topic" tabIndex={0} onClick={handleRemove}>
+                <div className="header_center_topic" onClick={() => {
+                    navigate(path.healthtools)
+                }}>
                     <div className="content-center">
                         <b className="text-content">Kiểm tra sức khỏe</b>
                     </div>
@@ -162,7 +147,11 @@ const Header = ({onClick}) => {
                         />
                     </div>
                 </div>
-                <div className="header_center_topic"  onClick={handleRemove}>
+                <div className="header_center_topic"  onClick={
+                    () => {
+                        navigate(path.allspecialtly)
+                    }
+                }>
                     <div className="content-center">
                         <b className="text-content">Đặt lịch với bác sĩ</b>
                     </div>
@@ -174,7 +163,11 @@ const Header = ({onClick}) => {
                         />
                     </div>
                 </div>
-                <div className="header_center_topic" onClick={handleRemove}>
+                <div className="header_center_topic" onClick={
+                    () => {
+                        navigate(path.group)
+                    }
+                }>
                     <div className="content-center">
                         <b className="text-content">Cộng đồng</b>
                     </div>
@@ -188,13 +181,20 @@ const Header = ({onClick}) => {
                 </div>
             </div>
             <div className="header_right">
+            {  token && (userData?.role?.name === 'ROLE_DOCTOR' || userData?.role?.name === 'ROLE_ADMIN') &&
                 <div className="header_right_booking">
-                    <button className="bt_booking">
-                        Đặt lịch với bác sĩ
+                  
+                    <button className="bt_booking"
+                        onClick={() => {
+                            navigate('/system')
+                        }}
+                    >
+                        Hệ Thống
                     </button>
                 
                 </div>
-                {!token && <button 
+                }
+                {!token  && <button 
                     class="bt_login" 
                     data-size="md" 
                     data-color="tertiary" 
@@ -234,20 +234,22 @@ const Header = ({onClick}) => {
                         </div>
 
                 }
-                <div className="avartar-profile">
-                    <a className="img-container" onClick={handleProfile}>
-                        <div className="img-wrap">
-                            <img 
-                                src={userData?.image}
-                                className="icon-img"
-                            />
-                        </div>
-                    </a>
-                </div>
+                {token && 
+                    <div className="avartar-profile">
+                        <a className="img-container" onClick={handleProfile}>
+                            <div className="img-wrap">
+                                <img 
+                                    src={userData?.image}
+                                    className="icon-img"
+                                />
+                            </div>
+                        </a>
+                    </div>
+                }
                 
             </div>
-            {check  && <Menu data= {data} title={title} onClick={handleRemove} check={check}
-            />}
+            {/* {check  && <Menu data= {data} title={title} onClick={handleRemove} check={check}
+            />} */}
         </header>
     )
 }

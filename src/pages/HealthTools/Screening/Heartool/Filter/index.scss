@@ -16,6 +16,7 @@
                 .question-container {
                     width: 100%;
                     margin-top: 12px;
+                    transition: transform 0.3s ease-in-out;
                     color: rgb(38, 38, 38);
                     font-size: 18px;
                     font-weight: 700;
@@ -40,6 +41,7 @@
                     .item-choose {
                         width: 100%;
                         padding: 4px;
+                        transition: transform 0.3s ease-in-out;
                         .choose-anwser:hover{
                             border-color: rgb(45, 135, 243);
                         }

@@ -1,0 +1,167 @@
+.filter-result-container {
+    width: 100%;
+    width: 1135px;
+    margin: 0px auto;
+    .filter-result-wrap {
+        padding: 32px 0px;
+        display: flex;
+        max-width: 1055px;
+        min-height: 100vh;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-right: auto;
+        margin-left: auto;
+        animation: 1s ease 0s 1 normal both running opacityy;
+        line-height: 24px;
+        .resuldt-detail {
+            width: 60%;
+            padding: 0px;
+            .detail-container {
+                padding: 32px 24px;
+                margin-bottom: 24px;
+                background: rgb(255, 255, 255);
+                border-radius: 6px;
+                box-shadow: rgba(0, 0, 0, 0.04) 0px 4px 8px, rgba(0, 0, 0, 0.06) 0px 0px 2px, rgba(0, 0, 0, 0.04) 0px 0px 1px;
+                font-size: 16px;
+                img {
+                    width: 100%;
+                    height: auto;
+                    // margin-bottom: 24px;
+                }
+                .spacing{
+                    display: flex;
+                    justify-content: center;
+                    margin-bottom: 16px;
+                }
+                h1 {
+                    line-height: 36px;
+                    color: rgb(38, 38, 38);
+                    font-size: 26px;
+                    text-align: center;
+                }
+            }
+            
+            
+        }
+        .recommend {
+            width: 35%;
+            padding: 0px;
+            .recommend-doctor {
+                margin-bottom: 32px;
+                .recommend-wrap {
+                    padding: 24px;
+                    background-color: rgb(227, 242, 255);
+                    justify-content: center;
+                    .care-banner-img {
+                        max-width: 100%;
+                        display: block;
+                        margin: auto;
+                        width: 100%;
+                        height: 100%;
+                    }
+                    .text {
+                        font-size: 18px;
+                        letter-spacing: -.2px;
+                        line-height: 32px;
+                        font-weight: 700;
+                        color: #284A75;
+                        margin: 0;
+                    }
+                    .text1 {
+
+                    }
+                }
+            }
+            .post-recommend {
+                background: rgb(255, 255, 255);
+                .article-wrap {
+                    // padding: 16px 0;
+                    background-color: #fff;
+                    box-sizing: border-box;
+                    cursor: pointer;
+                    display: flex;
+                    padding: 16px 16px 16px 0;
+                    width: 100%;
+                    .banner{
+                        width: 140px;
+                        min-width: auto !important;
+                        height: 100px !important;
+                        margin: 0px 16px 0px 0px !important;
+                        position: relative;
+                        max-width: 200px;
+                        border-radius: 6px;
+                        a{
+                            color: rgb(45, 135, 243);
+                            text-decoration: none;
+                            transition: all 0.3s ease 0s;
+                            display: inline-block;
+                            height: 100%;
+                            width: 100%;
+                            img {
+                                border-radius: 6px;
+                                height: 100%;
+                                object-fit: cover;
+                                object-position: center;
+                                pointer-events: none;
+                                width: 100%;
+                            }
+                        }
+                    }
+                    .content {
+                        display: flex;
+                        flex-direction: column;
+                        width: 100%;
+                        .inner-content {
+                            display: flex;
+                            flex-direction: column;
+                            .label {
+                                margin: 0;
+                                color: rgb(45, 135, 243);
+                                align-items: center;
+                                display: flex;
+                                text-transform: uppercase;
+                                font-weight: 700;
+                                font-size: 14px;
+                                line-height: 22px;
+                                letter-spacing: 0;
+                                justify-content: center;
+                                a{
+                                    color: rgb(45, 135, 243);
+                                    text-decoration: none;
+                                    transition: all 0.3s ease 0s;
+                                    display: inline-block;
+                                    height: 100%;
+                                    // width: 100%;
+                                }
+                                .bookmark {
+                                    svg {
+                                        margin: 5px;
+                                    }
+                                }
+                            }
+                            .title {
+                                color: #000;
+                                margin: 0;
+                                overflow: hidden;
+                                margin-top: 2px;
+                                font-size: 21px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    a {
+        text-decoration: none;
+        transition: all 0.3s ease 0s;
+    }
+}
+@keyframes opacityy {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

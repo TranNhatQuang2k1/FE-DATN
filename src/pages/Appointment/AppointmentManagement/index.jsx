@@ -14,7 +14,7 @@ import SearchInput from '../../../components/SearchInput'
 import { useDebounce } from '../../../hooks/useDebounce'
 import ReactDatePicker from 'react-datepicker'
 import strftime from 'strftime'
-// import { SocketContext } from 'App'
+import { SocketContext } from '../../../App'
 import Loading from '../../../components/Loading'
 const options = [
     { value: '', label: 'Tất cả' },
@@ -27,7 +27,7 @@ const options = [
 
 ]
 function AppointmentManagement() {
-    // const socket = useContext(SocketContext)
+    const socket = useContext(SocketContext)
     const [isLoading, setIsLoading] = useState(true)
     const [listAppointment, setListAppointment] = useState([])
     const [pagination, setPagination] = useState({})
@@ -125,8 +125,8 @@ function AppointmentManagement() {
                     toastClassName: 'custom-toast'
                 })
                 respone.message.forEach(element => {
-                    // if (element !== {})
-                        // socket.emit('createNotify', element)
+                    if (element !== {})
+                        socket.emit('createNotify', element)
                 })
             })()
         }
@@ -182,6 +182,7 @@ function AppointmentManagement() {
                         }
                     }
                 )
+                
                 const filters = { ...queryParams, status: options[0].value, page: 0 }
                 navigate(`?${queryString.stringify(filters)}`)
                 toast.success('Báo cáo thành công', {
@@ -190,16 +191,17 @@ function AppointmentManagement() {
                     toastClassName: 'custom-toast'
                 })
                 respone.message.forEach(element => {
-                    // if (element !== {})
-                        // socket.emit('createNotify', element)
+                    if (element !== {})
+                        socket.emit('createNotify', element)
                 })
             })()
         }
         catch (err) {
+            alert(err.message)
             toast.error(err.message, {
-                position: toast.POSITION.TOP_RIGHT,
+                position: toast.POSITION.BOTTOM_RIGHT,
                 autoClose: 2000,
-                toastClassName: 'custom-toast'
+                // toastClassName: 'custom-toast'
             })
         }
     }
@@ -224,8 +226,8 @@ function AppointmentManagement() {
                     toastClassName: 'custom-toast'
                 })
                 respone.message.forEach(element => {
-                    // if (element !== {})
-                        // socket.emit('createNotify', element)
+                    if (element !== {})
+                        socket.emit('createNotify', element)
                 })
             })()
         }

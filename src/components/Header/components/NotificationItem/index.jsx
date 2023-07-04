@@ -25,6 +25,7 @@ function NotificationItem({ notify }) {
     }
     return <li className="notification__list-item" onClick={handleNotifyItemClick}>
         <div className="notification__list-item-img">
+            <img src={notify.avatar_patient} className='img-icon'/>
         </div>
         <div className="notification__list-item-content">
             {notify.message}

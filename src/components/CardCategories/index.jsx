@@ -3,19 +3,18 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import images from "../../assets";
 import './index.scss';
 
-const CardCategory = ({title,urlImage, style}) => {
+const CardCategory = ({title,urlImage, style,id}) => {
+    const navigate = useNavigate()
     return (
         <a 
-            data-event-category="Recommended Topics" 
-            data-event-action="Click" 
-            class="card-container" 
-            href="/suc-khoe-rang-mieng/">
+            class="card-container" onClick={()=> {
+                navigate(`/detailCategories/${id}`)
+            }}>
                 <div class="banner-card">
                     <div class="banner-img">
                         <img 
                             src= {urlImage}
                             alt="" 
-                            // style= {style}
                             style={{width: 100 + '%', height: 100 + '%','object-fit': 'contain' }}
                         />
                     </div>

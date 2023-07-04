@@ -4,39 +4,27 @@ import './index.scss'
 import Infor from "../../../../components/Infor";
 import ScreenInfor from "../../../../components/ScreenInfor";
 import Filter from "./Filter";
-let a = [
-    {
-        title: 'Vì sao tôi nên kiểm tra hoặc đo lường sàng lọc tim mạch của mình?',
-        content: "Đối với người lớn từ 20 tuổi trở lên, BMI được tính bằng cách sử dụng các phân loại trạng thái cân nặng tiêu chuẩn. Các chuẩn này giống nhau với nam giới và phụ nữ ở mọi thể trạng và lứa tuổi.Đối với trẻ em và thanh thiếu niên, BMI phân biệt theo tuổi và giới tính và thường được gọi là BMI theo tuổi. Ở trẻ em, lượng chất béo trong cơ thể cao có thể dẫn đến các bệnh liên quan đến cân nặng và các vấn đề sức khỏe khác. Thiếu cân cũng có thể tăng nguy cơ mắc một số tình trạng sức khỏe, bệnh lý.Chỉ số BMI cao thường cho thấy cơ thể thừa cân. Chỉ số này không trực tiếp đo lượng mỡ trong cơ thể nhưng có tương quan với các phép đo trực tiếp xác định lượng mỡ trong cơ thể."
-    },
-    {
-        title: 'Nguyên nhân gây ra bệnh tim mạch là gì?',
-        content: 'Có nhiều yếu tố làm tăng nguy cơ mắc bệnh tim mạch bao gồm: - Hút thuốc. - Căng thẳng. - Uống bia, rượu. - Bị cao huyết áp. - Có mỡ máu cao. - Bị béo phì, thừa cân. - Mắc bệnh tiểu đường. - Lối sống ít vận động hoặc không hoạt động nhiều.'
-    },
-    {
-        title: 'Làm thế nào để phát hiện bệnh tim mạch?',
-        content: 'Có nhiều cách để chẩn đoán vấn đề liên quan đến tim, bao gồm: - Điện tâm đồ (ECG). - Bài kiểm tra sự căng thẳng khi tập thể dục. - Chụp X quang ngực. - Siêu âm tim. - Xét nghiệm máu. - Chụp xạ hình tim. - Hình ảnh hạt nhân phóng xạ của tim. - Chụp cộng hưởng từ (MRI).'
-    },
-    {
-        title: 'Dấu hiệu của một trái tim không khỏe mạnh là gì?',
-        content: 'Dấu hiệu bệnh tim mạch bao gồm: Đau ngực, co thắt ngực, cảm thấy nặng ở vùng ngực, và khó chịu ở ngực. Hơi thở ngắn. Đau cổ, hàm, cổ họng, vùng bụng trên hoặc lưng. Chân bị đau, tê liệt, cảm thấy yếu hoặc lạnh, tay có triệu chứng tương tự với chân nếu mạch máu ở những vùng trong cơ thể bị thu hẹp.',
-    },
-    {
-        title: 'Sàng lọc bệnh tim mạch tính toán nguy cơ mắc bệnh như thế nào?',
-        content: 'Tính toán sẽ dựa vào những thông tin bạn cung cấp liên quan đến độ tuổi, huyết áp, thói quen (như hút thuốc), hoặc tiền sử bệnh (như tiểu đường), v.v.'
-    },
-    {
-        title: 'Nguồn',
-        content: 'https://reference.medscape.com/calculator/252/framingham-risk-score-2008'
-    }
-]
+import Deny from "../components/Deny";
+import { useLocation, useNavigate } from "react-router-dom";
+
 const Hearttool = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
+    const item = new URLSearchParams(location.search).get('item');
+    const parsedItem = JSON.parse(item);
+    console.log(parsedItem?.data[0]?.infor[0])
+    const handleFilter = () => {
+        if(parsedItem?.id ===0) navigate('/health-tools/filter')
+        if(parsedItem?.id ===1) navigate('/health-tools/framingham')
+        if(parsedItem?.id ===2) navigate('/health-tools/stroke')
+        if(parsedItem?.id ===3) navigate('/health-tools/covid')
+    }
     return(
         <div style = {{'box-sizing': 'border-box'}}>
         <div class="heart-page">
             <div class="heart-page-container">
                 <div class="container-left">
-                    <h1>Bệnh tim mạch: Phát hiện ngay trước khi quá muộn!</h1>
+                    <h1>{parsedItem?.desc}</h1>
                     <h4 class="heart-page-review">
                         <svg width="16" height="17" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M14 8.451v.552a6 6 0 11-3.558-5.484" stroke="#595959" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -48,7 +36,7 @@ const Hearttool = () => {
                     </h4>
                 
                 <div class="heart-page-button">
-                    <button class="next-btn">
+                    <button class="next-btn" onClick={handleFilter}>
                         <span class="fAwTdkg">
                             <span class="S2kaD9B">Check now</span>
                         </span>
@@ -56,17 +44,18 @@ const Hearttool = () => {
                 </div>
                 </div>
                 <div class="container-right">
-                    <img src= {images.heart} alt="Bệnh tim mạch: Phát hiện ngay trước khi quá muộn!"/>
+                    <img src= {parsedItem?.image} alt= {parsedItem?.title}/>
                 </div>
             </div>
             
         </div>
             <div>
-                <ScreenInfor />
+                <ScreenInfor data={parsedItem?.data[0]?.infor[0]}/>
             </div>
-            <Filter />
-            <Infor list={a}/>
-            <Filter />
+            <Infor list={parsedItem?.data[1]?.refer}/>
+            <div>
+                <Deny />
+            </div>
         </div>
     )
 }

@@ -13,6 +13,7 @@ class Path {
         this.groupdetail = '/community/:id'
         this.veirifyEmail = '/auth/verify-account'
         this.hearttool =  '/health-tools/hearttool'
+        this.allspecialtly = '/health-tools/filterstroke'
         this.system = '/system'
         this.specialistManagement = '/system/specialistManagement'
         this.addSpecialist = '/system/addSpecialist'
@@ -40,6 +41,14 @@ class Path {
         this.addTool = '/system/addTool'
         this.updateTool = '/system/updateTool/:id'
         this.category = '/category'
+        this.filter = '/health-tools/filter'
+        this.filterresult = '/health-tools/filter/result'
+        this.filterframingham = '/health-tools/framingham'
+        this.framinghamresult = '/health-tools/framingham/result'
+        this.filterstroke = '/health-tools/stroke'
+        this.covid = '/health-tools/covid'
+        this.covidresult = '/health-tools/covid/result'
+        this.strokeresult = '/health-tools/stroke/result'
     }
 }
 

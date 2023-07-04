@@ -1,4 +1,11 @@
-
+@keyframes opacityy {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 .allcate-container {
     --custom-heading-color: #284a75;
     position: relative;
@@ -9,6 +16,7 @@
     -webkit-box-align: center;
     align-items: center;
     padding-bottom: 80px;
+    animation: 1s ease 0s 1 normal both running opacityy;
     .img-bg {
         height: 350px;
         position: absolute;
@@ -78,15 +86,16 @@
             display: flex;
             width: 100%;
             flex-wrap: wrap;
-            -webkit-box-pack: start;
-            justify-content: flex-start;
+            justify-content: center;
             padding-bottom: 16px;
+            gap: 18px;
+            align-items: center;
             .layout-content {
                 margin-top: 32px;
                 width: 16.66%;
-                // padding: 0px 6px;
+                padding: 0px 6px;
                 display: flex;
-                -webkit-box-pack: center;
+                align-items: center;
                 justify-content: center;
             }
 

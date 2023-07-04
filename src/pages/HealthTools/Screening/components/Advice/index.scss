@@ -1,0 +1,39 @@
+.detail-advice {
+    padding: 32px 24px;
+    margin-bottom: 24px;
+    background: rgb(255, 255, 255);
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 4px 8px, rgba(0, 0, 0, 0.06) 0px 0px 2px, rgba(0, 0, 0, 0.04) 0px 0px 1px;
+    font-size: 16px;
+    h1 {
+        color: rgb(38, 38, 38);
+        font-size: 26px;
+        text-align: center;
+    }
+    ul {
+        padding-left: 0px;
+        list-style: none;
+        padding: 0px;
+        margin: 0px;
+        li::before{
+            position: absolute;
+            top: -2px;
+            left: 8px;
+            display: inline-block;
+            width: 2em;
+            height: 2em;
+            margin-left: -1em;
+            background: url('../../../../../assets//img/success.svg') center center no-repeat;
+            content: " ";
+        }
+        li {
+            position: relative;
+            display: block;
+            padding-left: 24px;
+            margin-bottom: 16px;
+            line-height: 24px;
+            word-break: break-word;
+        }
+        
+    }
+}

@@ -1,131 +1,33 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './index.scss'
 import images from '../../assets'
 import CardCategory from '../../components/CardCategories'
-const data = [
-    {
-        title : 'Sức khỏe răng miệng',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/03/Oral-Health.png'
-    },
-    {
-        title : 'Dược liệu',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/03/Herbals-_-Alternatives.png'
-    },
-    {
-        title : 'Tâm lý-Tâm thần',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/02/Healthy-Mind.png'
-    },
-    {
-        title : 'Thể dục thể thao',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/02/Healthy-Fitness.png'
-    },
-    {
-        title : 'Lão hóa lành mạnh',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/02/Healthy-Aging-1.png'
-    },
-    {
-        title : 'Thói quen lành mạnh',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/02/Healthy-Habits.png'
-    },
-    {
-        title : 'Sức khỏe răng miệng',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/03/Oral-Health.png'
-    },
-    {
-        title : 'Dược liệu',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/03/Herbals-_-Alternatives.png'
-    },
-    {
-        title : 'Tâm lý-Tâm thần',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/02/Healthy-Mind.png'
-    },
-    {
-        title : 'Thể dục thể thao',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/02/Healthy-Fitness.png'
-    },
-    {
-        title : 'Lão hóa lành mạnh',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/02/Healthy-Aging-1.png'
-    },
-    {
-        title : 'Thói quen lành mạnh',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/02/Healthy-Habits.png'
-    },
-    {
-        title : 'Sức khỏe răng miệng',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/03/Oral-Health.png'
-    },
-    {
-        title : 'Dược liệu',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/03/Herbals-_-Alternatives.png'
-    },
-    {
-        title : 'Tâm lý-Tâm thần',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/02/Healthy-Mind.png'
-    },
-    {
-        title : 'Thể dục thể thao',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/02/Healthy-Fitness.png'
-    },
-    {
-        title : 'Lão hóa lành mạnh',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/02/Healthy-Aging-1.png'
-    },
-    {
-        title : 'Thói quen lành mạnh',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/02/Healthy-Habits.png'
-    },
-    {
-        title : 'Sức khỏe răng miệng',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/03/Oral-Health.png'
-    },
-    {
-        title : 'Dược liệu',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/03/Herbals-_-Alternatives.png'
-    },
-    {
-        title : 'Tâm lý-Tâm thần',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/02/Healthy-Mind.png'
-    },
-    {
-        title : 'Thể dục thể thao',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/02/Healthy-Fitness.png'
-    },
-    {
-        title : 'Lão hóa lành mạnh',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/02/Healthy-Aging-1.png'
-    },
-    {
-        title : 'Thói quen lành mạnh',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/02/Healthy-Habits.png'
-    },
-    {
-        title : 'Sức khỏe răng miệng',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/03/Oral-Health.png'
-    },
-    {
-        title : 'Dược liệu',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/03/Herbals-_-Alternatives.png'
-    },
-    {
-        title : 'Tâm lý-Tâm thần',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/02/Healthy-Mind.png'
-    },
-    {
-        title : 'Thể dục thể thao',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/02/Healthy-Fitness.png'
-    },
-    {
-        title : 'Lão hóa lành mạnh',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/02/Healthy-Aging-1.png'
-    },
-    {
-        title : 'Thói quen lành mạnh',
-        urlImage : 'https://cdn.hellobacsi.com/wp-content/uploads/2021/02/Healthy-Habits.png'
-    },
-    
-]
+import Loading from '../../components/Loading'
+import categoryApi from '../../api/categoryApi'
+import SearchInput from '../../components/SearchInput'
+
 const Allcategories = () => {
+    const list = useRef([])
+    const [loading, SetLoading] = useState(true);
+    useEffect(() => {
+        (async () => {
+            try {
+                const data = await categoryApi.getListCategory({ params: {id: '1'}})
+                console.log(data.message);
+                if(data.message)
+                {
+                    list.current = data.message;
+                    console.log(list)
+                    SetLoading(false)
+                }
+            } catch (err) {
+
+            }
+        })() 
+    }, []);
+    if(loading) return (
+        <Loading />
+    )
     return (
         <div className='allcate-container'>
             <div className='img-bg'></div>
@@ -134,20 +36,24 @@ const Allcategories = () => {
                     <h1 className='search-title'>Không biết bắt đầu từ đâu?</h1>
                     <div className='seach-input'>
                         <div className='input-wrap'>
-                            <input 
+                            {/* <input 
                                 type="text" id="categories-search" 
                                 name="categories-search" aria-label="text" 
                                 value="" autocomplete="off" inputmode="text" 
                                 pattern=".*" placeholder="Tìm kiếm chuyên mục" 
                                 className='input-content'
+                            /> */}
+                            <SearchInput 
+                                placeholder={'Tìm kiếm chuyên mục'}
+                            
                             />
-                            <div class="icon-search">
+                            {/* <div class="icon-search">
                                 <img 
                                     src="https://hellobacsi.com/images/search.svg" 
                                     alt="Tìm kiếm chuyên mục"
                                     
                                 />
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>
@@ -155,13 +61,13 @@ const Allcategories = () => {
             <div className='content-container'>
                 <div className='content-layout'>
                     {
-                        data.map((e) => {
+                        list.current?.map((e) => {
                             if(e){
                                 return(
                                     <div className="layout-content">
                                         <CardCategory  
-                                            title={e.title} 
-                                            urlImage= {e.urlImage}
+                                            title={e.name} 
+                                            urlImage= {e.image}
                                             style={{height: 150+ 'px', width: 162+ 'px'}}
                                         />
                                     </div>

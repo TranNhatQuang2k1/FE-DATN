@@ -2,6 +2,8 @@ import {React, useEffect, useState} from "react";
 import images from "../../../../../assets";
 import './index.scss'
 import Button from '../../../../../components/Button'
+import Loading from '../../../../../components/Loading'
+import { useNavigate } from "react-router-dom";
 const checkPoint = [
     {
         point: 0,
@@ -40,8 +42,8 @@ const checkPoint = [
         risk: 10.8
     },
     {
-        point: 8,
-        risk: 10.8
+        point: 9,
+        risk: 12.2
     }
 ]
 const listcore = [
@@ -110,7 +112,7 @@ const listcore = [
             },
             {
                 ans: 'Có',
-                point: 1
+                point: 2
             },
         ]
     },
@@ -142,81 +144,109 @@ const listcore = [
     },
     
 ];
-// const chooseItem = ({name,onClick}) => {
-//     return (
-//         <div className="choose-anwser">
-//                 <div className="label">
-//                     <div className="label-text">
-//                         <p>Không</p>
-//                     </div>
-//                 </div>
-//             <div className=" icon active "></div>
-//         </div>
-//     )
-// }
 const Filter = () => {
+    const [selectedAnswers, setSelectedAnswers] = useState([]);
+    const [totalScore, setTotalScore] = useState(0);
+    const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     useEffect(() => {
-      return () => {
-        if(currentQuestionIndex > listcore.length)
+        if(currentQuestionIndex != null)
         {
-            return ;
+            setLoading(false)
+        };
+        if(currentQuestionIndex >= listcore.length)
+        { 
+            let a = checkPoint.find((point) => {
+                return point.point === totalScore;
+            });
+            console.log(a.risk);
+        
+            navigate(`./result?risk=${a.risk}`)
         }
-      };
     }, [currentQuestionIndex]);
+    const handleAnswerSelect = (selectedAnswer) => {
+        setLoading(true); // Hiển thị loading khi người dùng chọn câu trả lời
+        setTimeout(() => {
+          const updatedSelectedAnswers = [...selectedAnswers];
+          updatedSelectedAnswers[currentQuestionIndex] = selectedAnswer;
+          setSelectedAnswers(updatedSelectedAnswers);
+          setTotalScore(totalScore + selectedAnswer.point);
+          setCurrentQuestionIndex(currentQuestionIndex + 1);
+          setLoading(false); // Tắt hiển thị loading sau một khoảng thời gian
+        }, 500);
+    };
+    const handleGoBack = () => {
+        setCurrentQuestionIndex(currentQuestionIndex - 1);
+    };
+    if(loading)
+    {
+        return (
+            <Loading />
+        )
+    }
     return (
-    <div className="filter">
-        {currentQuestionIndex && currentQuestionIndex<=listcore.length &&
-        <><div className="filter-container">
-                    <div className="filter-wrap">
-                        <div className="filter-question">
-
-                            <div className="question-container">
-                                <div className="number">05.</div>
-                                <div className="label">
-                                    <div className="content">
-                                        <p>Trước đây bạn có từng bị tăng huyết áp chưa?</p>
+        <div className="filter">
+            {currentQuestionIndex != null && currentQuestionIndex < listcore.length && <>
+                
+                <div>
+                    <div className="filter-container">
+                        <div className="filter-wrap">
+                            <div className="filter-question">
+                                <div className="question-container">
+                                    <div className="number">{currentQuestionIndex + 1}.</div>
+                                    <div className="label">
+                                        <div className="content">
+                                            <p>{listcore[currentQuestionIndex]?.question}</p>
+                                        </div>
                                     </div>
                                 </div>
+                                <div className="">
+                                    <div className=""></div>
+                                </div>
                             </div>
-                            <div className="">
-                                <div className=""></div>
+                            <div className="input-container">
+                                <div className="input-wrap">
+                                    {listcore[currentQuestionIndex].answer.map((answer, index) => (
+                                        <div className="item-choose" key={index}>
+                                            <div
+                                                className={`choose-anwser ${answer?.point === totalScore ? 'active' : ''}`}
+                                                onClick={() => handleAnswerSelect(answer)}
+                                            >
+                                                <div className="label">
+                                                    <div className="label-text">
+                                                        <p>{answer?.ans}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="icon"></div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         </div>
-                        <div className="input-container">
-                            <div className="input-wrap">
-                                <div className="item-choose">
-                                    <div className="choose-anwser">
-                                        <div className="label">
-                                            <div className="label-text">
-                                                <p>Không</p>
-                                            </div>
-                                        </div>
-                                        <div className=" icon active "></div>
-                                    </div>
-                                </div>
-                                <div className="item-choose">
-                                    <div className="choose-anwser">
-                                        <div className="label">
-                                            <div className="label-text">
-                                                <p>Có</p>
-                                            </div>
-                                        </div>
-                                        <div className="icon"></div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div className=""></div>
+                    </div>
+                    <div className="buttons-area">
+                        <div className="buttons-areacontainer">
+                            <Button title={'Trở lại'} onClick={handleGoBack} />
                         </div>
                     </div>
-                    <div className=""></div>
-                </div><div className="buttons-area">
-                        <div className="buttons-area-container">
-                            <Button title={'Trở lại'} />
-                        </div>
-                    </div></>
-        }
-    </div>
-    
-    )
+                </div>
+            </>
+            }        
+
+            {totalScore === 9 && (
+                <div>
+                    <p>Tổng điểm: {totalScore}</p>
+                    {checkPoint.map((point, index) => (
+                        totalScore === point.point && (
+                            <p key={index}>Rủi ro: {point.risk}</p>
+                        )
+                    ))}
+                </div>
+            )}
+            </div>
+);
 }
  export default Filter;
