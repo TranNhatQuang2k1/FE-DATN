@@ -43,7 +43,7 @@ function AppointmentDetail({
                 </header>
                 <div className="appointmentDetail__content">
                     <div className="appointmentDetail__content-rating">
-                        {appointmentData.rating && arr.map(item => {
+                        { arr.map(item => {
                             if (
                                 item <= appointmentData.rating
                             ) {

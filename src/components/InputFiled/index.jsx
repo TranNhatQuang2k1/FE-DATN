@@ -43,6 +43,7 @@ function InputField({
                             onBlur={onBlur}
                             value={form.getValues(name)}
                             type={type}
+                            
                             placeholder={placeholder}
                             disabled = {disabled}
                             className={`${

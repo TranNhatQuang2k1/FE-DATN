@@ -6,6 +6,7 @@ import Header from '../../components/Header'
 import groupApi from '../../api/groupApi'
 import Loading from '../../components/Loading'
 import { path } from '../../constants/path'
+import Postgroup from './Postgroup'
 
 const Bannergroup = () => {
     return (
@@ -182,13 +183,14 @@ const Communitygroup = () => {
             }
         })() 
     }, []);
-    if(loading) return (
-        <Loading />
-    )
+    // if(loading) return (
+    //     <Loading />
+    // )
     return (
         <div>
             <Bannergroup />
-            <Listgroup list={list.current}/>
+            {/* <Listgroup list={list.current}/> */}
+            <Postgroup />
         </div>
     )
 }

@@ -2,32 +2,36 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './index.scss'
 import Button from '../Button'
+import { AiFillStar } from 'react-icons/ai'
 
 function DoctorItem({ data, mode, key }) {
     const navigate = useNavigate()
-    console.log(data)
+    const arr = [1, 2, 3, 4, 5]
     return (
-        // <div className="doctorItem">
-        //     <div className={`${mode === 'listColumn' ? 'listColumn-item ': ''}doctorItem__container`}>
-        //         <div className="doctorItem__content">
-        //             <div className="doctorItem__content-img">
-        //                 <img src = {data.user.image} alt = "doctor img"/>
-        //             </div>
-        //             <div className="doctorItem__content-main">
-        //                 <span className="doctorItem__content-main-position">Bác sĩ</span>
-        //                 <span className="doctorItem__content-main-name">{data.user.name}</span>
-        //                 <span className="doctorItem__content-main-clinic">{`${data.specialty.name} • ${data.clinic.name}`}</span>
-        //             </div>
-        //         </div>
-        //         <div className={`${mode === 'listColumn' ? 'doctorItem__action--column ': ''}doctorItem__action`}>
-        //             <button >
-        //                 <Link to={`/detailDoctor/${data.id}`} className = "doctorItem__action-link">Đặt lịch</Link>
-        //             </button>
-        //         </div>
-        //     </div>
-        // </div>
         <div class="doctorItem">
-                <div class=""></div>
+                <div class="icon-star">
+                    <div className="appointmentDetail__content-rating">
+                        { arr.map(item => {
+                            if (
+                                item <= data.rate
+                            ) {
+                                return (
+                                    <span key={item}>
+                                        <AiFillStar className="star icon__active" />
+                                    </span>
+                                )
+                            }
+                            return (
+                                <span key={item}>
+                                    <AiFillStar className="star" />
+                                </span>
+                            )
+                        })}
+                        <div>Numbers Rate {data?.numberOfReviews}</div>
+                        <div>Giới Tính: {data?.user?.gender ? 'Nam': 'Nữ'}</div>
+                    </div>
+
+                </div>
                 <div class="Item-container">
                     <div class="item-wrap">
                         <div class="doctor-wrap">

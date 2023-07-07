@@ -5,6 +5,7 @@ import images from '../../../assets'
 import Header from '../../../components/Header'
 import Loading from '../../../components/Loading'
 import groupApi from '../../../api/groupApi'
+import Postgroup from '../Postgroup'
 function Post({post,name}){
     return (
         <div className='postdetail-container'>
@@ -225,7 +226,7 @@ const Groupdetail = () => {
                         </div>
                     </div>
                     <div className='post-right'>
-
+                            
                     </div>
                 </div>
             </div>

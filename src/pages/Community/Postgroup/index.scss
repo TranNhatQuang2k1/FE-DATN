@@ -1,0 +1,138 @@
+
+
+.pop-up {
+    height: 80vh;
+    overflow-y: auto;
+    transition: all 0.5s ease-in-out 0s, width 0s ease 0s, height 0s ease 0s;
+    max-width: 468px;
+    padding: 0px;
+    position: fixed;
+    left: 50%;
+    padding: 0px 16px 32px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 6px;
+    box-shadow: rgb(217, 217, 217) 0px 4px 8px;
+    transform: translate(-50%, -45%);
+    transition: all 0.5s ease-in-out 0s;
+    // visibility: hidden;
+    width: 100%;
+    max-width: 468px;
+    padding: 0px;
+
+    z-index: 400;
+    top: 50%;
+    opacity: 1;
+    // visibility: hidden;
+    .popup-content {
+        display: flex;
+        flex-direction: column;
+        padding: 0px;
+        position: relative;
+        z-index: 111;
+        height: 100%;
+        .close-btn {
+            position: absolute;
+            cursor: pointer;
+            top: 16px;
+            right: 16px;
+            width: 24px;
+            height: 24px;
+            z-index: 5;
+            img {
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+            }
+        }
+        .header-title {
+            display: flex;
+            height: 26px;
+            padding: 16px 56px 16px 32px;
+            align-items: center;
+            border-bottom: 1px solid rgb(228, 232, 236);
+            font-weight: 900;
+            h5 {
+                font-size: 16px;
+                letter-spacing: -.2px;
+                line-height: 24px;
+                color: #262626;
+                font-weight: 700;
+                margin: 0;
+            }
+        }
+        .content {
+            overflow: auto;
+            flex: 1 1 0%;
+            .content-container {
+                position: relative;
+                display: flex;
+                height: 100%;
+                flex-direction: column;
+                .content-wrap {
+                    width: 100%;
+                    padding: 16px 0px;
+                    display: flex;
+                    flex-direction: column;
+                    height: 100%;
+                    .form-input {
+                        flex: 1 1 0%;
+                        padding-right: 2px;
+                        padding-left: 2px;
+                        margin-bottom: 0.5rem;
+                        overflow-y: auto;
+                        .form-wrap {
+                            max-width: 680px;
+                            margin: 0px auto;
+                            padding: 0px 24px;
+                            .title {
+                                margin-bottom: 16px;
+                                .input-title {
+                                    position: relative;
+                                    width: 100%;
+                                }
+                            }
+                            .input-content {
+                                flex: 1 1 0%;
+                                // overflow-y: hidden;
+                                z-index: 1000;
+                                padding: 0 10px;
+                                height: 250px;
+
+                                .text-content {
+                                    width: 100%;
+                                    height: 100%;
+                                    border-right-color: rgb(217, 217, 217);
+                                    border-bottom-color: rgb(217, 217, 217);
+                                    border-left-color: rgb(217, 217, 217);
+                                }
+                            }
+
+                        }
+                        .btn-post {
+                            padding: 0 20px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            margin-top: 100px;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+}
+
+
+.bg-cover {
+    position: fixed;
+    z-index: 110;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    background: rgba(38, 38, 38, 0.3);
+    transition: all 0.5s ease-in-out 0s, width 0s ease 0s, height 0s ease 0s;
+}

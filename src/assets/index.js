@@ -39,6 +39,7 @@ const images = {
     nguycothap: require('./img/dotquythap.png'),
     nguycocao: require('./img/Nguycocao.png'),
     nguycotrungbinh: require('./img/trungbinh1.png'),
+    btn_close: require('./img/close.png'),
 
 }
 
